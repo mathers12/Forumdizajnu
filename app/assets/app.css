@@ -1,3 +1,6 @@
+.toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
+  color: white; }
+
 html, body {
   font-family: 'Roboto', sans-serif;
   font-size:14px;
@@ -127,4 +130,10 @@ span.name {
   font-weight: bold;
   font-size:1.1em;
   padding-left:5px;
+}
+
+md-icon
+{
+  margin-right: 5px;
+  margin-left: 30px;
 }
