@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="toolbarDemo1">
+<html lang="en" ng-app="forumDizajn">
   <head>
     <title>Forum dizajnu</title>
 
@@ -14,15 +14,13 @@
   </head>
 
   <body>
-  <div ng-controller="AppCtrl">
+  <div ng-controller="toolbarCtrl">
 
-        <md-toolbar>
+        <md-toolbar >
 
         <div class="md-toolbar-tools">
+          <label><b>Forum</b>dizajnu.<b>sk</b></label>
 
-          <h2>
-            <span><b>Forum</b>dizajnu.<b>sk</b></span>
-          </h2>
 
 
           <span flex></span>
@@ -36,33 +34,28 @@
           </md-button>
 
           <md-icon id="regLoginIcon" md-svg-icon="./assets/svg/login.svg"></md-icon>
-            <h3>
-              <span>Prihlasenie</span>
-            </h3>
+            <label>Prihlasenie</label>
 
             <md-icon id="regLoginIcon" md-svg-icon="./assets/svg/person.svg"></md-icon>
 
-          <h3>
-            <span>Registracia</span>
-          </h3>
+            <label>Registracia</label>
 
         </div>
       </md-toolbar>
   </div>
 
   <!--TABS-->
-  <div ng-controller="tabsCtrl">
-    <md-content class="md-padding" ng-repeat="tab in tabs">
-      <md-tabs class="md-accent" >
-          <md-tab id="tab1">
-            <md-tab-label>Item One</md-tab-label>
+  <div  ng-controller="tabsCtrl as tabs">
+
+      <md-tabs   md-theme="themeProvider" class="md-primary">
+          <md-tab ng-repeat="tab in tabs.tabsData">
+            <md-tab-label>{{tab}}</md-tab-label>
               <md-tab-body>
-                View for Item #1 <br/>
-                data.selectedIndex = 0;
+                View for {{tab}} <br/>
+
               </md-tab-body>
           </md-tab>
         </md-tabs>
-    </md-content>
      </div>
   <script src="./bower_components/angular/angular.js"></script>
     <script src="./bower_components/angular-animate/angular-animate.js"></script>
