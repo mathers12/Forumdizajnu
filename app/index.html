@@ -15,28 +15,55 @@
 
   <body>
   <div ng-controller="AppCtrl">
-    <md-content>
-      <md-toolbar>
+
+        <md-toolbar>
+
         <div class="md-toolbar-tools">
+
           <h2>
             <span><b>Forum</b>dizajnu.<b>sk</b></span>
           </h2>
+
+
           <span flex></span>
-            <md-icon md-svg-icon="./assets/svg/login.svg"></md-icon>
+
+          <md-input-container md-no-float>
+            <label>hladaj produkty, inspiracie, ...</label>
+            <input type="text" />
+          </md-input-container>
+          <md-button  class="md-icon-button" id="searchButton">
+              <md-icon md-svg-icon="./assets/svg/search.svg"></md-icon>
+          </md-button>
+
+          <md-icon id="regLoginIcon" md-svg-icon="./assets/svg/login.svg"></md-icon>
             <h3>
               <span>Prihlasenie</span>
             </h3>
-            <md-icon md-svg-icon="./assets/svg/person.svg"></md-icon>
+
+            <md-icon id="regLoginIcon" md-svg-icon="./assets/svg/person.svg"></md-icon>
+
           <h3>
             <span>Registracia</span>
           </h3>
+
         </div>
       </md-toolbar>
-    </md-content>
   </div>
 
-
-
+  <!--TABS-->
+  <div ng-controller="tabsCtrl">
+    <md-content class="md-padding" ng-repeat="tab in tabs">
+      <md-tabs class="md-accent" >
+          <md-tab id="tab1">
+            <md-tab-label>Item One</md-tab-label>
+              <md-tab-body>
+                View for Item #1 <br/>
+                data.selectedIndex = 0;
+              </md-tab-body>
+          </md-tab>
+        </md-tabs>
+    </md-content>
+     </div>
   <script src="./bower_components/angular/angular.js"></script>
     <script src="./bower_components/angular-animate/angular-animate.js"></script>
     <script src="./bower_components/angular-aria/angular-aria.js"></script>
