@@ -47,16 +47,33 @@
   <!--TABS-->
   <div  ng-controller="tabsCtrl as tabs">
 
-      <md-tabs   md-theme="themeProvider" class="md-primary">
+      <md-tabs   md-theme="themeProvider" class="md-primary" >
           <md-tab ng-repeat="tab in tabs.tabsData">
-            <md-tab-label>{{tab}}</md-tab-label>
+            <md-tab-label>{{tab.name}}</md-tab-label>
               <md-tab-body>
-                View for {{tab}} <br/>
+                <!-- CONTENT -->
+                <div class="gridListdemoBasicUsage">
+                <md-content >
+                  <md-grid-list
+                    md-cols-gt-md="12" md-cols-sm="3" md-cols-md="8"
+                    md-row-height-gt-md="1:1" md-row-height="4:3"
+                    md-gutter-gt-md="16px">
+                    <md-grid-tile
+                      class="gray"
+                      md-colspan-gt-sm="12"
+                      md-rowspan-gt-sm="2">
+                      <h1>{{tab.description}}</h1>
+                    </md-grid-tile>
+                  </md-grid-list>
+                </md-content>
+  </div>
+
 
               </md-tab-body>
           </md-tab>
         </md-tabs>
      </div>
+
   <script src="./bower_components/angular/angular.js"></script>
     <script src="./bower_components/angular-animate/angular-animate.js"></script>
     <script src="./bower_components/angular-aria/angular-aria.js"></script>

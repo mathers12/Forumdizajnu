@@ -30,3 +30,20 @@ md-toolbar
 }
 
 
+/*CONTENT*/
+.gridListdemoBasicUsage .gray {
+  background: #696969; }
+.gridListdemoBasicUsage .green {
+  background: #b9f6ca; }
+.gridListdemoBasicUsage .yellow {
+  background: #ffff8d; }
+.gridListdemoBasicUsage .blue {
+  background: #84ffff; }
+.gridListdemoBasicUsage .purple {
+  background: #b388ff; }
+.gridListdemoBasicUsage .red {
+  background: #FF6347; }
+h1
+{
+  color:white;
+}
