@@ -9,7 +9,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
-    <link rel="stylesheet" href="./bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
     <link rel="stylesheet" href="assets/app.css"/>
   </head>
 
@@ -23,7 +23,7 @@
         <div class="md-toolbar-tools">
           <md-icon id="menu" md-svg-icon="./assets/svg/menu.svg" ng-click="toggleLeft()"></md-icon>
 
-          <a href="/home"><label><b>Forum</b>dizajnu.<b>sk</b></label></a>
+          <a ui-sref="home"><label><b>Forum</b>dizajnu.<b>sk</b></label></a>
 
 
 
@@ -87,7 +87,7 @@
 
           <div class="md-toolbar-tools">
           <md-icon  ng-click="close()" id="close" md-svg-icon="./assets/svg/close.svg"></md-icon>
-            <label>Zavrieť</label>
+            <label ng-click="close()">Zavrieť</label>
             </div>
         </md-toolbar>
 
@@ -98,7 +98,7 @@
               <md-icon  ng-hide="categoryOff" ng-click="categoryClick()"  id="categoryOff" md-svg-icon="./assets/svg/right.svg"></md-icon>
               <md-icon  ng-hide="categoryOn"  ng-click="categoryClick()"  id="categoryOn" md-svg-icon="./assets/svg/down.svg"></md-icon>
 
-              <label >Kategorie</label>
+              <label ng-click="categoryClick()">Kategorie</label>
             </div>
 
 
@@ -117,16 +117,21 @@
         </div>
       </md-sidenav>
     </section>
+
   </div>
 
+  <div ui-view>
+
+  </div>
 
   <!-- LIBRARIES-->
-  <script src="./bower_components/angular/angular.js"></script>
-    <script src="./bower_components/angular-animate/angular-animate.js"></script>
-    <script src="./bower_components/angular-aria/angular-aria.js"></script>
-  <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script type="text/javascript" src="./bower_components/angular-material/angular-material.js"></script>
-    <script type="text/javascript" src="./src/app.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="client/home/home.js"></script>
 
   </body>
 </html>

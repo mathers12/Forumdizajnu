@@ -1,10 +1,12 @@
-var app = angular.module('forumDizajnu', ['ngMaterial','ui.router'])
-  .config(function($mdThemingProvider,$locationProvider,$urlRouterProvider) {
+var app = angular.module('forumDizajnu', ['forumDizajnu.home','ngMaterial','ui.router'])
+  .config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$stateProvider) {
     $mdThemingProvider.theme('themeProvider')
       .primaryPalette('green')
       .accentPalette('orange');
 
 
+    //Budeme mat vzdy /home
+    $urlRouterProvider.otherwise('/home');
 
   });
 
@@ -31,6 +33,7 @@ var app = angular.module('forumDizajnu', ['ngMaterial','ui.router'])
     $scope.close = function () {
       $scope.categoryOn = true;
       $scope.categoryOff = false;
+      $scope.categoryDetails = true;
 
       $mdSidenav('left').close()
         .then(function () {
