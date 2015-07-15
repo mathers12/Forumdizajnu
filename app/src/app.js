@@ -12,7 +12,7 @@ var app = angular.module('forumDizajnu', ['ngMaterial','ui.router'])
   app.controller('toolbarCtrl', function($scope,$timeout, $mdSidenav, $mdUtil, $log) {
     $scope.categoryOn = true;
     $scope.categoryOff = false;
-
+    $scope.categoryDetails = true;
     $scope.toggleLeft = buildToggler('left');
 
 
@@ -45,15 +45,18 @@ var app = angular.module('forumDizajnu', ['ngMaterial','ui.router'])
       {
         $scope.categoryOn = false;
         $scope.categoryOff = true;
+        $scope.categoryDetails = false;
 
       }
       else
       {
         $scope.categoryOn = true;
         $scope.categoryOff = false;
-
+        $scope.categoryDetails = true;
       }
     }
+
+    $scope.details = ["Prva","Druha","Tretia"];
 
   });
 

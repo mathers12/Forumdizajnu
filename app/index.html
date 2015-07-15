@@ -90,6 +90,7 @@
             <label>Zavrieť</label>
             </div>
         </md-toolbar>
+
           <md-toolbar class="white">
 
             <div class="md-toolbar-tools">
@@ -98,10 +99,22 @@
               <md-icon  ng-hide="categoryOn"  ng-click="categoryClick()"  id="categoryOn" md-svg-icon="./assets/svg/down.svg"></md-icon>
 
               <label >Kategorie</label>
+            </div>
+
+
+          </md-toolbar>
+        <hr>
+        <!-- Category Details -->
+        <div ng-hide="categoryDetails" ng-repeat="categoryDetail in details">
+          <md-toolbar class="white"  >
+
+            <div class="md-toolbar-tools">
+              <label id="categoryDetails">{{categoryDetail}}</label>
 
             </div>
           </md-toolbar>
-
+          <hr>
+        </div>
       </md-sidenav>
     </section>
   </div>
