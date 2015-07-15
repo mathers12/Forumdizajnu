@@ -34,16 +34,49 @@ md-toolbar
 .gridListdemoBasicUsage .gray {
   background: #696969; }
 .gridListdemoBasicUsage .green {
-  background: #b9f6ca; }
+  background: #4CAF50; }
 .gridListdemoBasicUsage .yellow {
-  background: #ffff8d; }
+  background: #FFD700; }
 .gridListdemoBasicUsage .blue {
-  background: #84ffff; }
+  background: #3f51b5; }
 .gridListdemoBasicUsage .purple {
   background: #b388ff; }
 .gridListdemoBasicUsage .red {
   background: #FF6347; }
+.gridListdemoBasicUsage .orange {
+  background: #FF8C00; }
+
+
+.gridListdemoBasicUsage .white{
+  background: #FFFFFF; }
 h1
 {
   color:white;
+}
+a label
+{
+  cursor: pointer;
+}
+
+#contentSideNav
+{
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+#menu,#close,#category
+{
+  margin-right: 20px;
+  margin-left: 0px;
+  cursor:pointer;
+}
+
+#leftSideNav label
+{
+  color:black;
+}
+
+#leftSideNav md-icon
+{
+  color:black;
 }
