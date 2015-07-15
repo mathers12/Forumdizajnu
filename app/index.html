@@ -49,10 +49,10 @@
   </div>
 
   <!--TABS-->
-  <div  ng-controller="tabsCtrl as tabs">
+  <div ng-controller="tabsCtrl">
 
       <md-tabs   md-theme="themeProvider" class="md-primary">
-          <md-tab  ng-repeat="tab in tabs.tabsData">
+          <md-tab  ng-repeat="tab in tabsData">
             <md-tab-label>{{tab.name}}</md-tab-label>
               <md-tab-body >
                 <!-- CONTENT -->
@@ -94,7 +94,9 @@
 
             <div class="md-toolbar-tools">
 
-              <md-icon ng-click="categoryClick()"  id="category" md-svg-icon="./assets/svg/right.svg"></md-icon>
+              <md-icon  ng-hide="categoryOff" ng-click="categoryClick()"  id="categoryOff" md-svg-icon="./assets/svg/right.svg"></md-icon>
+              <md-icon  ng-hide="categoryOn"  ng-click="categoryClick()"  id="categoryOn" md-svg-icon="./assets/svg/down.svg"></md-icon>
+
               <label >Kategorie</label>
 
             </div>

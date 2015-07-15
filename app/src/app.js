@@ -10,14 +10,14 @@ var app = angular.module('forumDizajnu', ['ngMaterial','ui.router'])
 
 
   app.controller('toolbarCtrl', function($scope,$timeout, $mdSidenav, $mdUtil, $log) {
+    $scope.categoryOn = true;
+    $scope.categoryOff = false;
 
     $scope.toggleLeft = buildToggler('left');
-    $scope.toggleRight = buildToggler('right');
-    /**
-     * Build handler to open/close a SideNav; when animation finishes
-     * report completion in console
-     */
+
+
     function buildToggler(navID) {
+
       var debounceFn =  $mdUtil.debounce(function(){
         $mdSidenav(navID)
           .toggle()
@@ -29,22 +29,38 @@ var app = angular.module('forumDizajnu', ['ngMaterial','ui.router'])
     }
 
     $scope.close = function () {
+      $scope.categoryOn = true;
+      $scope.categoryOff = false;
+
       $mdSidenav('left').close()
         .then(function () {
           $log.debug("close LEFT is done");
         });
     };
 
+    // Zmena ikony kategorie
     $scope.categoryClick = function()
     {
+      if ($scope.categoryOn)
+      {
+        $scope.categoryOn = false;
+        $scope.categoryOff = true;
 
+      }
+      else
+      {
+        $scope.categoryOn = true;
+        $scope.categoryOff = false;
+
+      }
     }
+
   });
 
 
 app.controller("tabsCtrl",function($scope)
 {
-  this.tabsData =
+  $scope.tabsData =
       [
         {
           name: "Inspiracie",
