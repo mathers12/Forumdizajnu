@@ -40,7 +40,7 @@
           <md-icon id="regLoginIcon" md-svg-icon="./assets/svg/login.svg"></md-icon>
             <label>Prihlasenie</label>
 
-            <md-icon id="regLoginIcon" md-svg-icon="./assets/svg/person.svg"></md-icon>
+            <md-icon id="regPersonIcon" md-svg-icon="./assets/svg/person.svg"></md-icon>
 
             <label>Registracia</label>
 
@@ -52,24 +52,14 @@
   <div ng-controller="tabsCtrl">
 
       <md-tabs   md-theme="themeProvider" class="md-primary">
-          <md-tab  ng-repeat="tab in tabsData">
+
+        <md-tab  ng-repeat="tab in tabsData" ui-sref="{{tab.hrefName}}">
+
             <md-tab-label>{{tab.name}}</md-tab-label>
               <md-tab-body >
                 <!-- CONTENT -->
-                <div class="gridListdemoBasicUsage">
-                <md-content>
-                  <md-grid-list md-cols="15" md-row-height="2:2">
-                    <md-grid-tile
-                      class="gray"
-                      md-colspan-gt-sm="15"
-                      md-rowspan-gt-sm="2">
-                      <h1>{{tab.description}}</h1>
-                    </md-grid-tile>
-                  </md-grid-list>
-
-                </md-content>
+                <div class="gridListdemoBasicUsage" ui-view>
               </div>
-
 
               </md-tab-body>
           </md-tab>
@@ -118,11 +108,9 @@
       </md-sidenav>
     </section>
 
-  </div>
-
-  <div ui-view>
 
   </div>
+
 
   <!-- LIBRARIES-->
     <script src="bower_components/angular/angular.js"></script>
@@ -132,6 +120,11 @@
     <script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="client/home/home.js"></script>
+    <script type="text/javascript" src="client/inspirations/inspirations.js"></script>
+    <script type="text/javascript" src="client/products/products.js"></script>
+    <script type="text/javascript" src="client/specialists/specialists.js"></script>
+    <script type="text/javascript" src="client/forum/forum.js"></script>
+    <script type="text/javascript" src="client/articles/articles.js"></script>
 
   </body>
 </html>

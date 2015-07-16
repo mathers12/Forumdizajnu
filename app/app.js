@@ -1,4 +1,14 @@
-var app = angular.module('forumDizajnu', ['forumDizajnu.home','ngMaterial','ui.router'])
+var app = angular.module('forumDizajnu',
+  [
+    'forumDizajnu.home',
+    'forumDizajnu.inspirations',
+    'forumDizajnu.products',
+    'forumDizajnu.articles',
+    'forumDizajnu.forum',
+    'forumDizajnu.specialists',
+    'ngMaterial',
+    'ui.router'
+  ])
   .config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$stateProvider) {
     $mdThemingProvider.theme('themeProvider')
       .primaryPalette('green')
@@ -6,7 +16,7 @@ var app = angular.module('forumDizajnu', ['forumDizajnu.home','ngMaterial','ui.r
 
 
     //Budeme mat vzdy /home
-    $urlRouterProvider.otherwise('/home');
+    //$urlRouterProvider.otherwise('/home');
 
   });
 
@@ -70,22 +80,27 @@ app.controller("tabsCtrl",function($scope)
       [
         {
           name: "Inspiracie",
+          hrefName: "inspirations",
           description: "Inspirujte sa niecim novym"
         },
         {
           name: "Produkty",
+          hrefName: "products",
           description: "Pozrite si nase produkty"
         },
         {
           name: "Clanky",
+          hrefName: "articles",
           description: "Sledujte najnovsie clanky"
         },
         {
           name: "Specialisti",
+          hrefName: "specialists",
           description: "Nechajte sa poradit nasimi specialistami"
         },
         {
           name: "Forum",
+          hrefName: "forum",
           description: "Pozrite si najcitanejsie forum"
         }
       ]
