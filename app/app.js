@@ -82,31 +82,41 @@ app.controller("tabsCtrl",function($scope)
           name: "Inspiracie",
           hrefName: "inspirations",
           description: "Nechajte sa inšpirovať a vytvorte si krásny domov",
-          buttonName: "Prejsť na inšpirácie"
+          buttonName: "Prejsť na inšpirácie",
+          color: "yellow",
+          imgSrc: "./assets/pictures/inspirations.jpg"
         },
         {
           name: "Produkty",
           hrefName: "products",
           description: "Produkty od tých najlepších dizajnérov a výrobcov",
-          buttonName: "Prejsť na produkty"
+          buttonName: "Prejsť na produkty",
+          color: "orange",
+          imgSrc: "./assets/pictures/products.jpg"
         },
         {
           name: "Clanky",
           hrefName: "articles",
           description: "Sledujte novinky a módne trendy zo sveta interiérového dizajnu",
-          buttonName: "Prejsť na články"
+          buttonName: "Prejsť na články",
+          color: "red",
+          imgSrc: "./assets/pictures/articles.jpg"
         },
         {
           name: "Specialisti",
           hrefName: "specialists",
           description: "Najdite si svojho špecialistu, ktorý vám pomôže",
-          buttonName: "Prejsť na špecialistov"
+          buttonName: "Prejsť na špecialistov",
+          color: "blue",
+          imgSrc: "./assets/pictures/specialists.jpg"
         },
         {
           name: "Forum",
           hrefName: "forum",
-          description: "Máte špecifické požiadavky?/nPoraďte sa na našom fóre",
-          buttonName: "Prejsť na fórum"
+          description: "Máte špecifické požiadavky?Poraďte sa na našom fóre",
+          buttonName: "Prejsť na fórum",
+          color: "green",
+          imgSrc: "./assets/pictures/forum.jpg"
         }
       ]
 
