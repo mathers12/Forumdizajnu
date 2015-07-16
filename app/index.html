@@ -49,22 +49,33 @@
   </div>
 
   <!--TABS-->
-  <div ng-controller="tabsCtrl">
+  <div ng-controller="tabsCtrl" >
 
-      <md-tabs   md-theme="themeProvider" class="md-primary">
+      <md-tabs md-dynamic-height="false" md-theme="themeProvider" class="md-primary" md-no-bar>
 
         <md-tab  ng-repeat="tab in tabsData" ui-sref="{{tab.hrefName}}">
 
+          <md-content  >
+
             <md-tab-label>{{tab.name}}</md-tab-label>
+
+
+
               <md-tab-body >
                 <!-- CONTENT -->
                 <div class="gridListdemoBasicUsage" ui-view>
-              </div>
+                </div>
 
               </md-tab-body>
+     </md-content>
+
           </md-tab>
+
         </md-tabs>
+    <!-- HOME PAGE -->
+
      </div>
+
 
 
   <!-- SIDENAV LEFT -->
@@ -108,8 +119,8 @@
       </md-sidenav>
     </section>
 
-
   </div>
+
 
 
   <!-- LIBRARIES-->

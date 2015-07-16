@@ -16,7 +16,7 @@ var app = angular.module('forumDizajnu',
 
 
     //Budeme mat vzdy /home
-    //$urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/home');
 
   });
 
