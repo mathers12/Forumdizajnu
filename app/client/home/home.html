@@ -3,14 +3,36 @@
   md-row-height-gt-md="1:1" md-row-height="2:2"
     >
 
-  <md-grid-tile
+  <!-- left IMAGE, RIGHT CONTENT-->
+  <md-grid-tile ng-if="($index % 2) == 0"
                 md-rowspan="2" md-colspan="3" md-colspan-sm="1">
-    <img style="height:529px; width:800px" ng-src="{{item.imgSrc}}"/>
+    <img class="imgHome"  ng-src="{{item.imgSrc}}"/>
 
   </md-grid-tile>
 
-  <md-grid-tile class="{{item.color}}"
+  <md-grid-tile ng-if="($index % 2) == 0"  class="{{item.color}}"
                 md-rowspan="2" md-colspan="3" md-colspan-sm="1">
-<h1 style="text-align:center">{{item.description}}</h1>
+    <div layout="column" layout-align="center center">
+      <h1 class="imageDescription">{{item.description}}</h1>
+      <md-button  class="md-raised md-primary">Prejsť na {{item.imgName}}</md-button>
+    </div>
+  </md-grid-tile>
+
+  <!-- left CONTENT, RIGHT IMAGE-->
+
+  <md-grid-tile ng-if="($index % 2) == 1" class="{{item.color}}"
+                md-rowspan="2" md-colspan="3" md-colspan-sm="1">
+    <div layout="column" layout-align="center center">
+      <h1 class="imageDescription">{{item.description}}</h1>
+    <md-button  class="md-raised md-primary">Prejsť na {{item.imgName}}</md-button>
+    </div>
+
+  </md-grid-tile>
+
+
+  <md-grid-tile ng-if="($index % 2) == 1"
+    md-rowspan="2" md-colspan="3" md-colspan-sm="1">
+    <img class="imgHome"ng-src="{{item.imgSrc}}"/>
+
   </md-grid-tile>
   </md-grid-list>

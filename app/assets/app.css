@@ -35,6 +35,9 @@ md-toolbar
   background: #696969; }
 .gridListdemoBasicUsage .green {
   background: #4CAF50; }
+.gridListdemoBasicUsage .imgColor {
+  background: #708090; }
+
 .gridListdemoBasicUsage .yellow {
   background: #FFD700; }
 .gridListdemoBasicUsage .blue {
@@ -56,6 +59,12 @@ h1
 a label
 {
   cursor: pointer;
+}
+
+.imgHome
+{
+  height:528px;
+  width:800px;
 }
 
 #contentSideNav
@@ -86,7 +95,7 @@ md-card {
 
 }
 
-#tabDescription
+#tabDescription,.imageDescription
 {
   text-align:center;
 }

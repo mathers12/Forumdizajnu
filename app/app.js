@@ -79,7 +79,8 @@ app.controller("tabsCtrl",function($scope)
   $scope.tabsData =
       [
         {
-          name: "Inspiracie",
+          name: "Inšpirácie",
+          imgName: "INŠPIRÁCIE",
           hrefName: "inspirations",
           description: "Nechajte sa inšpirovať a vytvorte si krásny domov",
           buttonName: "Prejsť na inšpirácie",
@@ -88,6 +89,7 @@ app.controller("tabsCtrl",function($scope)
         },
         {
           name: "Produkty",
+          imgName: "PRODUKTY",
           hrefName: "products",
           description: "Produkty od tých najlepších dizajnérov a výrobcov",
           buttonName: "Prejsť na produkty",
@@ -95,7 +97,8 @@ app.controller("tabsCtrl",function($scope)
           imgSrc: "./assets/pictures/products.jpg"
         },
         {
-          name: "Clanky",
+          name: "Články",
+          imgName: "ČLÁNKY",
           hrefName: "articles",
           description: "Sledujte novinky a módne trendy zo sveta interiérového dizajnu",
           buttonName: "Prejsť na články",
@@ -103,7 +106,8 @@ app.controller("tabsCtrl",function($scope)
           imgSrc: "./assets/pictures/articles.jpg"
         },
         {
-          name: "Specialisti",
+          name: "Špecialisti",
+          imgName: "ŠPECIALISTOV",
           hrefName: "specialists",
           description: "Najdite si svojho špecialistu, ktorý vám pomôže",
           buttonName: "Prejsť na špecialistov",
@@ -111,7 +115,8 @@ app.controller("tabsCtrl",function($scope)
           imgSrc: "./assets/pictures/specialists.jpg"
         },
         {
-          name: "Forum",
+          name: "Fórum",
+          imgName: "FÓRUM",
           hrefName: "forum",
           description: "Máte špecifické požiadavky?Poraďte sa na našom fóre",
           buttonName: "Prejsť na fórum",
