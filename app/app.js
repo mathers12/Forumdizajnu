@@ -84,7 +84,7 @@ app.controller("tabsCtrl",function($scope)
           hrefName: "inspirations",
           description: "Nechajte sa inšpirovať a vytvorte si krásny domov",
           buttonName: "Prejsť na inšpirácie",
-          color: "yellow",
+          color: "chocolate",
           imgSrc: "./assets/pictures/inspirations.jpg"
         },
         {

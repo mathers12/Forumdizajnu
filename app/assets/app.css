@@ -38,8 +38,8 @@ md-toolbar
 .gridListdemoBasicUsage .imgColor {
   background: #708090; }
 
-.gridListdemoBasicUsage .yellow {
-  background: #FFD700; }
+.gridListdemoBasicUsage .chocolate {
+  background: #D2691E; }
 .gridListdemoBasicUsage .blue {
   background: #3f51b5; }
 .gridListdemoBasicUsage .purple {
@@ -51,7 +51,7 @@ md-toolbar
 
 
 .gridListdemoBasicUsage .white{
-  background: #FFFFFF; }
+  background: #FFFAFA; }
 h1
 {
   color:white;

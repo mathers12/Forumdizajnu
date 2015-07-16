@@ -14,7 +14,7 @@
                 md-rowspan="2" md-colspan="3" md-colspan-sm="1">
     <div layout="column" layout-align="center center">
       <h1 class="imageDescription">{{item.description}}</h1>
-      <md-button  class="md-raised md-primary">Prejsť na {{item.imgName}}</md-button>
+      <md-button  class="md-raised md-primary" ui-sref="{{item.hrefName}}">Prejsť na {{item.imgName}}</md-button>
     </div>
   </md-grid-tile>
 
@@ -24,7 +24,7 @@
                 md-rowspan="2" md-colspan="3" md-colspan-sm="1">
     <div layout="column" layout-align="center center">
       <h1 class="imageDescription">{{item.description}}</h1>
-    <md-button  class="md-raised md-primary">Prejsť na {{item.imgName}}</md-button>
+    <md-button  class="md-raised md-primary" ui-sref="{{item.hrefName}}">Prejsť na {{item.imgName}}</md-button>
     </div>
 
   </md-grid-tile>
@@ -35,4 +35,15 @@
     <img class="imgHome"ng-src="{{item.imgSrc}}"/>
 
   </md-grid-tile>
+
+  <!--LAST ITEM-->
+
+  <md-grid-tile ng-if="($index+1) == tabsData.length"
+                class="blue"
+                md-rowspan="1" md-colspan="6" md-colspan-sm="1">
+
+  </md-grid-tile>
+
+
   </md-grid-list>
+

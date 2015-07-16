@@ -16,11 +16,11 @@
   <body >
 
   <!-- Toolbar -->
-  <div ng-controller="toolbarCtrl">
+  <div ng-controller="toolbarCtrl" class="gridListdemoBasicUsage">
 
-        <md-toolbar>
+        <md-toolbar class="blue">
 
-        <div class="md-toolbar-tools">
+        <div class="md-toolbar-tools" >
           <md-icon id="menu" md-svg-icon="./assets/svg/menu.svg" ng-click="toggleLeft()"></md-icon>
 
           <a ui-sref="home"><label><b>Forum</b>dizajnu.<b>sk</b></label></a>
@@ -79,31 +79,31 @@
 
 
   <!-- SIDENAV LEFT -->
-  <div ng-controller="toolbarCtrl" class="gridListdemoBasicUsage"  layout="column" style="height:500px;">
+  <div  ng-controller="toolbarCtrl" class="gridListdemoBasicUsage"  layout="column" >
     <section layout="row" flex >
 
 
       <md-sidenav  class="md-sidenav-left white" md-component-id="left" id="leftSideNav">
-        <md-toolbar class="yellow">
+        <md-toolbar class="chocolate">
 
           <div class="md-toolbar-tools">
-          <md-icon  ng-click="close()" id="close" md-svg-icon="./assets/svg/close.svg"></md-icon>
+            <md-icon  ng-click="close()" id="close" md-svg-icon="./assets/svg/close.svg"></md-icon>
             <label ng-click="close()">Zavrieť</label>
-            </div>
+          </div>
         </md-toolbar>
 
-          <md-toolbar class="white">
+        <md-toolbar class="white">
 
-            <div class="md-toolbar-tools">
+          <div class="md-toolbar-tools">
 
-              <md-icon  ng-hide="categoryOff" ng-click="categoryClick()"  id="categoryOff" md-svg-icon="./assets/svg/right.svg"></md-icon>
-              <md-icon  ng-hide="categoryOn"  ng-click="categoryClick()"  id="categoryOn" md-svg-icon="./assets/svg/down.svg"></md-icon>
+            <md-icon  ng-hide="categoryOff" ng-click="categoryClick()"  id="categoryOff" md-svg-icon="./assets/svg/right.svg"></md-icon>
+            <md-icon  ng-hide="categoryOn"  ng-click="categoryClick()"  id="categoryOn" md-svg-icon="./assets/svg/down.svg"></md-icon>
 
-              <label ng-click="categoryClick()">Kategorie</label>
-            </div>
+            <label ng-click="categoryClick()">Kategorie</label>
+          </div>
 
 
-          </md-toolbar>
+        </md-toolbar>
         <hr>
         <!-- Category Details -->
         <div ng-hide="categoryDetails" ng-repeat="categoryDetail in details">
