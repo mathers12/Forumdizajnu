@@ -102,7 +102,7 @@ app.controller("tabsCtrl",function($scope)
           hrefName: "articles",
           description: "Sledujte novinky a módne trendy zo sveta interiérového dizajnu",
           buttonName: "Prejsť na články",
-          color: "red",
+          color: "blue",
           imgSrc: "./assets/pictures/articles.jpg"
         },
         {
@@ -111,7 +111,7 @@ app.controller("tabsCtrl",function($scope)
           hrefName: "specialists",
           description: "Najdite si svojho špecialistu, ktorý vám pomôže",
           buttonName: "Prejsť na špecialistov",
-          color: "blue",
+          color: "green",
           imgSrc: "./assets/pictures/specialists.jpg"
         },
         {
@@ -120,7 +120,7 @@ app.controller("tabsCtrl",function($scope)
           hrefName: "forum",
           description: "Máte špecifické požiadavky?Poraďte sa na našom fóre",
           buttonName: "Prejsť na fórum",
-          color: "green",
+          color: "red",
           imgSrc: "./assets/pictures/forum.jpg"
         }
       ]

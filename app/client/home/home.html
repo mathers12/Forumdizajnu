@@ -1,6 +1,6 @@
 <md-grid-list ng-repeat="item in tabsData"
   md-cols-sm="1" md-cols-md="2" md-cols-gt-md="6"
-  md-row-height-gt-md="1:1" md-row-height="2:2"
+  md-row-height="2:2"
     >
 
   <!-- left IMAGE, RIGHT CONTENT-->
@@ -36,14 +36,33 @@
 
   </md-grid-tile>
 
-  <!--LAST ITEM-->
 
-  <md-grid-tile ng-if="($index+1) == tabsData.length"
-                class="blue"
-                md-rowspan="1" md-colspan="6" md-colspan-sm="1">
+<!-- COPYRIGHT -->
+</md-grid-list>
 
-  </md-grid-tile>
+<md-content>
 
+  <!-- NEWSLETTER -->
+  <md-toolbar class="md-tall " class="green" >
+    <div layout="row" layout-align="space-around center">
+      <h3>Newsletter</h3>
+      <h3>Forumdizajnu</h3>
+      <h3>Buďte v kontakte</h3>
+    </div>
+    <div layout="row" layout-align="space-around center">
+    <md-input-container >
+      <label style="color:white">@email.com</label>
+      <input type="text" />
 
-  </md-grid-list>
+    </md-input-container>
+      <md-button  class="md-icon-button" id="searchButton">
+        <md-icon md-svg-icon="./assets/svg/search.svg"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <!-- COPYRIGHT -->
+  <md-toolbar class="blue">
+    </div>
+  </md-toolbar>
 
+</md-content>
