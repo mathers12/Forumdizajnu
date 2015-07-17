@@ -118,7 +118,7 @@ app.controller("tabsCtrl",function($scope)
           name: "Fórum",
           imgName: "FÓRUM",
           hrefName: "forum",
-          description: "Máte špecifické požiadavky?Poraďte sa na našom fóre",
+          description: "Máte špecifické požiadavky? Poraďte sa na našom fóre",
           buttonName: "Prejsť na fórum",
           color: "red",
           imgSrc: "./assets/pictures/forum.jpg"
