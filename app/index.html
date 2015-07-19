@@ -1,81 +1,78 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="forumDizajnu">
-  <head>
-    <title>Forum dizajnu</title>
+<head>
+  <title>Forum dizajnu</title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
-    <link rel="stylesheet" href="assets/app.css"/>
-  </head>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
+  <link rel="stylesheet" href="assets/app.css"/>
+</head>
 
-  <body >
+<body >
 
-  <!-- Toolbar -->
-  <div ng-controller="toolbarCtrl" class="gridListdemoBasicUsage">
+<!-- Toolbar -->
+<div ng-controller="toolbarCtrl" class="gridListdemoBasicUsage">
 
-        <md-toolbar class="blue">
+  <md-toolbar class="blue">
 
-        <div class="md-toolbar-tools" >
-          <md-icon id="menu" md-svg-icon="./assets/svg/menu.svg" ng-click="toggleLeft()"></md-icon>
+    <div class="md-toolbar-tools" >
+      <md-icon id="menu" md-svg-icon="./assets/svg/menu.svg" ng-click="toggleLeft()"></md-icon>
 
-          <a ui-sref="home"><label><b>Forum</b>dizajnu.<b>sk</b></label></a>
-
-
-
-          <span flex></span>
-
-          <md-input-container md-no-float>
-            <label>hladaj produkty, inspiracie, ...</label>
-            <input type="text" />
-          </md-input-container>
-          <md-button  class="md-icon-button" id="searchButton">
-              <md-icon md-svg-icon="./assets/svg/search.svg"></md-icon>
-          </md-button>
-
-          <md-icon id="regLoginIcon" md-svg-icon="./assets/svg/login.svg"></md-icon>
-            <label>Prihlasenie</label>
-
-            <md-icon id="regPersonIcon" md-svg-icon="./assets/svg/person.svg"></md-icon>
-
-            <label>Registracia</label>
-
-        </div>
-      </md-toolbar>
-  </div>
-
-  <!--TABS-->
-  <div ng-controller="tabsCtrl" >
-
-      <md-tabs md-dynamic-height="false" md-theme="themeProvider" class="md-primary" md-no-bar>
-
-        <md-tab  ng-repeat="tab in tabsData" ui-sref="{{tab.hrefName}}">
-
-          <md-content  >
-
-            <md-tab-label>{{tab.name}}</md-tab-label>
+      <a ui-sref="home"><label><b>Forum</b>dizajnu.<b>sk</b></label></a>
 
 
 
-              <md-tab-body >
-                <!-- CONTENT -->
-                <div class="gridListdemoBasicUsage" ui-view>
-                </div>
+      <span flex></span>
 
-              </md-tab-body>
-     </md-content>
+      <md-input-container md-no-float>
+        <label>hladaj produkty, inspiracie, ...</label>
+        <input type="text" />
+      </md-input-container>
+      <md-button  class="md-icon-button" id="searchButton">
+        <md-icon md-svg-icon="./assets/svg/search.svg"></md-icon>
+      </md-button>
 
-          </md-tab>
+      <md-icon id="regLoginIcon" md-svg-icon="./assets/svg/login.svg"></md-icon>
+      <label>Prihlasenie</label>
 
-        </md-tabs>
-    <!-- HOME PAGE -->
+      <md-icon id="regPersonIcon" md-svg-icon="./assets/svg/person.svg"></md-icon>
 
-     </div>
+      <label>Registracia</label>
 
+    </div>
+  </md-toolbar>
+</div>
+
+<!--TABS-->
+<div ng-controller="tabsCtrl" >
+
+  <md-tabs md-dynamic-height="false" md-theme="themeProvider" class="md-primary" md-no-bar>
+
+    <md-tab  ng-repeat="tab in tabsData" ui-sref="{{tab.hrefName}}">
+
+      <md-content  >
+
+        <md-tab-label>{{tab.name}}</md-tab-label>
+
+
+
+        <md-tab-body >
+          <!-- CONTENT -->
+          <div class="gridListdemoBasicUsage" ui-view>
+          </div>
+
+        </md-tab-body>
+      </md-content>
+
+    </md-tab>
+
+  </md-tabs>
+  <!-- HOME PAGE -->
 
 
   <!-- SIDENAV LEFT -->
@@ -121,21 +118,26 @@
 
   </div>
 
+</div>
 
 
-  <!-- LIBRARIES-->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="client/home/home.js"></script>
-    <script type="text/javascript" src="client/inspirations/inspirations.js"></script>
-    <script type="text/javascript" src="client/products/products.js"></script>
-    <script type="text/javascript" src="client/specialists/specialists.js"></script>
-    <script type="text/javascript" src="client/forum/forum.js"></script>
-    <script type="text/javascript" src="client/articles/articles.js"></script>
 
-  </body>
+
+
+
+<!-- LIBRARIES-->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="client/home/home.js"></script>
+<script type="text/javascript" src="client/inspirations/inspirations.js"></script>
+<script type="text/javascript" src="client/products/products.js"></script>
+<script type="text/javascript" src="client/specialists/specialists.js"></script>
+<script type="text/javascript" src="client/forum/forum.js"></script>
+<script type="text/javascript" src="client/articles/articles.js"></script>
+
+</body>
 </html>
