@@ -12,6 +12,77 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
 
 app.controller("productsController",function($scope)
 {
-  $scope.products = [1,2,3,4,5,6,7,8];
+  $scope.products =
+  [
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    }
+  ];
+
+  $scope.selectCategories =
+  [
+    {
+      keyword: "cheapest",
+      name: "Najlacnejšie"
+    },
+    {
+      keyword: "most_popular",
+      name: "Najpopulárnejšie"
+    },
+    {
+      keyword: "most_popular_weekly",
+      name: "Najpopulárnejšie za týždeň"
+    }
+  ];
+
+  $scope.productDetail = function()
+  {
+    console.log("CLICKED");
+  }
 });
 
