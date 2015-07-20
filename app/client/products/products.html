@@ -1,5 +1,29 @@
-<md-card class="gray">
-  <md-card-content>
+<md-card class="gray" layout="row" layout-align="center center">
+  <md-card-content >
     <h1 id="tabDescription" class="md-title">{{tab.description}}</h1>
   </md-card-content>
 </md-card>
+
+<!--GRID PRODUCTS-->
+<div ng-controller="productsController">
+<md-grid-list
+  style="margin:40px 20% 40px 20%"
+              md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"
+                md-row-height="2:2" md-gutter="2%"
+  >
+
+  <md-grid-tile  ng-repeat="product in products"
+                md-rowspan="1" md-colspan="1" md-colspan-sm="1" >
+    <img  class="imgHome"  ng-src="./assets/pictures/products.jpg"/>
+    <md-grid-tile-header class="orange" style="width:50%">
+      <h3>Odporúčané</h3>
+    </md-grid-tile-header>
+    <md-grid-tile-footer>
+      <h3>Postel SOFT</h3>
+    </md-grid-tile-footer>
+
+  </md-grid-tile>
+
+
+</md-grid-list>
+</div>
