@@ -68,6 +68,16 @@ a label
   width:100%;
 }
 
+#skuska
+ {
+  position: absolute;
+  bottom: -20%;
+  height:20%;
+  left: 0;
+  width: 100%;
+  background-color: lightgray;
+}
+
 #contentSideNav
 {
   padding-left: 20px;

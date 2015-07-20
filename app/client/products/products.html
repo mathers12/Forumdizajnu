@@ -5,25 +5,35 @@
 </md-card>
 
 <!--GRID PRODUCTS-->
-<div ng-controller="productsController">
+<div ng-controller="productsController" >
 <md-grid-list
   style="margin:40px 20% 40px 20%"
-              md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"
-                md-row-height="2:2" md-gutter="2%"
+              md-cols-sm="1" md-cols-md="1" md-cols-gt-md="4"
+                md-row-height="2:2" md-gutter="6%"
   >
-
-  <md-grid-tile  ng-repeat="product in products"
+  <md-grid-tile ng-repeat="product in products"
                 md-rowspan="1" md-colspan="1" md-colspan-sm="1" >
-    <img  class="imgHome"  ng-src="./assets/pictures/products.jpg"/>
-    <md-grid-tile-header class="orange" style="width:50%">
-      <h3>Odporúčané</h3>
+    <md-grid-tile-header class="orange" style="width:50%;margin-top:5%">
+      <h3 style="margin-left:5px;">Odporúčané</h3>
     </md-grid-tile-header>
-    <md-grid-tile-footer>
+
+    <img  class="imgHome"  ng-src="./assets/pictures/products.jpg"/>
+
+
+    <md-grid-tile-footer >
       <h3>Postel SOFT</h3>
+
     </md-grid-tile-footer>
 
+    <div id="skuska" layout="row" layout-align="space-between center">
+      <b><label>Cena</label></b>
+
+      <span>
+        <label>Pozrieť detail</label>
+        <md-icon  md-svg-icon="./assets/svg/right.svg"></md-icon>
+
+      </span>
+    </div>
   </md-grid-tile>
 
-
-</md-grid-list>
 </div>
