@@ -22,6 +22,10 @@ var app = angular.module('forumDizajnu',
 
 
   app.controller('toolbarCtrl', function($scope,$timeout, $mdSidenav, $mdUtil, $log) {
+
+
+
+
     $scope.categoryOn = true;
     $scope.categoryOff = false;
     $scope.categoryDetails = true;

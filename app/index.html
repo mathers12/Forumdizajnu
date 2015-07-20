@@ -63,7 +63,7 @@
 
         <md-tab-body >
           <!-- CONTENT -->
-          <div class="gridListdemoBasicUsage" ui-view>
+          <div  class="gridListdemoBasicUsage" ui-view>
           </div>
 
         </md-tab-body>
@@ -77,7 +77,6 @@
 
   <!-- SIDENAV LEFT -->
   <div  ng-controller="toolbarCtrl" class="gridListdemoBasicUsage"  layout="column" >
-    <section layout="row" flex >
 
 
       <md-sidenav  class="md-sidenav-left white" md-component-id="left" id="leftSideNav">
@@ -102,6 +101,7 @@
 
         </md-toolbar>
         <hr>
+
         <!-- Category Details -->
         <div ng-hide="categoryDetails" ng-repeat="categoryDetail in details">
           <md-toolbar class="white"  >
@@ -114,7 +114,7 @@
           <hr>
         </div>
       </md-sidenav>
-    </section>
+
 
   </div>
 
