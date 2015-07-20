@@ -4,14 +4,18 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
 
   $stateProvider
     .state('products', {
-      url: "/products",
+      url: "/products/:page",
       templateUrl: "client/products/products.html"
-    });
+    })
 
 });
 
 app.controller("productsController",function($scope)
 {
+  $scope.makePages = function()
+  {
+    console.log("fdf");
+  };
   $scope.products =
   [
     {
