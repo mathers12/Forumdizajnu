@@ -61,6 +61,26 @@ app.controller("productsController",function($scope)
     {
       name: "nazov",
       price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
     }
   ];
 

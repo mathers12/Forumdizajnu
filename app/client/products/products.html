@@ -4,13 +4,13 @@
     <h1 id="tabDescription" class="md-title">{{tab.description}}</h1>
   </md-card-content>
 </md-card>
-<div layout="row"  layout-align="end center" style="padding-top:10px;padding-right:20%">
-  <div style="padding-left:20%;">
-    <md-button class="md-raised " >L</md-button>
+<div layout="row" layout-align="space-between center" style="padding: 10px 7% 0 7%">
+  <div>
+    <md-button class="orange" class="md-raised " >L</md-button>
     <md-button class="md-raised">M</md-button>
     <md-button class="md-raised">S</md-button>
   </div>
-  <md-select  ng-model="someModel" placeholder="Zobraziť produkty">
+  <md-select   ng-model="someModel" placeholder="Zobraziť produkty">
     <md-option  ng-repeat="item in selectCategories" value="{{item.keyword}}">{{ item.name}}</md-option>
 
   </md-select>
@@ -18,11 +18,11 @@
 
 <!--GRID PRODUCTS-->
 <md-grid-list
-  style="margin:40px 20% 40px 20%"
+  style="margin:40px 7% 40px 7%"
               md-cols-sm="1" md-cols-md="1" md-cols-gt-md="4"
-                md-row-height="2:2" md-gutter="6%"
+                md-row-height="2:2" md-gutter="7%"
   >
-  <md-grid-tile ng-repeat="product in products"
+  <md-grid-tile ng-repeat="product in products" ng-if="!($index > 15)"
                 md-rowspan="1" md-colspan="1" md-colspan-sm="1" >
     <md-grid-tile-header class="orange" style="width:50%;margin-top:5%">
       <h3 style="margin-left:5px;">Odporúčané</h3>
