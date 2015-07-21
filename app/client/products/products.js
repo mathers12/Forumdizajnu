@@ -11,8 +11,8 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
 
 });
 
-app.controller("productsController",['$scope','$location','$window','$stateParams',
-  function($scope,$location,$window,$stateParams) {
+app.controller("productsController",['$scope','$location','$window','$stateParams','$http',
+  function($scope,$location,$window,$stateParams,$http) {
 
   var init = function()
   {
@@ -28,8 +28,14 @@ app.controller("productsController",['$scope','$location','$window','$stateParam
       $location.search("page",1);
     }
 
-    /* Vypocitame si pocet stran na zaklade poctu poloziek, max 16 za stranu */
-    $scope.count = Math.ceil($scope.products.length / 16);
+
+    $http.get("./data/products.json").success(function(data) {
+      $scope.products = data;
+      $scope.copyProducts = data;
+      /* Vypocitame si pocet stran na zaklade poctu poloziek, max 16 za stranu */
+      $scope.count = Math.ceil($scope.products.length / 16);
+
+    });
 
   };
 
@@ -40,6 +46,7 @@ app.controller("productsController",['$scope','$location','$window','$stateParam
     $location.search("page",number);
     $scope.orangePage = $location.search()["page"];
 
+
   };
 
     /* Click na dalsiu stranu*/
@@ -48,148 +55,16 @@ app.controller("productsController",['$scope','$location','$window','$stateParam
     $location.search("page",number);
     $scope.orangePage = $location.search()["page"];
 
+    var toCount = (number * 16); // strana krat pocet zobrazeni
+    var fromCount = toCount - 16;
+    $scope.products = $scope.copyProducts.slice(fromCount,toCount);
+    console.log($scope.products.length);
   };
 
   $scope.getNumber = function(count) {
     return new Array(count);
   };
 
-
-  $scope.products =
-  [
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    },
-    {
-      name: "nazov",
-      price: 650
-    }
-  ];
 
 
   $scope.selectCategories =

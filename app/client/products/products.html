@@ -19,10 +19,10 @@
 
 <!--GRID PRODUCTS-->
 <md-grid-list
-  style="margin:40px 7% 0px 7%"
+  style="margin:40px 7% 7% 7%"
               md-cols-sm="1" md-cols-md="1" md-cols-gt-md="4"
                 md-row-height="2:2" md-gutter="7%">
-  <md-grid-tile ng-repeat="product in products" ng-if="!($index > 15)"
+  <md-grid-tile ng-repeat="product in products | limitTo: 16"
                 md-rowspan="1" md-colspan="1" md-colspan-sm="1" >
     <md-grid-tile-header class="orange" style="width:50%;margin-top:5%">
       <h3 style="margin-left:5px;">Odporúčané</h3>
@@ -47,7 +47,7 @@
   </md-grid-tile>
 </md-grid-list>
 
-  <div layout="row"  style="position:absolute;margin-top: -7%;margin-left:35%" >
+  <div layout="row" layout-align="center center" style="position:absolute;margin-top: -5%;margin-left:35%" >
     <md-button    ng-class="{'orangePage': ($index + 1) == orangePage,'grayPage': ($index + 1) != orangePage}"
                   ng-click="pageClickButton($index+1)"
                  ng-repeat="item in getNumber(count) track by $index">{{$index + 1}}</md-button>
