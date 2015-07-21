@@ -8,8 +8,8 @@
   <div layout="row" layout-align="space-between center" style="padding: 10px 7% 0 7%">
   <div>
     <md-button class="orange" class="md-raised " >L</md-button>
-    <md-button class="md-raised">M</md-button>
-    <md-button class="md-raised">S</md-button>
+    <md-button class="md-raised " style="background-color: gray">M</md-button>
+    <md-button class="md-raised" style="background-color: gray">S</md-button>
   </div>
   <md-select   ng-model="someModel" placeholder="Zobraziť produkty">
     <md-option  ng-repeat="item in selectCategories" value="{{item.keyword}}">{{ item.name}}</md-option>
@@ -47,15 +47,14 @@
   </md-grid-tile>
 </md-grid-list>
 
-  <div layout="row"  style="position:absolute;margin-top: -7%;margin-left:35%">
-    <md-button  style="background-color: orange;">1</md-button>
-    <md-button  style="background-color: gray;">2</md-button>
-    <md-button  style="background-color: gray;">3</md-button>
-    <md-button  style="background-color: gray;">4</md-button>
+  <div layout="row"  style="position:absolute;margin-top: -7%;margin-left:35%" >
+    <md-button    ng-class="{'orangePage': ($index + 1) == orangePage,'grayPage': ($index + 1) != orangePage}"
+                  ng-click="pageClickButton($index+1)"
+                 ng-repeat="item in getNumber(count) track by $index">{{$index + 1}}</md-button>
     &nbsp;
     <h3>. . .</h3>
     &nbsp;
-    <md-button  style="background-color: orange;">Ďalej</md-button>
+    <md-button ng-click="nextClickButton()" style="background-color: orange;">Ďalej</md-button>
   </div>
 
   </div>

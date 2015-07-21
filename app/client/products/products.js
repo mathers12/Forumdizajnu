@@ -4,18 +4,57 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
 
   $stateProvider
     .state('products', {
-      url: "/products/:page",
+      url: "/products",
       templateUrl: "client/products/products.html"
     })
 
+
 });
 
-app.controller("productsController",function($scope)
-{
-  $scope.makePages = function()
+app.controller("productsController",['$scope','$location','$window','$stateParams',
+  function($scope,$location,$window,$stateParams) {
+
+  var init = function()
   {
-    console.log("fdf");
+    /* URL parameter, start at 1 */
+
+    if ($location.search()["page"])
+    {
+      $scope.orangePage = $location.search()["page"];
+    }
+    else
+    {
+      console.log("TU SME");
+      $location.search("page",1);
+    }
+
+    /* Vypocitame si pocet stran na zaklade poctu poloziek, max 16 za stranu */
+    $scope.count = Math.ceil($scope.products.length / 16);
+
   };
+
+    /*Next Label*/
+  $scope.nextClickButton = function()
+  {
+    var number = $scope.orangePage + 1;
+    $location.search("page",number);
+    $scope.orangePage = $location.search()["page"];
+
+  };
+
+    /* Click na dalsiu stranu*/
+  $scope.pageClickButton = function(number)
+  {
+    $location.search("page",number);
+    $scope.orangePage = $location.search()["page"];
+
+  };
+
+  $scope.getNumber = function(count) {
+    return new Array(count);
+  };
+
+
   $scope.products =
   [
     {
@@ -85,8 +124,73 @@ app.controller("productsController",function($scope)
     {
       name: "nazov",
       price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
+    },
+    {
+      name: "nazov",
+      price: 650
     }
   ];
+
 
   $scope.selectCategories =
   [
@@ -104,9 +208,8 @@ app.controller("productsController",function($scope)
     }
   ];
 
-  $scope.productDetail = function()
-  {
-    console.log("CLICKED");
-  }
-});
+  init();
+
+
+}]);
 
