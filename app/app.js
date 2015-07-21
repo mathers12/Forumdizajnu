@@ -20,6 +20,9 @@ var app = angular.module('forumDizajnu',
 
   });
 
+
+
+
 app.directive("scroll", function ($window) {
 
   return function(scope, element, attrs) {

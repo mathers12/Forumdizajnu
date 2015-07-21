@@ -4,7 +4,8 @@
     <h1 id="tabDescription" class="md-title">{{tab.description}}</h1>
   </md-card-content>
 </md-card>
-<div layout="row" layout-align="space-between center" style="padding: 10px 7% 0 7%">
+
+  <div layout="row" layout-align="space-between center" style="padding: 10px 7% 0 7%">
   <div>
     <md-button class="orange" class="md-raised " >L</md-button>
     <md-button class="md-raised">M</md-button>
@@ -18,11 +19,10 @@
 
 <!--GRID PRODUCTS-->
 <md-grid-list
-  style="margin:40px 7% 40px 7%"
+  style="margin:40px 7% 0px 7%"
               md-cols-sm="1" md-cols-md="1" md-cols-gt-md="4"
-                md-row-height="2:2" md-gutter="7%"
-  >
-  <md-grid-tile ng-repeat="product in products"
+                md-row-height="2:2" md-gutter="7%">
+  <md-grid-tile ng-repeat="product in products" ng-if="!($index > 15)"
                 md-rowspan="1" md-colspan="1" md-colspan-sm="1" >
     <md-grid-tile-header class="orange" style="width:50%;margin-top:5%">
       <h3 style="margin-left:5px;">Odporúčané</h3>
@@ -45,5 +45,18 @@
       </span>
     </div>
   </md-grid-tile>
+</md-grid-list>
 
-</div>
+  <div layout="row"  style="position:absolute;margin-top: -7%;margin-left:35%">
+    <md-button  style="background-color: orange;">1</md-button>
+    <md-button  style="background-color: gray;">2</md-button>
+    <md-button  style="background-color: gray;">3</md-button>
+    <md-button  style="background-color: gray;">4</md-button>
+    &nbsp;
+    <h3>. . .</h3>
+    &nbsp;
+    <md-button  style="background-color: orange;">Ďalej</md-button>
+  </div>
+
+  </div>
+
