@@ -7,7 +7,8 @@ var app = angular.module('forumDizajnu',
     'forumDizajnu.forum',
     'forumDizajnu.specialists',
     'ngMaterial',
-    'ui.router'
+    'ui.router',
+    'angularUtils.directives.dirPagination'
   ])
   .config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$stateProvider) {
     $mdThemingProvider.theme('themeProvider')
