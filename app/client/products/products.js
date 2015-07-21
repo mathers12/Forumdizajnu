@@ -57,6 +57,8 @@ app.controller("productsController",['$scope','$location','$window','$stateParam
 
     var toCount = (number * 16); // strana krat pocet zobrazeni
     var fromCount = toCount - 16;
+
+    // vytvorenie pola s produktami od a do akeho poctu
     $scope.products = $scope.copyProducts.slice(fromCount,toCount);
     console.log($scope.products.length);
   };
