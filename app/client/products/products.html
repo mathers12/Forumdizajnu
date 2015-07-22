@@ -18,43 +18,43 @@
 </div>
 
 <!--GRID PRODUCTS-->
-<md-grid-list
-  style="margin:40px 7% 7% 7%"
-              md-cols-sm="1" md-cols-md="1" md-cols-gt-md="4"
-                md-row-height="2:2" md-gutter="7%">
-  <md-grid-tile ng-repeat="product in products | limitTo: 16"
-                md-rowspan="1" md-colspan="1" md-colspan-sm="1" >
-    <md-grid-tile-header class="orange" style="width:50%;margin-top:5%">
-      <h3 style="margin-left:5px;">Odporúčané</h3>
-    </md-grid-tile-header>
+  <md-grid-list
+    style="margin:40px 7% 7% 7%"
+    md-cols-sm="1" md-cols-md="1" md-cols-gt-md="4"
+    md-row-height="2:2" md-gutter="7%">
 
-    <img  class="imgHome"  ng-src="./assets/pictures/products.jpg"/>
+    <md-grid-tile ng-repeat="product in products | pagination : currentPage*itemsPerPage | limitTo: itemsPerPage"
+                  md-rowspan="1" md-colspan="1" md-colspan-sm="1" >
+
+      <md-grid-tile-header  class="orange" style="width:50%;margin-top:5%">
+        <h3 style="margin-left:5px;">Odporúčané</h3>
+      </md-grid-tile-header>
+      <img  class="imgHome"  ng-src="./assets/pictures/products.jpg"/>
 
 
-    <md-grid-tile-footer >
-      <h3>Postel SOFT</h3>
+      <md-grid-tile-footer >
+        <h3>Postel SOFT</h3>
 
-    </md-grid-tile-footer>
+      </md-grid-tile-footer>
 
-    <div id="skuska" layout="row" layout-align="space-between center">
-      <b  style="margin-left:3%"><label>{{(product.price | number:2) + "€"}}</label></b>
+      <div id="skuska" layout="row" layout-align="space-between center">
+        <b  style="margin-left:3%"><label>{{(product.price | number:2) + "€"}}</label></b>
 
       <span style="cursor: pointer" ng-click="productDetail()" >
         <label style="cursor: pointer" >Pozrieť detail</label>
           <md-icon style="cursor: pointer"  md-svg-icon="./assets/svg/right.svg"></md-icon>
       </span>
-    </div>
-  </md-grid-tile>
-</md-grid-list>
+      </div>
+    </md-grid-tile>
+  </md-grid-list>
+
 
   <div layout="row" layout-align="center center" style="position:absolute;margin-top: -5%;margin-left:35%" >
-    <md-button    ng-class="{'orangePage': ($index + 1) == orangePage,'grayPage': ($index + 1) != orangePage}"
-                  ng-click="pageClickButton($index+1)"
-                 ng-repeat="item in getNumber(count) track by $index">{{$index + 1}}</md-button>
-    &nbsp;
-    <h3>. . .</h3>
-    &nbsp;
-    <md-button ng-click="nextClickButton()" style="background-color: orange;">Ďalej</md-button>
+    <md-button ng-class="DisablePrevPage()" ng-click="prevPage()" style="background-color: orange;">Späť</md-button>
+    <md-button ng-repeat="n in range()" ng-class="{pageOrange: n == currentPage, pageGray: n != currentPage}" ng-click="setPage(n)"
+
+      >{{n+1}}</md-button>
+    <md-button ng-class="DisableNextPage()" ng-click="nextPage()" style="background-color: orange;">Ďalej</md-button>
   </div>
 
   </div>

@@ -11,82 +11,252 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
 
 });
 
+
+app.filter('pagination', function()
+{
+  return function(input, start) {
+    start = parseInt(start, 10);
+    return input.slice(start);
+  };
+});
+
 app.controller("productsController",['$scope','$location','$window','$stateParams','$http',
   function($scope,$location,$window,$stateParams,$http) {
 
-  var init = function()
-  {
-    /* URL parameter, start at 1 */
+    $scope.itemsPerPage = 16;
+    $scope.currentPage = 0;
 
-    if ($location.search()["page"])
-    {
-      $scope.orangePage = $location.search()["page"];
-    }
-    else
-    {
-      console.log("TU SME");
-      $location.search("page",1);
-    }
+    $scope.products = [
+      {
+        "name": "nazov",
+        "price": 650
+      },
+      {
+        "name": "nazov",
+        "price": 650
+      },
+      {
+        "name": "nazov",
+        "price": 650
+      },
+
+      {
+        "name": "nazov",
+        "price": 650
+      },
+      {
+        "name": "nazov",
+        "price": 650
+      },
+      {
+        "name": "nazov",
+        "price": 650
+      },
+      {
+        "name": "nazov",
+        "price": 650
+      },
+      {
+        "name": "nazov",
+        "price": 650
+      },
+
+      {
+        "name": "nazov",
+        "price": 650
+      },
+      {
+        "name": "nazov",
+        "price": 650
+      },
+      {
+        "name": "nazov",
+        "price": 650
+      },
+      {
+        "name": "nazov",
+        "price": 650
+      },
+      {
+        "name": "nazov",
+        "price": 650
+      },
+
+      {
+        "name": "nazov",
+        "price": 650
+      },
+      {
+        "name": "nazov",
+        "price": 650
+      },
+      {
+        "name": "nazov",
+        "price": 650
+      },
+      {
+        "name": "nazov",
+        "price": 100
+      },
+      {
+        "name": "nazov",
+        "price": 100
+      },
+      {
+        "name": "nazov",
+        "price": 100
+      },
+
+      {
+        "name": "nazov",
+        "price": 100
+      },
+      {
+        "name": "nazov",
+        "price": 100
+      },
+      {
+        "name": "nazov",
+        "price": 100
+      },
+      {
+        "name": "nazov",
+        "price": 100
+      },
+      {
+        "name": "nazov",
+        "price": 100
+      },
+
+      {
+        "name": "nazov",
+        "price": 100
+      },
+      {
+        "name": "nazov",
+        "price": 100
+      },
+      {
+        "name": "nazov",
+        "price": 100
+      },
+      {
+        "name": "nazov",
+        "price": 100
+      },
+      {
+        "name": "nazov",
+        "price": 100
+      },
+
+      {
+        "name": "nazov",
+        "price": 100
+      },
+      {
+        "name": "nazov",
+        "price": 100
+      },
+      {
+        "name": "nazov",
+        "price": 100
+      },
+      {
+        "name": "nazov",
+        "price": 8000
+      },
+      {
+        "name": "nazov",
+        "price": 8000
+      }
+    ];
 
 
-    $http.get("./data/products.json").success(function(data) {
-      $scope.products = data;
-      $scope.copyProducts = data;
-      /* Vypocitame si pocet stran na zaklade poctu poloziek, max 16 za stranu */
-      $scope.count = Math.ceil($scope.products.length / 16);
 
-    });
+      $scope.range = function () {
+      var rangeSize = 4;
+      var ps = [];
+      var start;
 
-  };
+      start = $scope.currentPage;
+      //  console.log($scope.pageCount(),$scope.currentPage)
+      if (start > $scope.pageCount() - rangeSize) {
+        start = $scope.pageCount() - rangeSize + 1;
+      }
 
-    /*Next Label*/
-  $scope.nextClickButton = function()
-  {
-    var number = $scope.orangePage + 1;
-    $location.search("page",number);
-    $scope.orangePage = $location.search()["page"];
+      for (var i = start; i < start + rangeSize; i++) {
+        if (i >= 0)
+          ps.push(i);
+      }
+      return ps;
+    };
+
+    $scope.prevPage = function () {
+      if ($scope.currentPage > 0) {
+        $scope.currentPage--;
+      }
+
+      $location.search("page", $scope.currentPage + 1);
+    };
+
+    $scope.DisablePrevPage = function () {
+      return $scope.currentPage === 0 ? "disabled" : "";
+    };
+
+    $scope.pageCount = function () {
+      return Math.ceil($scope.products.length / $scope.itemsPerPage) - 1;
+    };
+
+    $scope.nextPage = function () {
+      if ($scope.currentPage < $scope.pageCount()) {
+        $scope.currentPage++;
+      }
+      $location.search("page", $scope.currentPage + 1);
+
+    };
+
+    $scope.DisableNextPage = function () {
+      return $scope.currentPage === $scope.pageCount() ? "disabled" : "";
+    };
+
+    $scope.setPage = function (n) {
+      $scope.currentPage = n;
 
 
-  };
+      //Nastavi sa konkretna strana ?page=n
+      $location.search("page", n + 1);
+    };
 
-    /* Click na dalsiu stranu*/
-  $scope.pageClickButton = function(number)
-  {
-    $location.search("page",number);
-    $scope.orangePage = $location.search()["page"];
-
-    var toCount = (number * 16); // strana krat pocet zobrazeni
-    var fromCount = toCount - 16;
-
-    // vytvorenie pola s produktami od a do akeho poctu
-    $scope.products = $scope.copyProducts.slice(fromCount,toCount);
-    console.log($scope.products.length);
-  };
-
-  $scope.getNumber = function(count) {
-    return new Array(count);
-  };
+    $scope.init = function() {
 
 
+      if ($location.search()["page"]) {
 
-  $scope.selectCategories =
-  [
-    {
-      keyword: "cheapest",
-      name: "Najlacnejšie"
-    },
-    {
-      keyword: "most_popular",
-      name: "Najpopulárnejšie"
-    },
-    {
-      keyword: "most_popular_weekly",
-      name: "Najpopulárnejšie za týždeň"
-    }
-  ];
+        $scope.setPage(parseInt($location.search()["page"] - 1));
+      }
+      else {
+        $scope.setPage(0);
+      }
 
-  init();
+    };
 
+      $scope.selectCategories =
+      [
+        {
+          keyword: "cheapest",
+          name: "Najlacnejšie"
+        },
+        {
+          keyword: "most_popular",
+          name: "Najpopulárnejšie"
+        },
+        {
+          keyword: "most_popular_weekly",
+          name: "Najpopulárnejšie za týždeň"
+        }
+      ];
+
+    $scope.init();
 
 }]);
 
