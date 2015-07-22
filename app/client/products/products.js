@@ -229,10 +229,13 @@ app.controller("productsController",['$scope','$location','$window','$stateParam
 
     $scope.init = function() {
 
-
-      if ($location.search()["page"]) {
-
+      var count = $scope.pageCount() + 1;
+      var currentNumber = $location.search()["page"];
+      /* Zabezpecime aby nesiel cez rozsah stran */
+      if (currentNumber && (currentNumber >= 1 && currentNumber <= count))
+      {
         $scope.setPage(parseInt($location.search()["page"] - 1));
+
       }
       else {
         $scope.setPage(0);
