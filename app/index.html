@@ -15,19 +15,15 @@
 
 </head>
 
-<body >
+<body ng-controller="appController">
 
 <!-- Toolbar -->
-<div ng-controller="toolbarCtrl" class="gridListdemoBasicUsage">
+<div class="gridListdemoBasicUsage">
 
   <md-toolbar class="blue">
 
     <div class="md-toolbar-tools" >
-      <md-icon id="menu" md-svg-icon="./assets/svg/menu.svg" ng-click="toggleLeft()"></md-icon>
-
-      <a ui-sref="home"><label><b>Forum</b>dizajnu.<b>sk</b></label></a>
-
-
+      <a style="margin-left:7%" ui-sref="home"><label><b>Forum</b>dizajnu.<b>sk</b></label></a>
 
       <span flex></span>
 
@@ -51,9 +47,14 @@
 </div>
 
 <!--TABS-->
-<div ng-controller="tabsCtrl" >
+  <md-tabs 	 md-stretch-tabs="auto" md-selected="1" md-dynamic-height="false" md-theme="themeProvider" class="md-primary" md-no-bar >
 
-  <md-tabs md-dynamic-height="false" md-theme="themeProvider" class="md-primary" md-no-bar>
+    <md-tab>
+
+      <md-icon  id="menu" md-svg-icon="./assets/svg/menu.svg" ng-click="toggleLeft()">
+
+      </md-icon>
+    </md-tab>
 
     <md-tab  ng-repeat="tab in tabsData" ui-sref="{{tab.hrefName}}">
 
@@ -78,7 +79,7 @@
 
 
   <!-- SIDENAV LEFT -->
-  <div  ng-controller="toolbarCtrl" class="gridListdemoBasicUsage"  layout="column" >
+  <div class="gridListdemoBasicUsage"  layout="column" >
 
 
       <md-sidenav  class="md-sidenav-left white" md-component-id="left" id="leftSideNav">
@@ -120,9 +121,6 @@
 
   </div>
 
-
-
-</div>
 
 
 <md-content class="gridListdemoBasicUsage">

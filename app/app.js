@@ -9,7 +9,7 @@ var app = angular.module('forumDizajnu',
     'ngMaterial',
     'ui.router'
   ])
-  .config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$stateProvider) {
+  .config(function($mdThemingProvider,$locationProvider,$urlRouterProvider) {
     $mdThemingProvider.theme('themeProvider')
       .primaryPalette('green')
       .accentPalette('orange');
@@ -24,7 +24,7 @@ var app = angular.module('forumDizajnu',
 
 
 
-  app.controller('toolbarCtrl', function($scope,$timeout, $mdSidenav, $mdUtil, $log) {
+  app.controller('appController', function($scope,$timeout, $mdSidenav, $mdUtil, $log) {
 
     $scope.categoryOn = true;
     $scope.categoryOff = false;
@@ -75,12 +75,8 @@ var app = angular.module('forumDizajnu',
 
     $scope.details = ["Prva","Druha","Tretia"];
 
-  });
 
-
-app.controller("tabsCtrl",function($scope)
-{
-  $scope.tabsData =
+    $scope.tabsData =
       [
         {
           name: "Inšpirácie",
@@ -130,4 +126,5 @@ app.controller("tabsCtrl",function($scope)
       ]
 
 
-});
+  });
+
