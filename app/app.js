@@ -120,7 +120,7 @@ var app = angular.module('forumDizajnu',
           hrefName: "forum",
           description: "Máte špecifické požiadavky? Poraďte sa na našom fóre",
           buttonName: "Prejsť na fórum",
-          color: "red",
+          color: "gray",
           imgSrc: "./assets/pictures/forum.jpg"
         }
       ]

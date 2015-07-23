@@ -23,6 +23,10 @@
   <md-toolbar class="blue">
 
     <div class="md-toolbar-tools" >
+
+      <md-icon  md-svg-icon="./assets/svg/menu.svg" ng-click="toggleLeft()">
+
+      </md-icon>
       <a style="margin-left:7%" ui-sref="home"><label><b>Forum</b>dizajnu.<b>sk</b></label></a>
 
       <span flex></span>
@@ -47,18 +51,12 @@
 </div>
 
 <!--TABS-->
-  <md-tabs 	 md-stretch-tabs="auto" md-selected="1" md-dynamic-height="false" md-theme="themeProvider" class="md-primary" md-no-bar >
-
-    <md-tab>
-
-      <md-icon  id="menu" md-svg-icon="./assets/svg/menu.svg" ng-click="toggleLeft()">
-
-      </md-icon>
-    </md-tab>
+  <md-tabs 	 md-stretch-tabs="auto" md-selected="0" md-dynamic-height="false" md-theme="themeProvider" class="md-primary" md-no-bar >
 
     <md-tab  ng-repeat="tab in tabsData" ui-sref="{{tab.hrefName}}">
 
       <md-content  >
+
 
         <md-tab-label>{{tab.name}}</md-tab-label>
 
@@ -75,55 +73,12 @@
     </md-tab>
 
   </md-tabs>
-  <!-- HOME PAGE -->
-
-
-  <!-- SIDENAV LEFT -->
-  <div class="gridListdemoBasicUsage"  layout="column" >
-
-
-      <md-sidenav  class="md-sidenav-left white" md-component-id="left" id="leftSideNav">
-        <md-toolbar class="chocolate">
-
-          <div class="md-toolbar-tools">
-            <md-icon  ng-click="close()" id="close" md-svg-icon="./assets/svg/close.svg"></md-icon>
-            <label ng-click="close()">Zavrieť</label>
-          </div>
-        </md-toolbar>
-
-        <md-toolbar class="white">
-
-          <div class="md-toolbar-tools">
-
-            <md-icon  ng-hide="categoryOff" ng-click="categoryClick()"  id="categoryOff" md-svg-icon="./assets/svg/right.svg"></md-icon>
-            <md-icon  ng-hide="categoryOn"  ng-click="categoryClick()"  id="categoryOn" md-svg-icon="./assets/svg/down.svg"></md-icon>
-
-            <label ng-click="categoryClick()">Kategorie</label>
-          </div>
-
-
-        </md-toolbar>
-        <hr>
-
-        <!-- Category Details -->
-        <div ng-hide="categoryDetails" ng-repeat="categoryDetail in details">
-          <md-toolbar class="white"  >
-
-            <div class="md-toolbar-tools">
-              <label id="categoryDetails">{{categoryDetail}}</label>
-
-            </div>
-          </md-toolbar>
-          <hr>
-        </div>
-      </md-sidenav>
-
-
-  </div>
 
 
 
-<md-content class="gridListdemoBasicUsage">
+
+
+<md-content class="gridListdemoBasicUsage" >
 
   <!-- NEWSLETTER -->
   <md-toolbar class=" md-tall green"    >
@@ -171,6 +126,48 @@
 
 </md-content>
 
+<!-- SIDENAV LEFT -->
+<div class="gridListdemoBasicUsage"  layout="column" >
+
+
+  <md-sidenav  class="md-sidenav-left white" md-component-id="left" id="leftSideNav">
+    <md-toolbar class="chocolate">
+
+      <div class="md-toolbar-tools">
+        <md-icon  ng-click="close()" id="close" md-svg-icon="./assets/svg/close.svg"></md-icon>
+        <label ng-click="close()">Zavrieť</label>
+      </div>
+    </md-toolbar>
+
+    <md-toolbar class="white">
+
+      <div class="md-toolbar-tools">
+
+        <md-icon  ng-hide="categoryOff" ng-click="categoryClick()"  id="categoryOff" md-svg-icon="./assets/svg/right.svg"></md-icon>
+        <md-icon  ng-hide="categoryOn"  ng-click="categoryClick()"  id="categoryOn" md-svg-icon="./assets/svg/down.svg"></md-icon>
+
+        <label ng-click="categoryClick()">Kategorie</label>
+      </div>
+
+
+    </md-toolbar>
+    <hr>
+
+    <!-- Category Details -->
+    <div ng-hide="categoryDetails" ng-repeat="categoryDetail in details">
+      <md-toolbar class="white"  >
+
+        <div class="md-toolbar-tools">
+          <label id="categoryDetails">{{categoryDetail}}</label>
+
+        </div>
+      </md-toolbar>
+      <hr>
+    </div>
+  </md-sidenav>
+
+
+</div>
 
 <!-- LIBRARIES-->
 <script src="bower_components/angular/angular.js"></script>
