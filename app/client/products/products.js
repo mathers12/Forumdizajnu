@@ -20,157 +20,18 @@ app.filter('pagination', function()
   };
 });
 
-app.controller("productsController",['$scope','$location','$window','$stateParams','$http',
-  function($scope,$location,$window,$stateParams,$http) {
+app.controller("productsController",['$scope','$location','$window','$stateParams','$http','$rootScope',
+  function($scope,$location,$window,$stateParams,$http,$rootScope) {
 
     $scope.itemsPerPage = 16;
     $scope.currentPage = 0;
+    $scope.products = [];
 
-    $scope.products = [
+    var data = $http.get("./data/products.json")
+      .success(function(data)
       {
-        "name": "nazov",
-        "price": 650
-      },
-      {
-        "name": "nazov",
-        "price": 650
-      },
-      {
-        "name": "nazov",
-        "price": 650
-      },
-
-      {
-        "name": "nazov",
-        "price": 650
-      },
-      {
-        "name": "nazov",
-        "price": 650
-      },
-      {
-        "name": "nazov",
-        "price": 650
-      },
-      {
-        "name": "nazov",
-        "price": 650
-      },
-      {
-        "name": "nazov",
-        "price": 650
-      },
-
-      {
-        "name": "nazov",
-        "price": 650
-      },
-      {
-        "name": "nazov",
-        "price": 650
-      },
-      {
-        "name": "nazov",
-        "price": 650
-      },
-      {
-        "name": "nazov",
-        "price": 650
-      },
-      {
-        "name": "nazov",
-        "price": 650
-      },
-
-      {
-        "name": "nazov",
-        "price": 650
-      },
-      {
-        "name": "nazov",
-        "price": 650
-      },
-      {
-        "name": "nazov",
-        "price": 650
-      },
-      {
-        "name": "nazov",
-        "price": 100
-      },
-      {
-        "name": "nazov",
-        "price": 100
-      },
-      {
-        "name": "nazov",
-        "price": 100
-      },
-
-      {
-        "name": "nazov",
-        "price": 100
-      },
-      {
-        "name": "nazov",
-        "price": 100
-      },
-      {
-        "name": "nazov",
-        "price": 100
-      },
-      {
-        "name": "nazov",
-        "price": 100
-      },
-      {
-        "name": "nazov",
-        "price": 100
-      },
-
-      {
-        "name": "nazov",
-        "price": 100
-      },
-      {
-        "name": "nazov",
-        "price": 100
-      },
-      {
-        "name": "nazov",
-        "price": 100
-      },
-      {
-        "name": "nazov",
-        "price": 100
-      },
-      {
-        "name": "nazov",
-        "price": 100
-      },
-
-      {
-        "name": "nazov",
-        "price": 100
-      },
-      {
-        "name": "nazov",
-        "price": 100
-      },
-      {
-        "name": "nazov",
-        "price": 100
-      },
-      {
-        "name": "nazov",
-        "price": 8000
-      },
-      {
-        "name": "nazov",
-        "price": 8000
-      }
-    ];
-
+        $scope.products = data;
+      });
 
 
       $scope.range = function () {

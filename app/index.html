@@ -27,7 +27,7 @@
       <md-icon  md-svg-icon="./assets/svg/menu.svg" ng-click="toggleLeft()">
 
       </md-icon>
-      <a style="margin-left:7%" ui-sref="home"><label><b>Forum</b>dizajnu.<b>sk</b></label></a>
+      <a style="margin-left:5%" ui-sref="home"><label><b>Forum</b>dizajnu.<b>sk</b></label></a>
 
       <span flex></span>
 
@@ -51,9 +51,9 @@
 </div>
 
 <!--TABS-->
-  <md-tabs 	 md-stretch-tabs="auto" md-selected="0" md-dynamic-height="false" md-theme="themeProvider" class="md-primary" md-no-bar >
+  <md-tabs 	 md-stretch-tabs="auto" md-selected="tabValue" md-dynamic-height="false" md-theme="themeProvider" class="md-primary" md-no-bar >
 
-    <md-tab  ng-repeat="tab in tabsData" ui-sref="{{tab.hrefName}}">
+    <md-tab ng-repeat="tab in tabsData" ui-sref="{{tab.hrefName}}">
 
       <md-content  >
 
@@ -66,6 +66,8 @@
           <!-- CONTENT -->
           <div  class="gridListdemoBasicUsage" ui-view>
           </div>
+
+
 
         </md-tab-body>
       </md-content>
@@ -168,6 +170,8 @@
 
 
 </div>
+
+
 
 <!-- LIBRARIES-->
 <script src="bower_components/angular/angular.js"></script>

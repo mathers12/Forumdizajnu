@@ -5,7 +5,6 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
   $stateProvider.state('home', {
     url: "/home",
     templateUrl: "client/home/home.html"
-
     });
 
   /*$stateProvider.state('home', {
@@ -25,8 +24,26 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
   });*/
 });
 
-app.controller("homeController",function($scope)
+app.controller("homeController",function($scope,$window,$location)
 {
+
+  console.log($scope.tabValue);
+  $scope.urlPath = $location.path().replace("/","");
+  for(var i = 0; i< $scope.tabsData.length; i++)
+  {
+    if ($scope.tabsData[i].hrefName == $scope.urlPath)
+    {
+      $scope.tabValue = i;
+    }
+
+  }
+
+
+  $scope.homeClickButton = function(url)
+  {
+    $window.location.assign("#/"+url);
+
+  }
 
 });
 

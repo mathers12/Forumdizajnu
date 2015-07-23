@@ -1,3 +1,4 @@
+<div ng-controller="homeController">
 <md-grid-list   ng-repeat="item in tabsData"
   md-cols-sm="1" md-cols-md="1" md-cols-gt-md="6"
   md-row-height="1:1"
@@ -11,7 +12,7 @@
 
     <img class="imgHome"  ng-src="{{item.imgSrc}}"/>
     </div>-->
-    <div class="container">
+    <div class="container" ng-controller="homeController">
 
         <img class="imgHome" ng-src="{{item.imgSrc}}" />
 
@@ -21,7 +22,7 @@
         <div  layout="column" layout-align="start center" style="padding-top:20%" style="color:white">
 
           <h1  class="imageDescription">{{item.description}}</h1>
-          <md-button  class="md-raised md-primary" ui-sref="{{item.hrefName}}">Prejsť na {{item.imgName}}</md-button>
+          <md-button  class="md-raised md-primary"	 ng-click="homeClickButton(item.hrefName)" >Prejsť na {{item.imgName}}</md-button>
 
         </div>
 
@@ -36,3 +37,4 @@
 
 </md-grid-list>
 
+</div>

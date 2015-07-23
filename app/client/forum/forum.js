@@ -13,5 +13,7 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
 app.controller("forumController",function($scope)
 {
 
+
+
 });
 

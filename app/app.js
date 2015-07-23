@@ -22,9 +22,7 @@ var app = angular.module('forumDizajnu',
 
 
 
-
-
-  app.controller('appController', function($scope,$timeout, $mdSidenav, $mdUtil, $log) {
+  app.controller('appController', function($scope,$timeout, $mdSidenav, $mdUtil, $log,$location) {
 
     $scope.categoryOn = true;
     $scope.categoryOff = false;
@@ -125,6 +123,17 @@ var app = angular.module('forumDizajnu',
         }
       ]
 
+
+
+    $scope.urlPath = $location.path().replace("/","");
+    for(var i = 0; i< $scope.tabsData.length; i++)
+    {
+      if ($scope.tabsData[i].hrefName == $scope.urlPath)
+      {
+        $scope.tabValue = i;
+      }
+
+    }
 
   });
 
