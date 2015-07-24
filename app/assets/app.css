@@ -226,6 +226,11 @@ i {
   font-size: 20px;
 }
 
+.otherLabel a
+{
+  color:orange;
+}
+
 
 .otherLabel
 {
