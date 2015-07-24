@@ -1,3 +1,38 @@
-<div >
-  <h1 style="color:black">Product id: {{id}}</h1>
+<div ng-repeat="product in products" ng-if="product.id == id">
+
+  <md-grid-list class="productDetailGridList"
+                  md-cols-sm="1" md-cols-md="1" md-cols-gt-md="6"
+                  md-row-height="1:1" md-gutter="4%"
+    >
+    <!-- left IMAGE, RIGHT CONTENT-->
+    <label class="productDetailLabel" >{{product.name}}</label>
+
+    <md-grid-tile
+                  md-rowspan="2" md-colspan="3" md-colspan-sm="1">
+      <div class="container" ng-controller="homeController">
+
+        <img class="imgHome" ng-src="./assets/pictures/products.jpg" />
+
+      </div>
+    </md-grid-tile>
+    <md-grid-tile
+                  md-rowspan="2" md-colspan="3" md-colspan-sm="1">
+     <md-grid-tile-header style="background-color: white;height: 100%" layout-align="start start">
+       <div class="rightTileProductDetail">
+         <label class="priceLabel">{{(product.price | number:2) + "€"}} s DPH</label>
+         <md-button id="toShopButton" class="md-raised">Do obchodu</md-button>
+         <br>
+         <hr class="separator">
+         <label  class="otherLabel"><b>Farba: </b>{{product.color}}</label>
+         <br><br>
+         <label class="otherLabel"><b>Štýl: </b>{{product.style}}</label>
+         <br><br>
+         <label class="otherLabel"><b>Rozmery: </b>{{product.dimensions}}</label>
+         <hr class="separator">
+
+       </div>
+
+     </md-grid-tile-header>
+
+        </md-grid-tile>
 </div>

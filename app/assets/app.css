@@ -201,3 +201,40 @@ i {
   height: 100%;
   opacity: 0.6;
 }
+
+/*PRODUCT DETAIL*/
+.productDetailLabel
+{
+  color:black;
+  font-size:25px;
+}
+.productDetailGridList
+{
+  margin: 3% 2% 2% 7%;
+}
+.rightTileProductDetail
+{
+  color:black;
+}
+#toShopButton
+{
+
+  background-color: orange;
+}
+.priceLabel
+{
+  font-size: 20px;
+}
+
+
+.otherLabel
+{
+  font-size:15px;
+
+}
+
+.separator
+{
+  margin-top: 7%;
+  margin-bottom: 7%;
+}
