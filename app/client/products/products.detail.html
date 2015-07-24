@@ -2,7 +2,7 @@
 
   <md-grid-list class="productDetailGridList"
                   md-cols-sm="1" md-cols-md="1" md-cols-gt-md="6"
-                  md-row-height="1:1" md-gutter="4%"
+                  md-row-height="1:1" md-gutter="2%"
     >
     <!-- left IMAGE, RIGHT CONTENT-->
     <label class="productDetailLabel" >{{product.name}}</label>
@@ -38,8 +38,14 @@
          <label class="otherLabel"><b>Výrobca: </b><a href="#">{{product.producer}}</a></label>
 
        </div>
-
      </md-grid-tile-header>
-
         </md-grid-tile>
+
+    <!-- BOTTOM GRID TILE -->
+    <md-grid-tile
+      md-rowspan="1" md-colspan="3" md-colspan-sm="1">
+      <md-grid-tile-header >
+        <label>fdfd</label>
+       </md-grid-tile-header>
+    </md-grid-tile>
 </div>
