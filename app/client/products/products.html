@@ -41,7 +41,7 @@
       <div id="skuska" layout="row" layout-align="space-between center">
         <b  style="margin-left:3%"><label>{{(product.price | number:2) + "€"}}</label></b>
 
-      <span style="cursor: pointer" ng-click="productDetail()" ui-sref="products.detail({productId: product.id})" >
+      <span style="cursor: pointer" ui-sref="products.detail({productId: product.id})" >
         <label style="cursor: pointer" >Pozrieť detail</label>
           <md-icon style="cursor: pointer"  md-svg-icon="./assets/svg/right.svg"></md-icon>
       </span>
@@ -58,6 +58,6 @@
   </div>
 
   </div>
-<div ui-view="">
+<div  ui-view="">
 
 </div>

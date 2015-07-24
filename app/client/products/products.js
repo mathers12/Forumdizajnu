@@ -18,6 +18,7 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
 });
 
 
+
 app.filter('pagination', function()
 {
   return function(input, start) {
@@ -41,14 +42,7 @@ app.controller("productsController",['$scope','$location','$window','$stateParam
     $scope.currentPage = 0;
     $scope.products = [];
 
-    $rootScope.hideProducts = false;
 
-    /*klik na product Detail*/
-    $scope.productDetail = function()
-    {
-      console.log("product detail");
-      $scope.hideProducts = true;
-    };
 
 
 
@@ -124,7 +118,7 @@ app.controller("productsController",['$scope','$location','$window','$stateParam
         $scope.setPage(parseInt($location.search()["page"] - 1));
 
       }
-      else {
+      else if ($rootScope.hideProducts){
         $scope.setPage(0);
       }
 
