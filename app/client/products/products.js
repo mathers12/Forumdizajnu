@@ -7,6 +7,15 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
       url: "/products",
       templateUrl: "client/products/products.html"
     })
+    .state('products.detail', {
+      url: "/:productId",
+      templateUrl: 'client/products/products.detail.html',
+      controller: function($stateParams,$scope,$rootScope)
+      {
+        $rootScope.rootId = $stateParams.productId;
+        $scope.id = $stateParams.productId;
+      }
+    })
 
 
 });
@@ -26,6 +35,7 @@ app.controller("productsController",['$scope','$location','$window','$stateParam
     $scope.itemsPerPage = 16;
     $scope.currentPage = 0;
     $scope.products = [];
+
 
     var data = $http.get("./data/products.json")
       .success(function(data)
@@ -103,6 +113,7 @@ app.controller("productsController",['$scope','$location','$window','$stateParam
       }
 
     };
+
 
       $scope.selectCategories =
       [
