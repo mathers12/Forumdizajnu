@@ -125,6 +125,7 @@ var app = angular.module('forumDizajnu',
 
 
 
+    /* Oznaceny tab po zadani url */
     $scope.urlPath = $location.path().replace("/","");
     for(var i = 0; i< $scope.tabsData.length; i++)
     {

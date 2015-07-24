@@ -27,7 +27,6 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
 app.controller("homeController",function($scope,$window,$location)
 {
 
-  console.log($scope.tabValue);
   $scope.urlPath = $location.path().replace("/","");
   for(var i = 0; i< $scope.tabsData.length; i++)
   {

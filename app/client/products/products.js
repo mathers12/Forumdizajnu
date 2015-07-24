@@ -5,16 +5,13 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
   $stateProvider
     .state('products', {
       url: "/products",
-      templateUrl: "client/products/products.html"
+      templateUrl: "client/products/products.html",
+      controller: "productsController"
     })
     .state('products.detail', {
       url: "/:productId",
       templateUrl: 'client/products/products.detail.html',
-      controller: function($stateParams,$scope,$rootScope)
-      {
-        $rootScope.rootId = $stateParams.productId;
-        $scope.id = $stateParams.productId;
-      }
+      controller: "productDetailController"
     })
 
 
@@ -29,12 +26,30 @@ app.filter('pagination', function()
   };
 });
 
+app.controller("productDetailController",["$scope","$stateParams",'$rootScope',
+  function($scope,$stateParams,$rootScope)
+{
+  $rootScope.hideProducts = true;
+  console.log("DETAIL");
+  $scope.id = $stateParams.productId;
+}]);
+
 app.controller("productsController",['$scope','$location','$window','$stateParams','$http','$rootScope',
   function($scope,$location,$window,$stateParams,$http,$rootScope) {
 
     $scope.itemsPerPage = 16;
     $scope.currentPage = 0;
     $scope.products = [];
+
+    $rootScope.hideProducts = false;
+
+    /*klik na product Detail*/
+    $scope.productDetail = function()
+    {
+      console.log("product detail");
+      $scope.hideProducts = true;
+    };
+
 
 
     var data = $http.get("./data/products.json")
@@ -100,6 +115,7 @@ app.controller("productsController",['$scope','$location','$window','$stateParam
 
     $scope.init = function() {
 
+
       var count = $scope.pageCount() + 1;
       var currentNumber = $location.search()["page"];
       /* Zabezpecime aby nesiel cez rozsah stran */
@@ -112,8 +128,8 @@ app.controller("productsController",['$scope','$location','$window','$stateParam
         $scope.setPage(0);
       }
 
-    };
 
+    };
 
       $scope.selectCategories =
       [
