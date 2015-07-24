@@ -11,7 +11,7 @@
                   md-rowspan="2" md-colspan="3" md-colspan-sm="1">
       <div class="container" ng-controller="homeController">
 
-        <img class="imgHome" ng-src="./assets/pictures/products.jpg" />
+        <img class="imgHome" id="productDetailImg" ng-src="./assets/pictures/products.jpg" />
 
       </div>
     </md-grid-tile>
@@ -42,19 +42,21 @@
         </md-grid-tile>
 
     <!-- BOTTOM GRID TILE -->
-<md-grid-tile md-rowspan="1" md-colspan="3" md-colspan-sm="1">
 
-  <md-toolbar class="gray" style="margin-bottom:20%" layout="row" >
+
+</md-grid-list>
+
+  <md-toolbar class="bottomToolbar gray"   layout="row" style="margin-bottom: 2%">
     <div class="md-toolbar-tools" >
 
-    <md-button  class="md-icon-button" >
-      <md-icon md-svg-icon="./assets/svg/question_mark.svg"></md-icon>
-    </md-button>
+      <md-button  class="md-icon-button" >
+        <md-icon md-svg-icon="./assets/svg/question_mark.svg"></md-icon>
+      </md-button>
 
-    <md-input-container style="width:50%;" md-no-float >
-      <label style="color:white">Zadajte otázku / dopyt</label>
-      <input style="color:white" type="text" />
-    </md-input-container>
+      <md-input-container style="width:50%;" md-no-float >
+        <label style="color:white">Zadajte otázku / dopyt</label>
+        <input style="color:white" type="text" />
+      </md-input-container>
       <span style="margin-left:20%">
   <md-icon  md-svg-icon="./assets/svg/facebook.svg"></md-icon>
   <md-icon  md-svg-icon="./assets/svg/twitter.svg"></md-icon>
@@ -65,11 +67,122 @@
 
 
     </div>
+
   </md-toolbar>
 
-</md-grid-tile>
 
+  <!-- KATEGORIA POSTELE -->
+    <span >
+      <label style="margin-left:7%" class="otherLabel">Podobné produkty v kategórií <a  href="#">Postele</a></label>
+    <hr  style="margin-left:7%;width:44.7%;margin-top:2%;margin-bottom: 2%">
+    </span>
+
+
+  <md-grid-list
+    style="margin:40px 7% 4% 7%"
+    md-cols-sm="1" md-cols-md="1" md-cols-gt-md="4"
+    md-row-height="2:2" md-gutter="7%">
+
+    <md-grid-tile ng-repeat="product in products | limitTo: 2"
+                  md-rowspan="1" ng-style="$index && {'margin-left': '5.5%'}" md-colspan="1" md-colspan-sm="1" >
+
+      <md-grid-tile-header  class="orange" style="width:50%;margin-top:5%">
+        <h3 style="margin-left:5px;">Odporúčané</h3>
+      </md-grid-tile-header>
+      <img  class="imgHome"  ng-src="./assets/pictures/products.jpg"/>
+
+
+      <md-grid-tile-footer >
+        <h3>Postel SOFT</h3>
+
+      </md-grid-tile-footer>
+
+      <div class="productBottom" layout="row" layout-align="space-between center">
+        <b  style="margin-left:3%"><label>{{(product.price | number:2) + "€"}}</label></b>
+
+      <span style="cursor: pointer" ui-sref="products.detail({productId: product.id})" >
+        <label style="cursor: pointer" >Pozrieť detail</label>
+          <md-icon style="cursor: pointer"  md-svg-icon="./assets/svg/right.svg"></md-icon>
+      </span>
+
+      </div>
+    </md-grid-tile>
 </md-grid-list>
 
+    <!-- KATEGORIA SPALNE -->
+<span >
+      <label style="margin-left:7%" class="otherLabel">Podobné produkty v kategórií <a  href="#">Postele</a></label>
+    <hr  style="margin-left:7%;width:44.7%;margin-top:2%;margin-bottom: 2%">
+    </span>
+
+
+  <md-grid-list
+    style="margin:40px 7% 4% 7%"
+    md-cols-sm="1" md-cols-md="1" md-cols-gt-md="4"
+    md-row-height="2:2" md-gutter="7%">
+
+    <md-grid-tile ng-repeat="product in products | limitTo: 2"
+                  md-rowspan="1" ng-style="$index && {'margin-left': '5.5%'}" md-colspan="1" md-colspan-sm="1" >
+
+      <md-grid-tile-header  class="orange" style="width:50%;margin-top:5%">
+        <h3 style="margin-left:5px;">Odporúčané</h3>
+      </md-grid-tile-header>
+      <img  class="imgHome"  ng-src="./assets/pictures/products.jpg"/>
+
+
+      <md-grid-tile-footer >
+        <h3>Postel SOFT</h3>
+
+      </md-grid-tile-footer>
+
+      <div class="productBottom" layout="row" layout-align="space-between center">
+        <b  style="margin-left:3%"><label>{{(product.price | number:2) + "€"}}</label></b>
+
+      <span style="cursor: pointer" ui-sref="products.detail({productId: product.id})" >
+        <label style="cursor: pointer" >Pozrieť detail</label>
+          <md-icon style="cursor: pointer"  md-svg-icon="./assets/svg/right.svg"></md-icon>
+      </span>
+
+      </div>
+    </md-grid-tile>
+  </md-grid-list>
+
+  <!-- KATEGORIA SOFT -->
+  <span >
+      <label style="margin-left:7%" class="otherLabel">Podobné produkty v kategórií <a  href="#">Postele</a></label>
+    <hr  style="margin-left:7%;width:44.7%;margin-top:2%;margin-bottom: 2%">
+    </span>
+
+
+  <md-grid-list
+    style="margin:40px 7% 4% 7%"
+    md-cols-sm="1" md-cols-md="1" md-cols-gt-md="4"
+    md-row-height="2:2" md-gutter="7%">
+
+    <md-grid-tile ng-repeat="product in products | limitTo: 2"
+                  md-rowspan="1" ng-style="$index && {'margin-left': '5.5%'}" md-colspan="1" md-colspan-sm="1" >
+
+      <md-grid-tile-header  class="orange" style="width:50%;margin-top:5%">
+        <h3 style="margin-left:5px;">Odporúčané</h3>
+      </md-grid-tile-header>
+      <img  class="imgHome"  ng-src="./assets/pictures/products.jpg"/>
+
+
+      <md-grid-tile-footer >
+        <h3>Postel SOFT</h3>
+
+      </md-grid-tile-footer>
+
+      <div class="productBottom" layout="row" layout-align="space-between center">
+        <b  style="margin-left:3%"><label>{{(product.price | number:2) + "€"}}</label></b>
+
+      <span style="cursor: pointer" ui-sref="products.detail({productId: product.id})" >
+        <label style="cursor: pointer" >Pozrieť detail</label>
+          <md-icon style="cursor: pointer"  md-svg-icon="./assets/svg/right.svg"></md-icon>
+      </span>
+
+      </div>
+    </md-grid-tile>
+  </md-grid-list>
   </div>
 

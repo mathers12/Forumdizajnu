@@ -33,6 +33,9 @@ app.controller("productDetailController",["$scope","$stateParams",'$rootScope',
   $rootScope.hideProducts = true;
   console.log("DETAIL");
   $scope.id = $stateParams.productId;
+
+
+
 }]);
 
 app.controller("productsController",['$scope','$location','$window','$stateParams','$http','$rootScope',
@@ -42,8 +45,6 @@ app.controller("productsController",['$scope','$location','$window','$stateParam
     $scope.currentPage = 0;
     $scope.products = [];
     $rootScope.hideProducts = false;
-
-
 
 
     var data = $http.get("./data/products.json")
