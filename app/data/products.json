@@ -1,177 +1,381 @@
 [
 {
 "id": 1,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 2,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 3,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 
 {
   "id": 4,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 5,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 6,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 7,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 8,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 
 {
   "id": 9,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 10,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 11,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 12,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 13,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 14,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 15,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 16,
-"name": "nazov",
-"price": 650
+  "name": "Postel SOFT ACAI",
+  "price": 650,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 17,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 18,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 19,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 
 {
   "id": 20,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 21,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 22,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 23,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 24,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 
 {
   "id": 25,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 26,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 27,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "red",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 28,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 29,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 
 {
   "id": 30,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "green",
+  "dimensions": "500cm x 500cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 31,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "orange",
+  "dimensions": "200cm x 150cm",
+  "style": "old",
+  "shop": "96design.sk",
+  "producer": "FASHION",
+  "category": "Spalne a postele"
 },
 {
   "id": 32,
-"name": "nazov",
-"price": 100
+  "name": "Postel SOFT ACAI",
+  "price": 100,
+  "color": "blue",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 33,
-"name": "nazov",
-"price": 8000
+  "name": "Postel SOFT ACAI",
+  "price": 8000,
+  "color": "red",
+  "dimensions": "200cm x 150cm",
+  "style": "old",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 },
 {
   "id": 34,
-"name": "nazov",
-"price": 8000
+  "name": "Postel SOFT ACAI",
+  "price": 8000,
+  "color": "gray",
+  "dimensions": "200cm x 150cm",
+  "style": "modern",
+  "shop": "96design.sk",
+  "producer": "ATOL",
+  "category": "Spalne a postele"
 }
 ]

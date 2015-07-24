@@ -41,7 +41,7 @@ app.controller("productsController",['$scope','$location','$window','$stateParam
     $scope.itemsPerPage = 16;
     $scope.currentPage = 0;
     $scope.products = [];
-
+    $rootScope.hideProducts = false;
 
 
 
