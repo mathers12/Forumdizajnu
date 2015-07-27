@@ -17,20 +17,18 @@
 
 <body ng-controller="appController">
 
-<!-- Toolbar -->
-<div class="gridListdemoBasicUsage">
+<!-- Header -->
+<header md-page-header>
+  <div md-header-picture style="background-image:url(http://cdn.wallwuzz.com/uploads/katy-perry-wallpaper-10wallpaper-people-photography-album-desktop-beauty-wallwuzz-hd-wallpaper-20555.jpg)">
 
-  <md-toolbar class="blue">
-
-    <div class="md-toolbar-tools" >
-
-      <md-icon style="margin-left:5%" md-svg-icon="./assets/svg/menu.svg" ng-click="toggleLeft()">
-
-      </md-icon>
+  </div>
+  <md-toolbar class="blue" scroll>
+    <div class="md-toolbar-tools gridListdemoBasicUsage">
+      <md-button class="md-tools" aria-label="Go Back"><i class="ion-android-arrow-back"></i></md-button>
+      <!--<h2 md-header-title flex>Katy Perry</h2>-->
+      <md-icon style="margin-left:5%" md-svg-icon="./assets/svg/menu.svg" ng-click="toggleLeft()"></md-icon>
       <a style="margin-left:2%" ui-sref="home"><label><b>Forum</b>dizajnu.<b>sk</b></label></a>
-
       <span flex></span>
-
       <md-input-container md-no-float>
         <label>hladaj produkty, inspiracie, ...</label>
         <input type="text" />
@@ -38,44 +36,71 @@
       <md-button  class="md-icon-button" id="searchButton">
         <md-icon md-svg-icon="./assets/svg/search.svg"></md-icon>
       </md-button>
-
       <md-icon id="regLoginIcon" md-svg-icon="./assets/svg/login.svg"></md-icon>
       <label>Prihlasenie</label>
-
       <md-icon id="regPersonIcon" md-svg-icon="./assets/svg/person.svg"></md-icon>
-
       <label>Registracia</label>
-
+      <!--<md-button class="md-tools" aria-label="Edit Contact"><i class="ion-android-create"></i></md-button>-->
+      <!--<md-button class="md-tools" aria-label="More"><i class="ion-android-more-vertical"></i></md-button>-->
     </div>
   </md-toolbar>
-</div>
+
+  <!--<div class="main-fab"><md-button aria-label="Float Action Button" class="md-fab md-accent"><i class="ion-android-star"></i></md-button></div>-->
+</header>
+
+<!-- Toolbar -->
+<!--<div class="">-->
+
+  <!--<md-toolbar class="blue">-->
+
+    <!--<div class="md-toolbar-tools" >-->
+
+
+
+      <!--<md-input-container md-no-float>-->
+        <!--<label>hladaj produkty, inspiracie, ...</label>-->
+        <!--<input type="text" />-->
+      <!--</md-input-container>-->
+      <!--<md-button  class="md-icon-button" id="searchButton">-->
+        <!--<md-icon md-svg-icon="./assets/svg/search.svg"></md-icon>-->
+      <!--</md-button>-->
+
+      <!--<md-icon id="regLoginIcon" md-svg-icon="./assets/svg/login.svg"></md-icon>-->
+      <!--<label>Prihlasenie</label>-->
+      <!--<md-icon id="regPersonIcon" md-svg-icon="./assets/svg/person.svg"></md-icon>-->
+      <!--<label>Registracia</label>-->
+
+    <!--</div>-->
+  <!--</md-toolbar>-->
+
+<!--</div>-->
 
 <!--TABS-->
-  <md-tabs 	 md-stretch-tabs="auto" md-selected="tabValue" md-dynamic-height="false" md-theme="themeProvider" class="md-primary" md-no-bar >
 
-    <md-tab ng-repeat="tab in tabsData" ui-sref="{{tab.hrefName}}">
+<md-tabs 	 md-stretch-tabs="auto" md-selected="tabValue" md-dynamic-height="false" md-theme="themeProvider" class="md-primary" md-no-bar >
 
-      <md-content  >
+  <md-tab ng-repeat="tab in tabsData" ui-sref="{{tab.hrefName}}">
 
-
-        <md-tab-label>{{tab.name}}</md-tab-label>
+    <md-content  >
 
 
-
-        <md-tab-body >
-          <!-- CONTENT -->
-          <div  class="gridListdemoBasicUsage" ui-view>
-          </div>
+      <md-tab-label>{{tab.name}}</md-tab-label>
 
 
 
-        </md-tab-body>
-      </md-content>
+      <md-tab-body >
+        <!-- CONTENT -->
+        <div  class="gridListdemoBasicUsage" ui-view>
+        </div>
 
-    </md-tab>
 
-  </md-tabs>
 
+      </md-tab-body>
+    </md-content>
+
+  </md-tab>
+
+</md-tabs>
 
 
 
