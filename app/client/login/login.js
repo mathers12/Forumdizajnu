@@ -14,4 +14,15 @@ app.controller("loginController",function($scope,$mdDialog)
   $scope.answer = function (answer) {
     $mdDialog.hide(answer);
   };
+
+
+  $scope.clickForgotPassword = function(ev)
+  {
+    $mdDialog.show({
+      controller: "forgotPasswordController",
+      templateUrl: 'client/forgot_password/forgot_password.html',
+      parent: angular.element(document.body),
+      targetEvent: ev
+    })
+  };
 });

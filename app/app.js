@@ -7,6 +7,8 @@ var app = angular.module('forumDizajnu',
     'forumDizajnu.forum',
     'forumDizajnu.login',
     'forumDizajnu.specialists',
+    'forumDizajnu.register',
+    'forumDizajnu.forgot_password',
     'ngMaterial',
     'ui.router'
   ])
@@ -164,12 +166,17 @@ app.directive("scroll", function ($window) {
 
 
 
-    $scope.clickRegister = function()
+    $scope.clickRegister = function(ev)
     {
-
+      $mdDialog.show({
+        controller: "registerController",
+        templateUrl: 'client/register/register.html',
+        parent: angular.element(document.body),
+        targetEvent: ev
+      })
     };
-    $scope.details = ["Prva","Druha","Tretia"];
 
+    $scope.details = ["Prva","Druha","Tretia"];
 
     $scope.tabsData =
       [
