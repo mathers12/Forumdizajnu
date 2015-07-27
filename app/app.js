@@ -5,6 +5,7 @@ var app = angular.module('forumDizajnu',
     'forumDizajnu.products',
     'forumDizajnu.articles',
     'forumDizajnu.forum',
+    'forumDizajnu.login',
     'forumDizajnu.specialists',
     'ngMaterial',
     'ui.router'
@@ -103,7 +104,7 @@ app.directive("scroll", function ($window) {
 });
 
 
-  app.controller('appController', function($scope,$timeout, $mdSidenav, $mdUtil, $log,$location) {
+  app.controller('appController', function($scope, $timeout, $mdSidenav, $mdUtil, $log, $location, $mdDialog) {
 
     $scope.categoryOn = true;
     $scope.categoryOff = false;
@@ -152,6 +153,21 @@ app.directive("scroll", function ($window) {
       }
     };
 
+    $scope.clickLogin = function(ev) {
+      $mdDialog.show({
+        controller: "loginController",
+        templateUrl: 'client/login/login.html',
+        parent: angular.element(document.body),
+        targetEvent: ev
+      })
+    };
+
+
+
+    $scope.clickRegister = function()
+    {
+
+    };
     $scope.details = ["Prva","Druha","Tretia"];
 
 
