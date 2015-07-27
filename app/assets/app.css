@@ -1,18 +1,16 @@
 
 html, body {
-  font-family: 'Roboto', sans-serif;
-  font-size:14px;
   height:100%;
   min-width: 1024px;
   margin: 0px;
   padding: 0px;
 
 }
-md-input-container.md-default-theme label,input,
-md-input-container.md-default-theme .md-placeholder{
-  color:white !important;
-}
 
+md-input-container label
+{
+  color:white;
+}
 md-toolbar
 {
   padding-left: 20px;

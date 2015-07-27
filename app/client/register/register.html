@@ -1,0 +1,63 @@
+<div class="gridListdemoBasicUsage" flex="25">
+  <md-dialog aria-label="Mango (Fruit)" class="blue" >
+      <md-toolbar >
+        <div class="md-toolbar-tools " >
+          <md-button style="position: absolute;right:5%" class="md-icon-button" ng-click="cancel()">
+            <md-icon md-svg-src="assets/svg/close.svg" aria-label="Close dialog"></md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
+
+      <md-dialog-content >
+        <div layout="column" layout-align="center center" >
+        <form>
+        <md-input-container >
+          <label style="color:white">Meno</label>
+          <input type="text"  />
+        </md-input-container>
+
+        <md-input-container >
+          <label style="color:white">Priezvisko</label>
+          <input type="text">
+        </md-input-container>
+
+        <md-input-container>
+          <label style="color:white">E-mail</label>
+          <input type="email">
+        </md-input-container>
+
+        <md-input-container >
+          <label style="color:white">Heslo</label>
+          <input type="password">
+        </md-input-container>
+
+        <md-input-container>
+          <label style="color:white">Znova zadajte heslo</label>
+          <input type="password">
+        </md-input-container>
+
+          <md-input-container >
+            <label style="color:white">Datum narodenia</label>
+            <input  type="date" ng-model="user.date_of_birth">
+          </md-input-container>
+          <div layout="row" layout-align="center center">
+
+        <md-checkbox ng-model="user.male"  >
+            Muž
+          </md-checkbox>
+
+          <md-checkbox ng-model="user.female"  >
+            Žena
+          </md-checkbox>
+        </div>
+
+          <div layout="row" layout-align="center center" >
+        <md-button style="margin-top:10%;" class="green">Zaregistrovať sa</md-button>
+          </div>
+        </form>
+
+        </div>
+
+      </md-dialog-content>
+  </md-dialog>
+</div>

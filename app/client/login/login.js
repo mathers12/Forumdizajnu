@@ -11,9 +11,6 @@ app.controller("loginController",function($scope,$mdDialog)
     $mdDialog.cancel();
   };
 
-  $scope.answer = function (answer) {
-    $mdDialog.hide(answer);
-  };
 
 
   $scope.clickForgotPassword = function(ev)
