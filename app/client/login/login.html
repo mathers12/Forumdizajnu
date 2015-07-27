@@ -1,0 +1,35 @@
+<div class="gridListdemoBasicUsage" flex="25">
+<md-dialog aria-label="Mango (Fruit)" class="blue" style="font-size:17px;color:white;">
+  <form>
+    <md-toolbar >
+      <div class="md-toolbar-tools " >
+        <md-button style="position: absolute;right:5%" class="md-icon-button" ng-click="answer('not applicable')">
+          <md-icon md-svg-src="assets/svg/close.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content layout="column" layout-align="center center" >
+      <md-input-container>
+        <label style="color:black">E-mail</label>
+        <input type="email">
+      </md-input-container>
+
+
+      <md-input-container >
+        <label>Heslo</label>
+        <input type="password">
+      </md-input-container>
+      <md-button class="green">Prihlásiť sa</md-button>
+      <br/>
+      <a href="#" style="text-decoration: none; color:white">
+        <label>
+          Zabudli ste heslo?
+      </label>
+      </a>
+      <br/>
+      <md-button class="gray">Registrácia</md-button>
+    </md-dialog-content>
+  </form>
+</md-dialog>
+</div>

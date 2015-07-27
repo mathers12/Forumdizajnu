@@ -39,13 +39,12 @@
         <md-icon md-svg-icon="./assets/svg/search.svg"></md-icon>
       </md-button>
 
-      <md-icon id="regLoginIcon" md-svg-icon="./assets/svg/login.svg"></md-icon>
-      <label>Prihlasenie</label>
+
+        <md-icon id="regLoginIcon" md-svg-icon="./assets/svg/login.svg"></md-icon>
+        <label style="cursor: pointer" ng-click="clickLogin($event)">Prihlasenie</label>
 
       <md-icon id="regPersonIcon" md-svg-icon="./assets/svg/person.svg"></md-icon>
-
-      <label>Registracia</label>
-
+      <label style="cursor: pointer" ng-click="clickRegister($event)">Registracia</label>
     </div>
   </md-toolbar>
 </div>
@@ -186,6 +185,6 @@
 <script type="text/javascript" src="client/specialists/specialists.js"></script>
 <script type="text/javascript" src="client/forum/forum.js"></script>
 <script type="text/javascript" src="client/articles/articles.js"></script>
-
+<script type="text/javascript" src="client/login/login.js"></script>
 </body>
 </html>

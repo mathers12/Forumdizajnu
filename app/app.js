@@ -5,6 +5,7 @@ var app = angular.module('forumDizajnu',
     'forumDizajnu.products',
     'forumDizajnu.articles',
     'forumDizajnu.forum',
+    'forumDizajnu.login',
     'forumDizajnu.specialists',
     'ngMaterial',
     'ui.router'
@@ -22,7 +23,7 @@ var app = angular.module('forumDizajnu',
 
 
 
-  app.controller('appController', function($scope,$timeout, $mdSidenav, $mdUtil, $log,$location) {
+  app.controller('appController', function($scope,$timeout, $mdSidenav, $mdUtil, $log,$location,$mdDialog) {
 
     $scope.categoryOn = true;
     $scope.categoryOff = false;
@@ -69,8 +70,23 @@ var app = angular.module('forumDizajnu',
         $scope.categoryOff = false;
         $scope.categoryDetails = true;
       }
-    }
+    };
 
+    $scope.clickLogin = function(ev) {
+      $mdDialog.show({
+        controller: "loginController",
+        templateUrl: 'client/login/login.html',
+        parent: angular.element(document.body),
+        targetEvent: ev
+      })
+    };
+
+
+
+    $scope.clickRegister = function()
+    {
+
+    };
     $scope.details = ["Prva","Druha","Tretia"];
 
 
