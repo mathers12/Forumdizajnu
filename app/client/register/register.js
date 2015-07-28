@@ -10,4 +10,8 @@ app.controller("registerController",function($scope,$mdDialog)
     $mdDialog.cancel();
   };
 
+  $scope.register = function(user)
+  {
+    console.log(user);
+  };
 });

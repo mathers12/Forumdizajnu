@@ -12,6 +12,10 @@ app.controller("loginController",function($scope,$mdDialog)
   };
 
 
+  $scope.login = function(user)
+  {
+    console.log("IDE TO");
+  };
 
   $scope.clickForgotPassword = function(ev)
   {

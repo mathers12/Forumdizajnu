@@ -1,6 +1,5 @@
 <div class="gridListdemoBasicUsage" flex="25">
-<md-dialog aria-label="Mango (Fruit)" class="white" style="font-size:17px;color:white;">
-  <form>
+<md-dialog aria-label="Mango (Fruit)" class="white">
     <md-toolbar >
       <div class="md-toolbar-tools " >
         <md-button style="position: absolute;right:5%" class="md-icon-button" ng-click="cancel()">
@@ -9,27 +8,33 @@
       </div>
     </md-toolbar>
 
-    <md-dialog-content layout="column" layout-align="center center" >
-      <form>
+    <md-dialog-content>
+      <div layout="column" layout-align="center center" >
+      <form ng-submit="login(user)">
       <md-input-container>
         <label style="color:black">E-mail</label>
-        <input type="email">
+        <input ng-model="user.email" type="email">
       </md-input-container>
 
 
       <md-input-container >
         <label>Heslo</label>
-        <input type="password">
+        <input ng-model="user.password" type="password">
       </md-input-container>
-      <md-button class="green">Prihlásiť sa</md-button>
+        <div layout="column" layout-align="center center" >
+
+        <md-button  class="green" >Prihlásiť sa</md-button>
       <br/>
+
+
         <label ng-click="clickForgotPassword($event)" style="cursor: pointer;color:black">
           Zabudli ste heslo?
       </label>
       <br/>
       <md-button class="gray">Registrácia</md-button>
+          </div>
       </form>
+      </div>
     </md-dialog-content>
-  </form>
 </md-dialog>
 </div>

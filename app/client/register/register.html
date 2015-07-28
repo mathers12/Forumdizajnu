@@ -10,49 +10,44 @@
 
       <md-dialog-content >
         <div layout="column" layout-align="center center" >
-        <form>
+        <form ng-submit="register(user)">
         <md-input-container >
           <label >Meno</label>
-          <input type="text"  />
+          <input ng-model="user.first_name" type="text"  />
         </md-input-container>
 
         <md-input-container >
           <label >Priezvisko</label>
-          <input type="text">
+          <input ng-model="user.last_name" type="text">
         </md-input-container>
 
         <md-input-container>
           <label >E-mail</label>
-          <input type="email">
+          <input ng-model="user.email" type="email">
         </md-input-container>
 
         <md-input-container >
           <label >Heslo</label>
-          <input type="password">
+          <input ng-model="user.password1" type="password">
         </md-input-container>
 
         <md-input-container>
           <label >Znova zadajte heslo</label>
-          <input type="password">
+          <input ng-model="user.password2" type="password">
         </md-input-container>
 
           <md-input-container >
             <label>Datum narodenia</label>
-            <input  type="date" ng-model="user.date_of_birth">
+            <input ng-model="user.date" type="date" ng-model="user.date_of_birth">
           </md-input-container>
-          <div layout="row" layout-align="center center">
-
-        <md-checkbox ng-model="user.male"  >
-            Muž
-          </md-checkbox>
-
-          <md-checkbox ng-model="user.female"  >
-            Žena
-          </md-checkbox>
-        </div>
+          <md-radio-group ng-model="user.gender">
+            <md-radio-button value="male" class="md-primary">Muž</md-radio-button>
+            <md-radio-button value="female">Žena</md-radio-button>
+          </md-radio-group>
 
           <div layout="row" layout-align="center center" >
-        <md-button style="margin-top:10%;" class="green">Zaregistrovať sa</md-button>
+
+        <md-button style="margin-top:10%;"  type="submit"  class="green">Zaregistrovať sa</md-button>
           </div>
         </form>
 
