@@ -4,10 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var mongoose = require("mongoose");
 var routes = require('./routes/index');
-var users = require('./routes/users');
-
+var auth = require("./auth/lib/auth");
+var fs = require("fs");
 var app = express();
 
 // view engine setup
@@ -23,7 +23,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/auth',auth);
+
+
+mongoose.connect('mongodb://127.0.0.1:27017/db');
+
+
+// load all mongoose models from models folder
+fs.readdirSync(__dirname + '/models').forEach(function (filename) {
+  if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

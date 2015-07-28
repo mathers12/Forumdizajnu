@@ -1,0 +1,11 @@
+{
+  "name": "Auth",
+  "version": "1.0.0",
+  "description": "Login, registration and verifying e-mail",
+  "main": "auth.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "forumDizajnu.sk",
+  "license": "ISC"
+}
