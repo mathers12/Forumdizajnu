@@ -6,10 +6,9 @@ html, body {
   padding: 0px;
 
 }
-
-md-input-container label
-{
-  color:white;
+md-input-container.md-default-theme label,input,
+md-input-container.md-default-theme .md-placeholder{
+  color:black;
 }
 md-toolbar
 {
