@@ -1,8 +1,18 @@
-<md-dialog>
-  <md-content>{{message}}</md-content>
-  <div class="md-actions">
-    <md-button ng-click="closeDialog()">
-      OK
-    </md-button>
-  </div>
-</md-dialog>
+<div class="gridListdemoBasicUsage" >
+  <md-dialog aria-label="Mango (Fruit)" class="white" >
+    <div>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <label>{{title}}</label>
+      </div>
+    </md-toolbar>
+    </div>
+    <md-dialog-content >
+      <div layout="column" layout-align="center center" >
+        <h3>{{message}}</h3>
+        <br/>
+        <md-button class="green" ng-click="closeDialog()">OK</md-button>
+      </div>
+    </md-dialog-content>
+  </md-dialog>
+</div>

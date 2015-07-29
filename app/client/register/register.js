@@ -12,14 +12,15 @@ app.controller("registerController",function($scope,$mdDialog,$resource)
 
 
   /*--Dialog message---*/
-  $scope.messageDialog = function(message,link)
+  $scope.messageDialog = function(message,success,title)
   {
     $mdDialog.show({
       controller: "messageDialogController",
       templateUrl: 'assets/messageDialog.tpl.html',
       locals: {
         message: message,
-        link: link
+        success: success,
+        title: title
       }
     });
   };
@@ -32,19 +33,19 @@ app.controller("registerController",function($scope,$mdDialog,$resource)
       /*--Registracia s rovnakym emailom--*/
       if (data.sameEmail)
       {
-        $scope.messageDialog("V systéme sa už nachádza klient s daným e-mailom!");
+        $scope.messageDialog(data.message,false,data.title);
       }
       /*--Registracia so zle opisanym heslom--*/
       else if (!data.comparePasswords)
       {
-        $scope.messageDialog("Zadané hesla nie sú rovnaké, opakujte akciu prosím!");
+        $scope.messageDialog(data.message,false,data.title);
       }
       /*--Uspesna registracia--*/
 
       else
       {
         /*SUCCESS*/
-        $scope.messageDialog("Pre úplne dokončenie registrácie, prosím potvrdťe verifikačný e-mail!");
+        $scope.messageDialog(data.message,true,data.title);
       }
     },function(err)
     {
@@ -57,18 +58,21 @@ app.controller("registerController",function($scope,$mdDialog,$resource)
   };
 });
 
-app.controller("messageDialogController",function($scope,$window,message,link)
+app.controller("messageDialogController",function($scope,$window,message,success,title,$mdDialog)
 {
   $scope.message = message;
+  $scope.title = title;
   $scope.closeDialog = function()
   {
-    if (link !== undefined)
+    if (success)
     {
-      $window.location.assign(link);
+      $mdDialog.show({
+        controller: "loginController",
+        templateUrl: 'client/login/login.html',
+        parent: angular.element(document.body)
+      })
     }
-    else
-    {
-      $window.location.reload();
-    }
+    else $mdDialog.cancel();
+
   };
 });

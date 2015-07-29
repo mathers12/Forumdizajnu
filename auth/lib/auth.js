@@ -82,7 +82,8 @@ var structureHtmlDataAndRender = function(req,res,id)
   {
     sendEmail(req.body['email'],html,params.email.subject); // Volanie funkcie na posielanie ver. emailu
 
-    res.send({comparePasswords: true,sameEmail: false});
+    res.send({comparePasswords: true,sameEmail: false,
+      message: params.register.success,title: params.register.successTitle});
   });
 }
 var saveToDB = function(req,res,mainAdmin)
@@ -261,20 +262,6 @@ var insertConfirmations = function(addressedId,createdId,request,res,role,email)
   })
 }
 
-/*--Znova poslanie emailu--*/
-router.post('/resend',function(req,res)
-{
-  mongoose.model('confirmations').find({_id: req.body['id']},{}).exec(function(err,user)
-  {
-    if (user.length)
-    {
-      mongoose.model('clients').populate(user, {path: 'addressedTo'}, function (err, client)
-      {
-        structureInvitationHtmlEmail(req.body['id'],req.body['addressedTo'],req.body['role'],client[0].addressedTo.email,req,res);
-      })
-    }
-  })
-});
 
 var structureInvitationHtmlEmail = function(confirmationId,addressedId,role,email,request,res)
 {
@@ -396,6 +383,7 @@ var sendEmail = function(email,html,emailSubject)
   }, function(error, response){  //callback
     if(error){
       console.log("Nastala chyba");
+      console.log(error);
 
     }
     else
@@ -497,6 +485,22 @@ var insertMainAdmin = function (email)
 }
 
 /* ---------------------ROUTES --------------------------*/
+
+
+/*--Znova poslanie emailu--*/
+router.post('/resend',function(req,res)
+{
+  mongoose.model('confirmations').find({_id: req.body['id']},{}).exec(function(err,user)
+  {
+    if (user.length)
+    {
+      mongoose.model('clients').populate(user, {path: 'addressedTo'}, function (err, client)
+      {
+        structureInvitationHtmlEmail(req.body['id'],req.body['addressedTo'],req.body['role'],client[0].addressedTo.email,req,res);
+      })
+    }
+  })
+});
 
 /*--Pozvanka pre admina/managera/klienta--*/
 router.post('/invitation',function(req,res)
@@ -658,7 +662,8 @@ router.post('/registration',function(req, res)
     if (users.length)
     {
       console.log("Same email");
-      res.send({sameEmail: true});
+      res.send({sameEmail: true,message: params.register.existEmail,
+        title: params.register.existEmailTitle});
     }
     /*--Ak e-mail nie je v DB--*/
     else
@@ -707,7 +712,8 @@ router.post('/registration',function(req, res)
       else
       {
         console.log("Not compare passwords");
-        res.send({sameEmail: false,comparePasswords: false});
+        res.send({sameEmail: false,comparePasswords: false,
+          message: params.register.matchPassword,title: params.register.matchPasswordTitle});
       }
     }
 

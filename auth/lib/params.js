@@ -7,16 +7,16 @@ module.exports =
 {
     SMTP:
     {
-        user: "dsoft.tesla@gmail.com",
+        user: "forumdizajnu@gmail.com",
         pass: "something001"
     },
     email:
     {
-        from: "Live My Way Ltd. <dsoft.tesla@gmail.com>",
+        from: "Forumdizajnu.sk <forumdizajnu@gmail.com>",
         subject: "Verifikacia e-mailu",
-        subjectInvitation: 'Pozvánka od systému T-res',
+        subjectInvitation: 'Pozvánka od systému Forumdizajnu.sk',
         subjectForgotPassword: "Resetovanie hesla",
-        footer: "dSoft Solutions s.r.o",
+        footer: "Forumdizajnu.sk",
         html: {
             titleMale: "Dobrý deň pán",
             titleFemale: "Dobrý deň pani",
@@ -44,15 +44,17 @@ module.exports =
     },
     register:
     {
-        approving: "<p>Registracia bola skoro dokoncena. Potvrdte verifikacny e-mail prosim.</p>",
-        success: "<p>Registracia bola uspesne dokoncena, mozete sa prihlasit.</p>",
-        existEmail: "Zadana e-mailova adresa uz existuje",
-        matchPassword: "Nezhoduju sa Vam hesla"
+        success: "Na úplne dokončenie registrácie, prosím potvrdťe verifikačný e-mail.",
+        existEmail: "Zadaná e-mailová adresa už existuje, použite inú prosím.",
+        matchPassword: "Prepáčte, ale nezhodujú sa Vám heslá.",
+        successTitle: "Úspešne zaregistrovanie",
+        existEmailTitle: "Existujúci e-mail",
+        matchPasswordTitle: "Nezhoda hesiel"
     },
     login:
     {
-        verifiedEmail: "E-malova adresa este nie je potvrdena, prosim potvrdte ju najskor",
-            badUserOrPass: "Neplatne uzivatelske meno alebo heslo"
+        verifiedEmail: "E-mailová adresa ešte stále nie je verifikovaná.",
+        badUserOrPass: "Neplatné e-mail alebo heslo"
     }
 
 };
