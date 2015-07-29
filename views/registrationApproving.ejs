@@ -1,0 +1,42 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tbody><tr>
+        <td style="padding:20px 11px 40px 11px">
+            <%- include header.ejs%>
+            <table width="630" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto;background-color:#f1f1f1">
+                <tbody><tr>
+                    <td>
+                        <table width="490" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto;background-color:#f1f1f1;border-top:1px solid #cccccc">
+                            <tbody><tr>
+                                <td width="490" align="left" style="padding:0 0 22px 0">
+                                    <div style="font-family:Lucida Grande,Lucida Sans,Lucida Sans Unicode,Arial,Helvetica,Verdana,sans-serif;color:#333333;font-size:12px;line-height:1.25em"><br><br>
+                                        <%if (gender == "Muž"){%>
+                                        <p><%= titleMale %>
+                                            <%}else{%>
+                                            <%= titleFemale%>
+                                            <%}%>
+                                        <b><%= htmlAddress %></b>,</p>
+                                        <p><%= message %> <b><%= subject %>!</b></p><br/>
+                                        <p><h4><a href="<%= link %>"><%= button %></a></h4></p>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr><td style="padding-top:40px"><img src="cid:footer-shadow" alt="" width="630" height="21" border="0" style="display:block;margin:0"></td></tr>
+                </tbody></table>
+            <table width="490" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto">
+                <tbody><tr><td style="padding:20px 20px 10px 0">
+                        <div style="font-family:Geneva,Verdana,Arial,Helvetica,sans-serif;font-size:12px;line-height:1.34em;color:#999999">
+                            <%- include footer.ejs%>
+                        </div>
+
+                    </td></tr>
+                <tr><td></td></tr>
+                </tbody></table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+

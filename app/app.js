@@ -10,7 +10,8 @@ var app = angular.module('forumDizajnu',
     'forumDizajnu.register',
     'forumDizajnu.forgot_password',
     'ngMaterial',
-    'ui.router'
+    'ui.router',
+    'ngResource'
   ])
   .config(function($mdThemingProvider,$locationProvider,$urlRouterProvider) {
     $mdThemingProvider.theme('themeProvider')

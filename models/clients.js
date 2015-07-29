@@ -10,7 +10,7 @@ var clientsSchema = new Schema({
     email: String,
     verifiedEmail: Boolean,
     date_of_birth: Date,
-    sex: String,
+    gender: String,
     profile: [
         {
             type: Schema.ObjectId,

@@ -7,12 +7,12 @@ module.exports =
 {
     SMTP:
     {
-        user: "info@publishart.eu",
-        pass: "publishart@2714info2517"
+        user: "dsoft.tesla@gmail.com",
+        pass: "something001"
     },
     email:
     {
-        from: "Live My Way Ltd. <info@publishart.eu>",
+        from: "Live My Way Ltd. <dsoft.tesla@gmail.com>",
         subject: "Verifikacia e-mailu",
         subjectInvitation: 'Pozvánka od systému T-res',
         subjectForgotPassword: "Resetovanie hesla",

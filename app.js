@@ -34,6 +34,7 @@ fs.readdirSync(__dirname + '/models').forEach(function (filename) {
   if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename);
 });
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
