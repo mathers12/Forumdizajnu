@@ -45,11 +45,13 @@ var insertClientToDb = function(mainAdmin,req,res)
     {
       firstName: req.body['firstName'],
       lastName: req.body['lastName'],
-      password: req.body['password'],
+      password: req.body['password1'],
       email: req.body['email'],
       verifiedEmail: false,
       date_of_birth: req.body['date_of_birth'],
       gender: req.body['gender'],
+      /*AK je to hlavny admin, tak mu pridaj client rolu
+      * ak to je len client, tak rolu client len*/
       roles: (mainAdmin)? ['admin','client']:getRole(req.body['role'])
     }
   );
@@ -99,7 +101,7 @@ var saveToDB = function(req,res,mainAdmin)
         console.log("AKTUALIZUJEM HLAVNEHO ADMINA");
         user.firstName = req.body['firstName'];
         user.lastName = req.body['lastName'];
-        user.password = req.body['password'];
+        user.password = req.body['password1'];
         user.gender = req.body['gender'];
         user.verifiedEmail = false;
         user.date_of_birth = req.body['date_of_birth'];
@@ -325,37 +327,6 @@ var structureInvitationHtmlEmail = function(confirmationId,addressedId,role,emai
 
 }
 
-/*--Spracovanie admin/manager/client emailu--*/
-var processingInvitation = function(email,role,id,request,res) {
-  /*--Ziskame ID posielatela--*/
-  mongoose.model('clients').find({email: request.body['fromEmail']},{},function(err,client)
-  {
-    if (client.length)
-    {
-      insertConfirmations(id,client[0]._id,request,res,role,email);
-    }
-    /*--Ak nemozme najst udaje odosielatela, tak ide o hlavneho admina este neregistrovaneho--*/
-    /*else
-     {
-     var Clients = mongoose.model('clients');
-     var clientsSchema = Clients({
-     email: request.body['fromEmail'],
-     verifiedEmail: true,
-     roles: ['admin']
-     });
-     clientsSchema.save(function(err,user)
-     {
-     if (!err)
-     {
-     insertConfirmations(id,user._id,request,res,role,email);
-     }
-     });
-     }*/
-  });
-
-
-}
-
 
 var sendEmail = function(email,html,emailSubject)
 {
@@ -410,8 +381,10 @@ passport.deserializeUser(function(user,done)
 /* ---------------------PASSPORT LOCAL--------------------------*/
 passport.use(new passportLocal.Strategy({usernameField: "email", passwordField: "password"},function(email,password,done)
 {
+  console.log("PASSPORT LOCAL");
   mongoose.model('clients').find({email: email},{},function(err,user)
   {
+    console.log(user);
     /*--Udaje hlavneho admina--*/
     var options = {
       user: email,
@@ -487,100 +460,6 @@ var insertMainAdmin = function (email)
 /* ---------------------ROUTES --------------------------*/
 
 
-/*--Znova poslanie emailu--*/
-router.post('/resend',function(req,res)
-{
-  mongoose.model('confirmations').find({_id: req.body['id']},{}).exec(function(err,user)
-  {
-    if (user.length)
-    {
-      mongoose.model('clients').populate(user, {path: 'addressedTo'}, function (err, client)
-      {
-        structureInvitationHtmlEmail(req.body['id'],req.body['addressedTo'],req.body['role'],client[0].addressedTo.email,req,res);
-      })
-    }
-  })
-});
-
-/*--Pozvanka pre admina/managera/klienta--*/
-router.post('/invitation',function(req,res)
-{
-  var hasAllRoles = false;
-  /*--Osetrime, ci uz email nie je v DB--*/
-  mongoose.model('clients').find({email: req.body['email'], roles: req.body['role']},{},function(err,data)
-  {
-    /*--Ak uz ma tu rolu co mu chce admin priradit--*/
-    if (data.length) {
-      /*--Pri adminovi moze mat email 3 ucty= admin,manager,klient--*/
-      if (req.body['fromRole'] === 'admin') {
-        mongoose.model('clients').find({
-          email: req.body['email'],
-          $and: [{roles: 'admin'}, {roles: 'manager'}, {roles: 'client'}]
-        }, {}, function (err, user) {
-          /*--Skontrolujeme ci nahodou uz nema vsetky roly--*/
-          if (user.length) {
-            console.log("ALL ROLES "+user);
-            hasAllRoles = true;
-            insertClientAndProcessing(hasAllRoles,user, req, res);
-          }
-          /*--Nema teda vsetky roly, tak zamietneme tu vybranu rolu--*/
-          else {
-            res.send({hasAllRoles: false, sameRole: true,sentInvitation: false});
-          }
-        });
-
-      }
-      else if (req.body['fromRole'] === 'manager') {
-        mongoose.model('clients').find({email: req.body['email'], $and: [{roles: 'manager'}, {roles: 'client'}]
-        }, {}, function (err, user) {
-          if (user.length) {
-            hasAllRoles = true;
-            insertClientAndProcessing(hasAllRoles,user,req, res);
-          }
-          else {
-            res.send({hasAllRoles: false, sameRole: true,sentInvitation: false});
-          }
-        });
-      }
-    }
-    /*--Ak nema este ziadnu rolu, tak v pohode pokracuj--*/
-    else
-    {
-      console.log("NENASLI SME HO, NEMA TU ROLU");
-      mongoose.model('clients').find({email: req.body['email']},{},function(err,user)
-      {
-        insertClientAndProcessing(hasAllRoles,user,req,res);
-      });
-
-
-    }
-  });
-});
-/*ClientSchema.findByIdAndUpdate(
- data._id,
- {$push: {"roles": req.body['role']}},
- {safe: true, upsert: true},
- function(err) {
- if (!err)
- {*/
-/*-----------------------GET-INVITATION---------------------------*/
-router.get('/invitation',function(req,res)
-{
-  console.log("INVITATION GET");
-  mongoose.model('clients').findById(req.query.id,{},function(err,user)
-  {
-    /*--Ak chceme dat rolu neregistrovanemu klientovi--*/
-    if (user)
-    {
-      res.redirect('/invitation?id='+user._id+"&role="+req.query.role+"&answer="+req.query.answer);
-    }
-    /*--Zadanie ID neexistuje v DB--*/
-    else
-    {
-      res.send(404);
-    }
-  });
-});
 /* ---------------------GET-VERIFY-EMAIL--------------------------*/
 router.get('/verify',function(req,res)
 {
@@ -598,8 +477,6 @@ router.get('/verify',function(req,res)
 
 });
 
-
-
 router.get('/getVerifyMessage',function(req,res)
 {
   mongoose.model('clients').findById(req.query.verify_id,{},function(err,user)
@@ -616,7 +493,6 @@ router.get('/getVerifyMessage',function(req,res)
   });
 });
 
-/* ---------------------POST-REGISTRATION--------------------------*/
 
 
 router.post("/forgotPassword",function(req,res)
@@ -684,8 +560,8 @@ router.post('/registration',function(req, res)
             console.log("JE TO HLAVNY ADMIN");
             mainAdmin = true;
             bcrypt.genSalt(10, function(err, salt) {
-              bcrypt.hash(req.body['password'], salt, function(err, hash) {
-                req.body['password'] = req.body['password2'] = hash;
+              bcrypt.hash(req.body['password1'], salt, function(err, hash) {
+                req.body['password1'] = req.body['password2'] = hash;
                 /*--Volanie funkcie na ukladanie do DB--*/
                 console.log("It is an Admin");
                 saveToDB(req,res,mainAdmin);
@@ -696,8 +572,8 @@ router.post('/registration',function(req, res)
           {
             //V pohode registrujeme noveho uzivatela
             bcrypt.genSalt(10, function(err, salt) {
-              bcrypt.hash(req.body['password'], salt, function(err, hash) {
-                req.body['password'] = req.body['password2'] = hash;
+              bcrypt.hash(req.body['password1'], salt, function(err, hash) {
+                req.body['password1'] = req.body['password2'] = hash;
                 /*--Volanie funkcie na ukladanie do DB--*/
                 console.log("New client");
                 saveToDB(req,res,mainAdmin);
@@ -738,9 +614,7 @@ router.get('/loggedin', function(req, res) {
 /* ---------------------POST-LOGIN--------------------------*/
 router.post('/',passport.authenticate("local"),function(req,res)
 {
-  /*--Presmerovanie na URL, kde sme naposledy chceli ist--*/
   res.send(req.user);
-  res.redirect(req.body['link']);
 });
 
 

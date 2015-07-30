@@ -30,34 +30,34 @@ app.controller("registerController",function($scope,$mdDialog,$resource)
 
   $scope.register = function(user)
   {
-    var Register = $resource('/auth/registration');
-    Register.save(user, function (data)
+    if (user.password1 !== user.password2)
     {
-      /*--Registracia s rovnakym emailom--*/
-      if (data.sameEmail)
-      {
-        $scope.messageDialog(data.message,false,data.title);
-      }
-      /*--Registracia so zle opisanym heslom--*/
-      else if (!data.comparePasswords)
-      {
-        $scope.messageDialog(data.message,false,data.title);
-      }
-      /*--Uspesna registracia--*/
+      alert("NOT CORRECT");
+    }
+    else {
 
-      else
-      {
-        /*SUCCESS*/
-        $scope.messageDialog(data.message,true,data.title);
-      }
-    },function(err)
-    {
-      if (err)
-      {
-        $scope.messageDialog("Ooops nastala chyba, prosím opakujte akciu!");
-      }
-    });
+      var Register = $resource('/auth/registration');
+      Register.save(user, function (data) {
+        /*--Registracia s rovnakym emailom--*/
+        if (data.sameEmail) {
+          $scope.messageDialog(data.message, false, data.title);
+        }
+        /*--Registracia so zle opisanym heslom--*/
+        else if (!data.comparePasswords) {
+          $scope.messageDialog(data.message, false, data.title);
+        }
+        /*--Uspesna registracia--*/
 
+        else {
+          /*SUCCESS*/
+          $scope.messageDialog(data.message, true, data.title);
+        }
+      }, function (err) {
+        if (err) {
+          $scope.messageDialog("Ooops nastala chyba, prosím opakujte akciu!");
+        }
+      });
+    }
   };
 });
 

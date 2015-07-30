@@ -1,7 +1,7 @@
-var app = angular.module("forumDizajnu.login",["ngMaterial","ui.router"]);
+var app = angular.module("forumDizajnu.login",["ngMaterial","ui.router","ngResource"]);
 
 
-app.controller("loginController",function($scope,$mdDialog)
+app.controller("loginController",function($scope,$mdDialog,$resource)
 {
 
 
@@ -17,8 +17,25 @@ app.controller("loginController",function($scope,$mdDialog)
 
   $scope.login = function(user)
   {
-    console.log("IDE TO");
-  };
+    var data = {
+      email: user.email,
+      password: user.password
+    };
+
+    var Login = $resource('/auth/');
+    Login.save(data,function(user)
+    {
+      console.log(user);
+      /*Neplatne meno alebo heslo, reload stranky login*/
+    },function(err)
+    {
+      if (err.status == 401)
+      {
+        $scope.messageDialog("/login","Neplatné meno alebo heslo!");
+      }
+    });
+
+};
 
   $scope.clickForgotPassword = function(ev)
   {
@@ -28,6 +45,20 @@ app.controller("loginController",function($scope,$mdDialog)
       parent: angular.element(document.body),
       targetEvent: ev
     })
+  };
+
+  /*--Dialog message---*/
+  $scope.messageDialog = function(message,success,title)
+  {
+    $mdDialog.show({
+      controller: "messageDialogController",
+      templateUrl: 'assets/messageDialog.tpl.html',
+      locals: {
+        message: message,
+        success: success,
+        title: title
+      }
+    });
   };
 
 });
