@@ -3,6 +3,9 @@ var app = angular.module("forumDizajnu.login",["ngMaterial","ui.router"]);
 
 app.controller("loginController",function($scope,$mdDialog)
 {
+
+
+
   $scope.hide = function () {
     $mdDialog.hide();
   };
@@ -26,4 +29,5 @@ app.controller("loginController",function($scope,$mdDialog)
       targetEvent: ev
     })
   };
+
 });

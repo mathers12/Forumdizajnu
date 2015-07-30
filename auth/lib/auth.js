@@ -584,16 +584,14 @@ router.get('/invitation',function(req,res)
 /* ---------------------GET-VERIFY-EMAIL--------------------------*/
 router.get('/verify',function(req,res)
 {
-  console.log("Verify");
   mongoose.model('clients').findById(req.query.id,{}, function(err, user)
   {
-
     /*--Najdeme klienta s danym verify ID--*/
     if (user)
     {
       user.verifiedEmail = true;
       user.save();
-      res.redirect('/login?verify_id='+req.query.id);
+      res.redirect("/#home?verify_id="+req.query.id);
     }
     else res.send(404);
   });
@@ -609,7 +607,7 @@ router.get('/getVerifyMessage',function(req,res)
     /*--Ak to je dany uzivatel s verifikovanym IDckom--*/
     if (user)
     {
-      res.send(200);
+      res.send({message: params.login.verifiedEmail, title: params.login.verifiedEmailTitle});
     }
     else
     {

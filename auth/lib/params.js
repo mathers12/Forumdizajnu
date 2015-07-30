@@ -53,8 +53,10 @@ module.exports =
     },
     login:
     {
-        verifiedEmail: "E-mailová adresa ešte stále nie je verifikovaná.",
-        badUserOrPass: "Neplatné e-mail alebo heslo"
+        verifiedEmail: "E-mailová adresa bola úspešné verifikovaná. Teraz sa môžete prihlásiť.",
+        notVerifiedEmail: "Prepáčte ale daná e-mailová adresa ešte nie je verifikovaná.",
+        badUserOrPass: "Neplatné e-mail alebo heslo",
+        verifiedEmailTitle: "Verifikácia e-mailu"
     }
 
 };

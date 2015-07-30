@@ -107,12 +107,13 @@ app.directive("scroll", function ($window) {
 });
 
 
-  app.controller('appController', function($scope, $timeout, $mdSidenav, $mdUtil, $log, $location, $mdDialog) {
+  app.controller('appController', function($scope, $timeout, $mdSidenav, $mdUtil, $log, $location, $mdDialog,$resource) {
 
     $scope.categoryOn = true;
     $scope.categoryOff = false;
     $scope.categoryDetails = true;
-    //$scope.toggleLeft = buildToggler('left');
+    $scope.toggleLeft = buildToggler('left');
+
 
 
     function buildToggler(navID) {
@@ -227,19 +228,47 @@ app.directive("scroll", function ($window) {
           imgSrc: "./assets/pictures/forum.jpg"
         }
       ]
-
-
-
-    /* Oznaceny tab po zadani url */
-    $scope.urlPath = $location.path().replace("/","");
-    for(var i = 0; i< $scope.tabsData.length; i++)
+    var init = function()
     {
-      if ($scope.tabsData[i].hrefName == $scope.urlPath)
+      /*--Ak  uzivatel klikol na verifikaciu, vidime ?verify_id=123--*/
+      if ($location.search().verify_id !== undefined)
       {
-        $scope.tabValue = i;
+        var id = $location.search().verify_id;
+        var User_id = $resource('/auth/getVerifyMessage');
+        User_id.get({verify_id: id},function (data) {
+          $scope.messageDialog(data.message,true,data.title);
+        },function(err)
+        {
+
+        });
       }
 
-    }
+      /* Oznaceny tab po zadani url */
+      $scope.urlPath = $location.path().replace("/","");
+      for(var i = 0; i< $scope.tabsData.length; i++)
+      {
+        if ($scope.tabsData[i].hrefName == $scope.urlPath)
+        {
+          $scope.tabValue = i;
+        }
 
+      }
+    };
+
+    /*--Dialog message---*/
+    $scope.messageDialog = function(message,success,title)
+    {
+      $mdDialog.show({
+        controller: "messageDialogController",
+        templateUrl: 'assets/messageDialog.tpl.html',
+        locals: {
+          message: message,
+          success: success,
+          title: title
+        }
+      });
+    };
+
+init();
   });
 
