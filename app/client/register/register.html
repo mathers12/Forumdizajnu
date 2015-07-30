@@ -13,37 +13,38 @@
         <form ng-submit="register(user)">
         <md-input-container >
           <label >Meno</label>
-          <input ng-model="user.firstName" type="text"  />
+          <input ng-model="user.firstName" type="text" required/>
+
         </md-input-container>
 
         <md-input-container >
           <label >Priezvisko</label>
-          <input ng-model="user.lastName" type="text">
+          <input ng-model="user.lastName" type="text" required>
         </md-input-container>
 
         <md-input-container>
           <label >E-mail</label>
-          <input ng-model="user.email" type="email">
+          <input ng-model="user.email" type="email" required>
         </md-input-container>
 
         <md-input-container >
           <label >Heslo</label>
-          <input ng-model="user.password1" type="password">
+          <input ng-model="user.password1" type="password" required>
         </md-input-container>
 
         <md-input-container>
           <label >Znova zadajte heslo</label>
-          <input ng-model="user.password2" type="password">
+          <input ng-model="user.password2" type="password" required>
         </md-input-container>
 
           <md-input-container >
             <label>Datum narodenia</label>
-            <input type="date" ng-model="user.date_of_birth">
+            <input type="date" ng-model="user.date_of_birth" required>
           </md-input-container>
           <md-radio-group ng-model="user.gender">
             <md-radio-button value="Muž" class="md-primary">Muž</md-radio-button>
             <md-radio-button value="Žena">Žena</md-radio-button>
-          </md-radio-group>
+          </md-radio-group >
 
           <div layout="row" layout-align="center center" >
 

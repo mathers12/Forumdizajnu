@@ -20,8 +20,10 @@ md-toolbar
 {
   margin-right: 100px;
 }
-
-
+.cursorPointer
+{
+  cursor:pointer;
+}
 #regLoginIcon,#regPersonIcon
 {
   margin-right: 5px;

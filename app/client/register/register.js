@@ -2,6 +2,9 @@ var app = angular.module("forumDizajnu.register",["ngMaterial","ui.router"]);
 
 app.controller("registerController",function($scope,$mdDialog,$resource)
 {
+  $scope.user = {
+    gender: "Muž"
+  };
   $scope.hide = function () {
     $mdDialog.hide();
   };
