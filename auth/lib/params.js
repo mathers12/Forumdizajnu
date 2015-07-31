@@ -46,10 +46,8 @@ module.exports =
     {
         success: "Na úplne dokončenie registrácie, prosím potvrdťe verifikačný e-mail.",
         existEmail: "Zadaná e-mailová adresa už existuje, použite inú prosím.",
-        matchPassword: "Prepáčte, ale nezhodujú sa Vám heslá.",
         successTitle: "Úspešne zaregistrovanie",
-        existEmailTitle: "Existujúci e-mail",
-        matchPasswordTitle: "Nezhoda hesiel"
+        existEmailTitle: "Existujúci e-mail"
     },
     login:
     {

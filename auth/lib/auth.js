@@ -38,7 +38,7 @@ var getRole = function(role)
   }
 };
 
-var insertClientToDb = function(mainAdmin,req,res)
+var insertClientToDb = function(req,res)
 {
   var addUserSchema = mongoose.model('clients');
   var addUser = new addUserSchema(
@@ -50,9 +50,7 @@ var insertClientToDb = function(mainAdmin,req,res)
       verifiedEmail: false,
       date_of_birth: req.body['date_of_birth'],
       gender: req.body['gender'],
-      /*AK je to hlavny admin, tak mu pridaj client rolu
-      * ak to je len client, tak rolu client len*/
-      roles: (mainAdmin)? ['admin','client']:getRole(req.body['role'])
+      roles: getRole(req.body['role'])
     }
   );
   addUser.save(function (err, data) {
@@ -84,43 +82,12 @@ var structureHtmlDataAndRender = function(req,res,id)
   {
     sendEmail(req.body['email'],html,params.email.subject); // Volanie funkcie na posielanie ver. emailu
 
-    res.send({comparePasswords: true,sameEmail: false,
+    res.send({sameEmail: false,
       message: params.register.success,title: params.register.successTitle});
   });
 }
-var saveToDB = function(req,res,mainAdmin)
+var saveToDB = function(req,res)
 {
-  /*--Ak to je hlavny admin--*/
-  if (mainAdmin)
-  {
-    mongoose.model('clients').findOne({email: req.body['email']},{},function(err,user)
-    {
-      /*--Ak uz je hlavny admin v databaze--*/
-      if (user)
-      {
-        console.log("AKTUALIZUJEM HLAVNEHO ADMINA");
-        user.firstName = req.body['firstName'];
-        user.lastName = req.body['lastName'];
-        user.password = req.body['password1'];
-        user.gender = req.body['gender'];
-        user.verifiedEmail = false;
-        user.date_of_birth = req.body['date_of_birth'];
-        user.roles = (user.roles === undefined) ? ["admin","client"] : ["client"];
-
-        user.save(function(err)
-        {
-          structureHtmlDataAndRender(req,res,user._id);
-        });
-      }
-      /*--Ak hlavny admin este nie je v databaze--*/
-      else
-      {
-        insertClientToDb(mainAdmin,req,res);
-      }
-    });
-  }
-  else
-  {
     /*--otestujeme, ci 0klient uz nema nejaku rolu a ak ano, tak pridame mu dalsiu rolu--*/
     mongoose.model('clients').findOne({email: req.body['email']},{},function(err,user)
     {
@@ -132,16 +99,15 @@ var saveToDB = function(req,res,mainAdmin)
         }
         else
         {
-          insertClientToDb(mainAdmin,req,res);
+          insertClientToDb(req,res);
         }
       }
       else
       {
-        insertClientToDb(mainAdmin,req,res);
+        insertClientToDb(req,res);
       }
     });
 
-  }
 }
 
 var insertOtherRoleToDb = function(client,req,res)
@@ -157,7 +123,7 @@ var insertOtherRoleToDb = function(client,req,res)
   });
 }
 
-var comparePassword = function(mainAdmin,password,hash,verifiedEmail,meno,priezvisko,role,email,id,done)
+var comparePassword = function(password,hash,verifiedEmail,meno,priezvisko,role,email,id,done)
 {
   bcrypt.compare(password, hash, function (err, res) {
     /*--Ak heslo suhlasi s hashom--*/
@@ -180,152 +146,12 @@ var comparePassword = function(mainAdmin,password,hash,verifiedEmail,meno,priezv
     /*Ak heslo nesuhlasi s hashom*/
     else
     {
-      /*--Je to hlavny admin--*/
-      if (mainAdmin)
-      {
-        var ROLE = (role.length)?role: ['admin'];
-        done(null,{email: email, firstName: meno, lastName: priezvisko, role: ROLE, id: id});
-
-      }
-      else
-      {
         done(null,false);
-      }
     }
   });
 }
 
-var checkSentInvitation = function(client_id,client_email,role,req,res)
-{
-  mongoose.model('confirmations').findOne({addressedTo: client_id, role: role},{},function(err,user)
-  {
-    /*--Ak uz mu bola poslana pozvanka, tak zamietni dalsie posielanie--*/
-    if (user)
-    {
-      res.send({hasAllRoles: false, sameRole: false,sentInvitation: true});
-    }
-    else
-    {
-      processingInvitation(client_email,role,client_id,req,res);
-    }
-  });
-}
 
-var insertClientAndProcessing = function(hasAllRoles,client,req,res)
-{
-  var roles = (client.length)?client[0].roles:0;
-  var ClientSchema = mongoose.model('clients');
-
-  if (hasAllRoles)
-  {
-    res.send({hasAllRoles: true,sameRole: false,sentInvitation: false});
-  }
-  /*--Klient ma aspon 1 rolu--*/
-  else if (roles)
-  {
-    console.log("KLIENT MA ASPON 1 ROLU");
-    /*--Skontrolujeme ci uz mu nebola poslana pozvanka--*/
-    checkSentInvitation(client[0]._id,client[0].email,req.body['role'],req,res);
-  }
-  /*Klient nema ziadnu rolu*/
-  else
-  {
-    var newClient = new ClientSchema({
-      email: req.body['email']
-    });
-    newClient.save(function(err,newUser)
-    {
-      if (!err)
-      {
-        processingInvitation(newUser.email,req.body['role'],newUser._id,req,res);
-      }
-    });
-  }
-}
-
-var insertConfirmations = function(addressedId,createdId,request,res,role,email)
-{
-  var Confirmations = mongoose.model('confirmations');
-
-  /*--Vlozime udaje do kolekcie Confirmations--*/
-  var confirmationSchema = new Confirmations({
-    addressedTo: addressedId,
-    state: 'V stave prijatia',
-    role: request.body['role'],
-    createdBy: createdId
-
-  });
-  confirmationSchema.save(function(err,confirmation)
-  {
-    if (!err)
-    {
-      structureInvitationHtmlEmail(confirmation._id,addressedId,role,email,request,res);
-    }
-  })
-}
-
-
-var structureInvitationHtmlEmail = function(confirmationId,addressedId,role,email,request,res)
-{
-  var linkAccept = 'http://' + request.get('host') + '/auth/invitation?id=' + addressedId+"&role="+role+"&answer=accept";
-  var linkReject = 'http://' + request.get('host') + '/auth/invitation?id=' + addressedId+"&role="+role+"&answer=reject";
-
-  mongoose.model('clients').find({email: request.body['fromEmail']},{},function(err,user)
-  {
-    if (user)
-    {
-      var roleName = "";
-      switch(role)
-      {
-        case 'admin':
-          roleName = params.email.htmlInvitation.messageAdmin;
-          break;
-        case 'manager':
-          roleName = params.email.htmlInvitation.messageManager;
-          break;
-        case 'client':
-          roleName = params.email.htmlInvitation.messageClient;
-          break;
-      }
-      /*--Udaje pre E-mail--*/
-      var htmlData = {
-        linkAccept: linkAccept,
-        linkReject: linkReject,
-        title: params.email.htmlInvitation.title,
-        role: role,
-        user: (user[0].firstName === undefined)?user[0].email:user[0].firstName+" "+user[0].lastName+" ["+user[0].email+"]",
-        invite: params.email.htmlInvitation.invite,
-        roleName: roleName,
-        message: params.email.htmlInvitation.message,
-        subject: params.email.htmlInvitation.subject,
-        buttonAccept: params.email.htmlInvitation.buttonAccept,
-        buttonReject: params.email.htmlInvitation.buttonReject,
-        footer: params.email.footer,
-        emailSubject: params.email.subject
-      };
-
-      /*--Ukladame text do DESCRIPTION CONFIRMATIONS--*/
-      mongoose.model('confirmations').findOne({_id: confirmationId},{},function(err,confirmation)
-      {
-        confirmation.description = htmlData.title+htmlData.invite+htmlData.user+htmlData.message+roleName;
-        confirmation.save(function(err)
-        {
-          if (!err)
-          {
-            //RENDEROVANIE
-            res.render('invitation', htmlData, function (err, html) {
-              /*--Posielanie HTML emailu--*/
-              sendEmail(email, html, params.email.subjectInvitation);
-              res.send({hasAllRoles: false, sameRole: false,sentInvitation: false});
-            });
-          }
-        })
-
-      });
-    }
-  });
-
-}
 
 
 var sendEmail = function(email,html,emailSubject)
@@ -385,77 +211,23 @@ passport.use(new passportLocal.Strategy({usernameField: "email", passwordField: 
   mongoose.model('clients').find({email: email},{},function(err,user)
   {
     console.log(user);
-    /*--Udaje hlavneho admina--*/
-    var options = {
-      user: email,
-      pass: password
-    };
     /*--Ak sa email nachadza v DB--*/
     if (user.length)
     {
-      var mainAdmin = false;
-      /*--Testujeme ci to je hlavny admin--*/
-      mongoose.createConnection(uri,options,function(err)
-      {
-        /*--Nie je to hlavny admin, bude to client,admin alebo manager--*/
-        if (err)
-        {
-          comparePassword(mainAdmin,password, user[0].password, user[0].verifiedEmail, user[0].firstName,
+          comparePassword(password, user[0].password, user[0].verifiedEmail, user[0].firstName,
             user[0].lastName, user[0].roles, email,user[0]._id, done);
-        }
-        /*--Je to hlavny admin, ale pozrieme sa ci nie je aj s emailom v DB --*/
-        else
-        {
-          mainAdmin = true;
-          console.log("Je to hlavny admin");
-          comparePassword(mainAdmin,password, user[0].password, user[0].verifiedEmail, user[0].firstName,
-            user[0].lastName, user[0].roles, email,user[0]._id, done);
-        }
-      });
     }
-    /*--Bude to potom hlavny admin alebo neplatny email--*/
+
     else
     {
-      /*--Testujeme ci to nie je hlavny admin--*/
-      mongoose.createConnection(uri,options,function(err,user)
-      {
-        /*--Bude to neplatny email--*/
-        console.log(err);
-        if (err)
-        {
           console.log("Je to neplatny email");
           done(null,false);
-        }
-        /*--Uspesnie prihlasenie HLAVNEHO ADMINA--*/
-        else
-        {
-          console.log("Je to hlavny admin");
-          insertMainAdmin(email); //Vkladam do DB kvoli tomu lebo nema este ucet
-          done(null,{email: email,role: ['admin'],verifiedEmail: true});
-        }
-      });
     }
 
   });
 
 }));
 
-var insertMainAdmin = function (email)
-{
-  var Clients = mongoose.model('clients');
-  var clientsSchema = Clients({
-    email: email,
-    verifiedEmail: true,
-    roles: ['admin']
-  });
-  clientsSchema.save(function(err,user)
-  {
-    if (!err)
-    {
-      console.log("OK");
-    }
-  });
-}
 
 /* ---------------------ROUTES --------------------------*/
 
@@ -535,61 +307,23 @@ router.post('/registration',function(req, res)
     /*--Ak uz je e-mail v DB--*/
     if (users.length)
     {
-      console.log("Same email");
       res.send({sameEmail: true,message: params.register.existEmail,
         title: params.register.existEmailTitle});
     }
     /*--Ak e-mail nie je v DB--*/
     else
     {
-      /*--Skontrolujem zhodu hesiel a ukladam do DB--*/
-      if (req.body['password1'] == req.body['password2'])
-      {
-        /*--Udaje hlavneho admina--*/
-        var options = {
-          user: req.body['email'],
-          pass: req.body['password1']
-        };
-
-        /*--Pozriem sa do DB ci nejdem registrovat hlavny admin email--*/
-        mongoose.createConnection(uri,options,function(err)
-        {
-          var mainAdmin = false;
-          if (!err)
-          {
-            console.log("JE TO HLAVNY ADMIN");
-            mainAdmin = true;
-            bcrypt.genSalt(10, function(err, salt) {
-              bcrypt.hash(req.body['password1'], salt, function(err, hash) {
-                req.body['password1'] = req.body['password2'] = hash;
-                /*--Volanie funkcie na ukladanie do DB--*/
-                console.log("It is an Admin");
-                saveToDB(req,res,mainAdmin);
-              });
-            });
-          }
-          else
-          {
+            console.log("NOVY KLIENT");
             //V pohode registrujeme noveho uzivatela
             bcrypt.genSalt(10, function(err, salt) {
               bcrypt.hash(req.body['password1'], salt, function(err, hash) {
                 req.body['password1'] = req.body['password2'] = hash;
                 /*--Volanie funkcie na ukladanie do DB--*/
                 console.log("New client");
-                saveToDB(req,res,mainAdmin);
+                saveToDB(req,res);
               });
             });
           }
-        });
-      }
-      /*--Ak sa hesla nezhoduju--*/
-      else
-      {
-        console.log("Not compare passwords");
-        res.send({sameEmail: false,comparePasswords: false,
-          message: params.register.matchPassword,title: params.register.matchPasswordTitle});
-      }
-    }
 
   });
 
