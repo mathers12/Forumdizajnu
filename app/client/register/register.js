@@ -1,4 +1,26 @@
-var app = angular.module("forumDizajnu.register",["ngMaterial","ui.router"]);
+var app = angular.module("forumDizajnu.register",["ngMaterial","ui.router","ngMessages"]);
+
+
+var compareTo = function() {
+  return {
+    require: "ngModel",
+    scope: {
+      otherModelValue: "=compareTo"
+    },
+    link: function(scope, element, attributes, ngModel) {
+
+      ngModel.$validators.compareTo = function(modelValue) {
+        return modelValue == scope.otherModelValue;
+      };
+
+      scope.$watch("otherModelValue", function() {
+        ngModel.$validate();
+      });
+    }
+  };
+};
+
+app.directive("compareTo", compareTo);
 
 app.controller("registerController",function($scope,$mdDialog,$resource)
 {
@@ -28,11 +50,12 @@ app.controller("registerController",function($scope,$mdDialog,$resource)
     });
   };
 
+
   $scope.register = function(user)
   {
     if (user.password1 !== user.password2)
     {
-      alert("NOT CORRECT");
+      $scope.errorMessage = "NESPRAVNE HESLO";
     }
     else {
 

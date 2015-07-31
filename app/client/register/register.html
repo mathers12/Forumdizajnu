@@ -1,4 +1,4 @@
-<div class="gridListdemoBasicUsage" flex="25">
+<div class="gridListdemoBasicUsage" flex="30">
   <md-dialog aria-label="Mango (Fruit)" class="white" >
       <md-toolbar >
         <div class="md-toolbar-tools " >
@@ -8,10 +8,10 @@
         </div>
       </md-toolbar>
 
-      <md-dialog-content >
+      <md-dialog-content>
         <div layout="column" layout-align="center center" >
-        <form ng-submit="register(user)">
-        <md-input-container >
+        <form ng-submit="register(user)" name="registerForm">
+        <md-input-container>
           <label >Meno</label>
           <input ng-model="user.firstName" type="text" required/>
 
@@ -29,12 +29,18 @@
 
         <md-input-container >
           <label >Heslo</label>
-          <input ng-model="user.password1" type="password" required>
+          <input ng-model="user.password1" type="password" required name="password1" minlength="6">
+          <div ng-messages="registerForm.password1.$error">
+            <div ng-message="minlength">Dĺžka hesla musí byť aspoň 6 znakov</div>
+          </div>
         </md-input-container>
 
         <md-input-container>
           <label >Znova zadajte heslo</label>
-          <input ng-model="user.password2" type="password" required>
+          <input ng-model="user.password2" type="password" required name="password2" minlength="6" compare-to="user.password1">
+          <div ng-messages="registerForm.password2.$error">
+            <div ng-message="compareTo">Heslo sa nezhoduje</div>
+          </div>
         </md-input-container>
 
           <md-input-container >
