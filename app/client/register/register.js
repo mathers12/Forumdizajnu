@@ -24,9 +24,16 @@ app.directive("compareTo", compareTo);
 
 app.controller("registerController",function($scope,$mdDialog,$resource)
 {
-  $scope.user = {
-    gender: "Muž"
-  };
+
+  var init = function()
+  {
+
+    var clientData = localStorage.getItem("firstName");
+    $scope.user = {
+      gender: "Muž"
+    };
+
+  }
   $scope.hide = function () {
     $mdDialog.hide();
   };
@@ -53,6 +60,9 @@ app.controller("registerController",function($scope,$mdDialog,$resource)
 
   $scope.register = function(user)
   {
+    //Ukladanie do localStorage
+    localStorage.setItem("clientData",user);
+
     if (user.password1 !== user.password2)
     {
       $scope.errorMessage = "NESPRAVNE HESLO";
@@ -82,6 +92,8 @@ app.controller("registerController",function($scope,$mdDialog,$resource)
       });
     }
   };
+
+  init();
 });
 
 app.controller("messageDialogController",function($scope,$window,message,success,title,$mdDialog)
@@ -98,7 +110,13 @@ app.controller("messageDialogController",function($scope,$window,message,success
         parent: angular.element(document.body)
       })
     }
-    else $mdDialog.cancel();
+    else {
+      $mdDialog.show({
+        controller: "registerController",
+        templateUrl: 'client/register/register.html',
+        parent: angular.element(document.body)
+      })
+    }
 
   };
 });
