@@ -10,26 +10,26 @@
 
       <md-dialog-content>
         <div layout="column" layout-align="center center" >
-        <form ng-submit="register(user)" name="registerForm">
+        <form ng-submit="register(firstName,lastName,email,password1,password2,date_of_birth,gender)" name="registerForm">
         <md-input-container>
           <label >Meno</label>
-          <input ng-model="user.firstName" type="text" required/>
+          <input ng-model="firstName" type="text" required/>
 
         </md-input-container>
 
         <md-input-container >
           <label >Priezvisko</label>
-          <input ng-model="user.lastName" type="text" required>
+          <input ng-model="lastName" type="text" required>
         </md-input-container>
 
         <md-input-container>
           <label >E-mail</label>
-          <input ng-model="user.email" type="email" required>
+          <input ng-model="email" type="email" required>
         </md-input-container>
 
         <md-input-container >
           <label >Heslo</label>
-          <input ng-model="user.password1" type="password" required name="password1" minlength="6">
+          <input ng-model="password1" type="password" required name="password1" minlength="6">
           <div ng-messages="registerForm.password1.$error">
             <div ng-message="minlength">Dĺžka hesla musí byť aspoň 6 znakov</div>
           </div>
@@ -37,7 +37,7 @@
 
         <md-input-container>
           <label >Znova zadajte heslo</label>
-          <input ng-model="user.password2" type="password" required name="password2" minlength="6" compare-to="user.password1">
+          <input ng-model="password2" type="password" required name="password2" minlength="6" compare-to="password1">
           <div ng-messages="registerForm.password2.$error">
             <div ng-message="compareTo">Heslo sa nezhoduje</div>
           </div>
@@ -45,9 +45,9 @@
 
           <md-input-container >
             <label>Datum narodenia</label>
-            <input type="date" ng-model="user.date_of_birth" required>
+            <input type="date" ng-model="date_of_birth" required>
           </md-input-container>
-          <md-radio-group ng-model="user.gender">
+          <md-radio-group ng-model="gender">
             <md-radio-button value="Muž" class="md-primary">Muž</md-radio-button>
             <md-radio-button value="Žena">Žena</md-radio-button>
           </md-radio-group >

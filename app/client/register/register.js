@@ -25,20 +25,31 @@ app.directive("compareTo", compareTo);
 app.controller("registerController",function($scope,$mdDialog,$resource)
 {
 
+
+  if (localStorage.getItem("firstName") !== null) {
+
+    $scope.firstName = localStorage.getItem("firstName");
+    $scope.lastName =  localStorage.getItem("lastName");
+    $scope.email =  localStorage.getItem("email");
+    var date = new Date(localStorage.getItem("date_of_birth"));
+    $scope.date_of_birth =  date;
+    $scope.gender =  localStorage.getItem("gender");
+
+  }
   var init = function()
   {
 
-    var clientData = localStorage.getItem("firstName");
-    $scope.user = {
-      gender: "Muž"
-    };
+    $scope.gender = "Muž";
 
-  }
+
+  };
+
   $scope.hide = function () {
     $mdDialog.hide();
   };
 
   $scope.cancel = function () {
+    localStorage.clear();
     $mdDialog.cancel();
   };
 
@@ -58,29 +69,28 @@ app.controller("registerController",function($scope,$mdDialog,$resource)
   };
 
 
-  $scope.register = function(user)
+  $scope.register = function(firstName,lastName,email,password1,password2,date_of_birth,gender)
   {
-    //Ukladanie do localStorage
-    localStorage.setItem("clientData",user);
 
-    if (user.password1 !== user.password2)
-    {
-      $scope.errorMessage = "NESPRAVNE HESLO";
-    }
-    else {
+    var user = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      date_of_birth: date_of_birth,
+      gender: gender
+    };
 
       var Register = $resource('/auth/registration');
       Register.save(user, function (data) {
         /*--Registracia s rovnakym emailom--*/
         if (data.sameEmail) {
+          localStorage.setItem("firstName",firstName);
+          localStorage.setItem("lastName",lastName);
+          localStorage.setItem("email",email);
+          localStorage.setItem("date_of_birth",date_of_birth);
+          localStorage.setItem("gender",gender);
           $scope.messageDialog(data.message, false, data.title);
         }
-        /*--Registracia so zle opisanym heslom--*/
-        else if (!data.comparePasswords) {
-          $scope.messageDialog(data.message, false, data.title);
-        }
-        /*--Uspesna registracia--*/
-
         else {
           /*SUCCESS*/
           $scope.messageDialog(data.message, true, data.title);
@@ -90,7 +100,6 @@ app.controller("registerController",function($scope,$mdDialog,$resource)
           $scope.messageDialog("Ooops nastala chyba, prosím opakujte akciu!");
         }
       });
-    }
   };
 
   init();
@@ -104,6 +113,7 @@ app.controller("messageDialogController",function($scope,$window,message,success
   {
     if (success)
     {
+      localStorage.clear();
       $mdDialog.show({
         controller: "loginController",
         templateUrl: 'client/login/login.html',

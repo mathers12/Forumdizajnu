@@ -20,8 +20,6 @@ var smtpTransport = nodemailer.createTransport("SMTP",{
 });
 
 
-var uri = 'mongodb://127.0.0.1:27017/db';
-
 /* ---------------------FUNCTIONS--------------------------*/
 
 /*--Vrati konkretnu rolu--*/
@@ -110,18 +108,6 @@ var saveToDB = function(req,res)
 
 }
 
-var insertOtherRoleToDb = function(client,req,res)
-{
-  client.roles.push('client');
-  client.verifiedEmail = false;
-  client.save(function(err)
-  {
-    if (!err)
-    {
-      structureHtmlDataAndRender(req,res,client._id);
-    }
-  });
-}
 
 var comparePassword = function(password,hash,verifiedEmail,meno,priezvisko,role,email,id,done)
 {
