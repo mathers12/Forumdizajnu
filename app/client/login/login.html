@@ -11,16 +11,16 @@
 
     <md-dialog-content>
       <div layout="column" layout-align="center center" >
-      <form ng-submit="login(user)">
+      <form ng-submit="login(email,password)">
       <md-input-container>
         <label style="color:black">E-mail</label>
-        <input ng-model="user.email" type="email" required>
+        <input ng-model="email" type="email" required>
       </md-input-container>
 
 
       <md-input-container >
         <label>Heslo</label>
-        <input ng-model="user.password" type="password" required>
+        <input ng-model="password" type="password" required>
       </md-input-container>
         <div layout="column" layout-align="center center" >
 

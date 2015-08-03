@@ -43,7 +43,7 @@ var insertClientToDb = function(req,res)
     {
       firstName: req.body['firstName'],
       lastName: req.body['lastName'],
-      password: req.body['password1'],
+      password: req.body['password'],
       email: req.body['email'],
       verifiedEmail: false,
       date_of_birth: req.body['date_of_birth'],
@@ -299,13 +299,11 @@ router.post('/registration',function(req, res)
     /*--Ak e-mail nie je v DB--*/
     else
     {
-            console.log("NOVY KLIENT");
             //V pohode registrujeme noveho uzivatela
             bcrypt.genSalt(10, function(err, salt) {
-              bcrypt.hash(req.body['password1'], salt, function(err, hash) {
-                req.body['password1'] = req.body['password2'] = hash;
+              bcrypt.hash(req.body['password'], salt, function(err, hash) {
+                req.body['password'] = hash;
                 /*--Volanie funkcie na ukladanie do DB--*/
-                console.log("New client");
                 saveToDB(req,res);
               });
             });

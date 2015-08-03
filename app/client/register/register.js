@@ -26,22 +26,22 @@ app.controller("registerController",function($scope,$mdDialog,$resource)
 {
 
 
-  if (localStorage.getItem("firstName") !== null) {
-
-    $scope.firstName = localStorage.getItem("firstName");
-    $scope.lastName =  localStorage.getItem("lastName");
-    $scope.email =  localStorage.getItem("email");
-    var date = new Date(localStorage.getItem("date_of_birth"));
-    $scope.date_of_birth =  date;
-    $scope.gender =  localStorage.getItem("gender");
-
-  }
   var init = function()
   {
 
+    // Ak je nieco v local storage, tak to zobraz na formulary
+    if (localStorage.getItem("firstName") !== null) {
+
+      $scope.firstName = localStorage.getItem("firstName");
+      $scope.lastName =  localStorage.getItem("lastName");
+      $scope.email =  localStorage.getItem("email");
+      var date = new Date(localStorage.getItem("date_of_birth"));
+      $scope.date_of_birth =  date;
+      $scope.gender =  localStorage.getItem("gender");
+
+    }
+
     $scope.gender = "Muž";
-
-
   };
 
   $scope.hide = function () {
@@ -69,13 +69,15 @@ app.controller("registerController",function($scope,$mdDialog,$resource)
   };
 
 
-  $scope.register = function(firstName,lastName,email,password1,password2,date_of_birth,gender)
+  // registracia SUBMIT
+  $scope.register = function(firstName,lastName,email,password,date_of_birth,gender)
   {
 
     var user = {
       firstName: firstName,
       lastName: lastName,
       email: email,
+      password : password,
       date_of_birth: date_of_birth,
       gender: gender
     };
