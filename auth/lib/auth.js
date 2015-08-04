@@ -219,7 +219,9 @@ passport.use(new passportLocal.Strategy({usernameField: "email", passwordField: 
 passport.use(new passportFacebook.Strategy({
     clientID: "1626402354305120",
     clientSecret: "a32553cdefd739069bdf27b1270d748f",
-    callbackURL: "http://localhost:3000/auth/facebook/"
+    callbackURL: "http://localhost:3000/facebook/",
+    enableProof: false
+
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
@@ -238,11 +240,10 @@ passport.use(new passportFacebook.Strategy({
 //Facebook Request
 
 
-router.get('/facebook',
-  passport.authenticate('facebook'),
-  function(req, res) {
-    res.set('Access-Control-Allow-Origin', "*")
 
+router.get('/facebook',
+  passport.authenticate('facebook', { failureRedirect: '/home' }),
+  function(req, res) {
     res.redirect('/');
   });
 
