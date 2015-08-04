@@ -41,7 +41,7 @@ app.controller("loginController",function($scope,$mdDialog,$resource) {
   };
   $scope.connectWithFacebook = function()
   {
-    var Facebook = $resource("/auth/facebook/callback");
+    var Facebook = $resource("/auth/facebook");
     Facebook.get(function(user)
     {
       console.log(user);

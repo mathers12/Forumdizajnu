@@ -217,23 +217,31 @@ passport.use(new passportLocal.Strategy({usernameField: "email", passwordField: 
 
 /* ---------------------PASSPORT-FACEBOOK -------------------------------------- */
 passport.use(new passportFacebook.Strategy({
-    clientID: "903783989686853",
-    clientSecret: "28fa81480b0010e5171ad4e69b1dd985",
-    callbackURL: "http://localhost:3000/#/home",
-    enableProof: false
+    clientID: "1626402354305120",
+    clientSecret: "a32553cdefd739069bdf27b1270d748f",
+    callbackURL: "http://localhost:3000/auth/facebook/"
   },
   function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-      return done(err, user);
+    // asynchronous verification, for effect...
+    process.nextTick(function () {
+
+      // To keep the example simple, the user's Facebook profile is returned to
+      // represent the logged-in user.  In a typical application, you would want
+      // to associate the Facebook account with a user record in your database,
+      // and return that user instead.
+      return done(null, profile);
     });
   }
 ));
 
 /* ---------------------ROUTES --------------------------*/
 //Facebook Request
-router.get('/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
+
+
+router.get('/facebook',
+  passport.authenticate('facebook'),
   function(req, res) {
+    res.set('Access-Control-Allow-Origin', "*")
 
     res.redirect('/');
   });

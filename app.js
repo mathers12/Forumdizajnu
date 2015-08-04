@@ -9,7 +9,6 @@ var routes = require('./routes/index');
 var auth = require("./auth/lib/auth");
 var fs = require("fs");
 var cors = require("cors");
-
 var app = express();
 
 // view engine setup
@@ -18,12 +17,11 @@ app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+app.use(logger());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app')));
-app.use(cors());
 
 app.use('/', routes);
 app.use('/auth',auth);
