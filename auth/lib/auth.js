@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var passport = require('passport');
 var passportLocal = require('passport-local');
+var passportFacebook = require("passport-facebook");
 var nodemailer = require('nodemailer');
 var bcrypt = require("bcrypt");
 var params = require('./params.js');
@@ -214,8 +215,28 @@ passport.use(new passportLocal.Strategy({usernameField: "email", passwordField: 
 
 }));
 
+/* ---------------------PASSPORT-FACEBOOK -------------------------------------- */
+passport.use(new passportFacebook.Strategy({
+    clientID: "903783989686853",
+    clientSecret: "28fa81480b0010e5171ad4e69b1dd985",
+    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    enableProof: false
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+  }
+));
 
 /* ---------------------ROUTES --------------------------*/
+//Facebook Request
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
 
 
 /* ---------------------GET-VERIFY-EMAIL--------------------------*/

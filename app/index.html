@@ -18,6 +18,26 @@
 
 <body ng-controller="appController">
 
+<!-- FACEBOOK SDK -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '903783989686853',
+      xfbml      : true,
+      version    : 'v2.4'
+    });
+  };
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
 <!-- Header -->
 <header md-page-header>
   <div md-header-picture style="background-image:url(http://cdn.wallwuzz.com/uploads/katy-perry-wallpaper-10wallpaper-people-photography-album-desktop-beauty-wallwuzz-hd-wallpaper-20555.jpg)">
@@ -217,5 +237,6 @@
 <script type="text/javascript" src="client/login/login.js"></script>
 <script type="text/javascript" src="client/register/register.js"></script>
 <script type="text/javascript" src="client/forgot_password/forgot_password.js"></script>
+<script type="text/javascript" src="client/profile/profile.js"></script>
 </body>
 </html>

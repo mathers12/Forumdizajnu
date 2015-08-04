@@ -74,7 +74,7 @@ app.controller("loginController",function($scope,$mdDialog,$resource) {
 
 
 /*--Dialog message---*/
-app.controller("loginDialogController", function ($scope, $window, message, success, title, $mdDialog) {
+app.controller("loginDialogController", function ($scope, $window, message, success, title, $mdDialog,$location) {
   $scope.message = message;
   $scope.title = title;
 
@@ -82,7 +82,7 @@ app.controller("loginDialogController", function ($scope, $window, message, succ
   {
     if (success)
     {
-      $mdDialog.cancel();
+      $location.path("/profile");
     }
     else
     {

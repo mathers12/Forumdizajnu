@@ -23,18 +23,27 @@
         <input ng-model="password" type="password" required>
       </md-input-container>
         <div layout="column" layout-align="center center" >
+              <md-button type="submit"  class="green" >Prihlásiť sa</md-button>
+        </div>
+      </form>
+        <div layout="column" layout-align="center center" >
 
-        <md-button  class="green" >Prihlásiť sa</md-button>
-      <br/>
+        <br/>
 
+          <a href="">
+            <img ng-src="../assets/pictures/connect_with_facebook.png"/>
+          </a>
 
+          <a layout="column" layout-align="center center"  href="">
+            <img style="width:60%" ng-src="../assets/pictures/connect_with_google_plus.png"/>
+          </a>
+        <br/>
         <label ng-click="clickForgotPassword($event)" style="cursor: pointer;color:black">
           Zabudli ste heslo?
       </label>
       <br/>
       <md-button class="gray">Registrácia</md-button>
           </div>
-      </form>
       </div>
     </md-dialog-content>
 </md-dialog>

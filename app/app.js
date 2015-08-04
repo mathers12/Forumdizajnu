@@ -9,6 +9,7 @@ var app = angular.module('forumDizajnu',
     'forumDizajnu.specialists',
     'forumDizajnu.register',
     'forumDizajnu.forgot_password',
+    'forumDizajnu.profile',
     'ngMaterial',
     'ui.router',
     'ngResource'
