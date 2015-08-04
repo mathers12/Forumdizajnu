@@ -35,6 +35,19 @@ app.controller("loginController",function($scope,$mdDialog,$resource) {
   };
 
 
+  $scope.connectWithGooglePlus = function()
+  {
+
+  };
+  $scope.connectWithFacebook = function()
+  {
+    var Facebook = $resource("/auth/facebook/callback");
+    Facebook.get(function(user)
+    {
+      console.log(user);
+    })
+  };
+
   $scope.login = function (email,password) {
 
     //Ulozenie emailu do local Storage

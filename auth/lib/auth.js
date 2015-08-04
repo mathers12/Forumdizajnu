@@ -219,7 +219,7 @@ passport.use(new passportLocal.Strategy({usernameField: "email", passwordField: 
 passport.use(new passportFacebook.Strategy({
     clientID: "903783989686853",
     clientSecret: "28fa81480b0010e5171ad4e69b1dd985",
-    callbackURL: "http://localhost:3000/auth/facebook/callback",
+    callbackURL: "http://localhost:3000/#/home",
     enableProof: false
   },
   function(accessToken, refreshToken, profile, done) {
@@ -231,13 +231,12 @@ passport.use(new passportFacebook.Strategy({
 
 /* ---------------------ROUTES --------------------------*/
 //Facebook Request
-router.get('/auth/facebook/callback',
+router.get('/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
-    // Successful authentication, redirect home.
+
     res.redirect('/');
   });
-
 
 /* ---------------------GET-VERIFY-EMAIL--------------------------*/
 router.get('/verify',function(req,res)

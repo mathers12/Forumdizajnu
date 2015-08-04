@@ -8,6 +8,8 @@ var mongoose = require("mongoose");
 var routes = require('./routes/index');
 var auth = require("./auth/lib/auth");
 var fs = require("fs");
+var cors = require("cors");
+
 var app = express();
 
 // view engine setup
@@ -21,6 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app')));
+app.use(cors());
 
 app.use('/', routes);
 app.use('/auth',auth);
