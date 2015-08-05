@@ -1,7 +1,6 @@
 var app = angular.module("forumDizajnu.login",["ngMaterial","ui.router","ngResource"]);
 
-
-app.controller("loginController",function($scope,$mdDialog,$resource) {
+app.controller("loginController",function($scope,$mdDialog,$resource,$http) {
 
 
   var init = function()
@@ -35,18 +34,6 @@ app.controller("loginController",function($scope,$mdDialog,$resource) {
   };
 
 
-  $scope.connectWithGooglePlus = function()
-  {
-
-  };
-  $scope.connectWithFacebook = function()
-  {
-    var Facebook = $resource("/auth/facebook");
-    Facebook.get(function(user)
-    {
-      console.log(user);
-    })
-  };
 
   $scope.login = function (email,password) {
 

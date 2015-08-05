@@ -7,7 +7,6 @@ var passportFacebook = require("passport-facebook");
 var nodemailer = require('nodemailer');
 var bcrypt = require("bcrypt");
 var params = require('./params.js');
-
 router.use(passport.initialize());
 router.use(passport.session());
 
@@ -182,6 +181,11 @@ var sendEmail = function(email,html,emailSubject)
 
 }
 
+var ensureAuthenticated = function(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+  console.log(req.isAuthenticated());
+};
+
 passport.serializeUser(function(user,done)
 {
   done(null,user);
@@ -219,7 +223,7 @@ passport.use(new passportLocal.Strategy({usernameField: "email", passwordField: 
 passport.use(new passportFacebook.Strategy({
     clientID: "1626402354305120",
     clientSecret: "a32553cdefd739069bdf27b1270d748f",
-    callbackURL: "http://localhost:3000/facebook/",
+    callbackURL: "http://localhost:3000/auth/facebook",
     enableProof: false
 
   },
@@ -239,13 +243,16 @@ passport.use(new passportFacebook.Strategy({
 /* ---------------------ROUTES --------------------------*/
 //Facebook Request
 
-
-
 router.get('/facebook',
-  passport.authenticate('facebook', { failureRedirect: '/home' }),
+  passport.authenticate('facebook'),
   function(req, res) {
-    res.redirect('/');
+    res.send(req.user);
   });
+
+
+router.get('/profile', ensureAuthenticated, function(req, res){
+  res.send(req.user);
+});
 
 /* ---------------------GET-VERIFY-EMAIL--------------------------*/
 router.get('/verify',function(req,res)
