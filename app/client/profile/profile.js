@@ -6,7 +6,13 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
     .state('profile', {
       url: "/profile",
       templateUrl: "client/profile/profile.html",
-      controller: "profileController"
+      controller: "profileController",
+      resolve: {
+        isLogged: function(resolveService)
+        {
+          return resolveService.profileResolve();
+        }
+      }
     })
 });
 

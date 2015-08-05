@@ -25,6 +25,28 @@ var app = angular.module('forumDizajnu',
 
   });
 
+app.service('resolveService', function($q,$http,$window,$location) {
+  return {
+    profileResolve: function () {
+      var deferred = $q.defer();
+      /*--Testujeme, ci je uzivatel prihlaseny--*/
+      $http.get('/auth/loggedin').success(function (user) {
+
+        if (user)
+        {
+          deferred.resolve(user); // vratime uspesne vykonanie resolve
+        }
+        else
+        {
+          deferred.reject();
+          $window.location.assign('/#/home');
+        }
+      });
+      return deferred.promise;
+    }
+  }
+});
+
 app.directive("scroll", function ($window) {
 
   return function(scope, element, attrs) {

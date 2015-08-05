@@ -7,8 +7,8 @@ var passportFacebook = require("passport-facebook");
 var nodemailer = require('nodemailer');
 var bcrypt = require("bcrypt");
 var params = require('./params.js');
-router.use(passport.initialize());
-router.use(passport.session());
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
 
 /* ---------------------NODEMAILER--------------------------*/
 var smtpTransport = nodemailer.createTransport("SMTP",{
@@ -221,9 +221,10 @@ passport.use(new passportLocal.Strategy({usernameField: "email", passwordField: 
 
 /* ---------------------PASSPORT-FACEBOOK -------------------------------------- */
 passport.use(new passportFacebook.Strategy({
-    clientID: "1626402354305120",
-    clientSecret: "a32553cdefd739069bdf27b1270d748f",
-    callbackURL: "http://localhost:3000/auth/facebook",
+    clientID: "1620974774858693",
+    clientSecret: "2a3e08bebfe5a44687044d6d52a30fad",
+    callbackURL: "http://www.localhost:3000/auth/facebook",
+    profileFields: ['id', 'displayName','emails',"gender",'profileUrl'],
     enableProof: false
 
   },
@@ -236,6 +237,21 @@ passport.use(new passportFacebook.Strategy({
       // to associate the Facebook account with a user record in your database,
       // and return that user instead.
       return done(null, profile);
+    })
+  }
+));
+
+/*----------------------PASSPORT-GOOGLE----------------------------------*/
+passport.use(new GoogleStrategy({
+    clientID: "425171239070-8dtasul25icb9jnhh2vmm45j844c40d5.apps.googleusercontent.com",
+    clientSecret: "8NL1Vg2jmZoUkqqRRW91q0w6",
+    callbackURL: "http://localhost:3000/auth/google"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    // asynchronous verification, for effect...
+    process.nextTick(function () {
+
+    done(null,profile);
     });
   }
 ));
@@ -244,15 +260,19 @@ passport.use(new passportFacebook.Strategy({
 //Facebook Request
 
 router.get('/facebook',
-  passport.authenticate('facebook'),
+  passport.authenticate('facebook',{scope: ['email','public_profile']}),
   function(req, res) {
-    res.send(req.user);
+    res.redirect('/#/profile');
   });
 
-
-router.get('/profile', ensureAuthenticated, function(req, res){
-  res.send(req.user);
+router.get('/google',
+  passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/plus.login' }),
+function(req,res)
+{
+  res.redirect('/#/profile');
 });
+
+
 
 /* ---------------------GET-VERIFY-EMAIL--------------------------*/
 router.get('/verify',function(req,res)

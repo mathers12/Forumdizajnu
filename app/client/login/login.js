@@ -69,6 +69,7 @@ app.controller("loginController",function($scope,$mdDialog,$resource,$http) {
     })
   };
 
+
   init();
 });
 
