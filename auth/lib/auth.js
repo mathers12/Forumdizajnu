@@ -374,7 +374,7 @@ router.post('/registration',function(req, res)
 router.get('/logout',function(req,res)
 {
   req.logout();
-  res.redirect("/login");
+  res.redirect("/#/home");
 });
 
 /*-------------------LOGGED IN----------------------------*/

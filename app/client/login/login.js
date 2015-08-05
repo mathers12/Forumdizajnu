@@ -75,7 +75,7 @@ app.controller("loginController",function($scope,$mdDialog,$resource,$http) {
 
 
 /*--Dialog message---*/
-app.controller("loginDialogController", function ($scope, $window, message, success, title, $mdDialog,$location) {
+app.controller("loginDialogController", function ($scope, $window, message, success, title, $mdDialog,$rootScope) {
   $scope.message = message;
   $scope.title = title;
 
@@ -84,6 +84,7 @@ app.controller("loginDialogController", function ($scope, $window, message, succ
     if (success)
     {
       $mdDialog.cancel();
+      $rootScope.isLogged = true;
       $window.location.assign("/#/profile");
     }
     else

@@ -130,7 +130,7 @@ app.directive("scroll", function ($window) {
 });
 
 
-  app.controller('appController', function($scope, $timeout, $mdSidenav, $mdUtil, $log, $location, $mdDialog,$resource) {
+  app.controller('appController', function($scope, $timeout, $mdSidenav, $mdUtil, $log, $location, $mdDialog,$window,$resource,$http,$rootScope) {
 
     $scope.categoryOn = true;
     $scope.categoryOff = false;
@@ -194,6 +194,7 @@ app.directive("scroll", function ($window) {
       $http.get("/auth/logout")
         .success(function()
         {
+          $rootScope.isLogged = false;
           $window.location.assign("/#/home");
         });
     };
@@ -284,6 +285,18 @@ app.directive("scroll", function ($window) {
         }
 
       }
+
+      $http.get("/auth/loggedin")
+        .success(function(response)
+        {
+          if (response)
+          {
+            $rootScope.isLogged = true;
+          }
+          else {
+            $rootScope.isLogged = false;
+          }
+        })
     };
 
     /*--Dialog message---*/
