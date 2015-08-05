@@ -39,12 +39,12 @@
       <md-button  class="md-icon-button" id="searchButton">
         <md-icon md-svg-icon="./assets/svg/search.svg"></md-icon>
       </md-button>
-      <md-icon class="regLoginIcon" ng-if="!isLogged" md-svg-icon="./assets/svg/login.svg"></md-icon>
-      <label class="cursorPointer" ng-if="!isLogged" ng-click="clickLogin($event)">Prihlasenie</label>
-      <md-icon class="regLoginIcon" ng-if="isLogged" md-svg-icon="./assets/svg/logout.svg"></md-icon>
-      <label class="cursorPointer" ng-if="isLogged" ng-click="clickLogout()">Odhlásiť sa</label>
+      <md-icon class="regLoginIcon" ng-show="!isLogged" md-svg-icon="./assets/svg/login.svg"></md-icon>
+      <label class="cursorPointer" ng-show="!isLogged" ng-click="clickLogin()">Prihlasenie</label>
+      <md-icon class="regLoginIcon" ng-show="isLogged" md-svg-icon="./assets/svg/logout.svg"></md-icon>
+      <label class="cursorPointer" ng-show="isLogged" ng-click="clickLogout()">Odhlásiť sa</label>
       <md-icon id="regPersonIcon" md-svg-icon="./assets/svg/person.svg"></md-icon>
-      <label class="cursorPointer" ng-click="clickRegister($event)">Registracia</label>
+      <label class="cursorPointer" ng-click="clickRegister()">Registracia</label>
       <!--<md-button class="md-tools" aria-label="Edit Contact"><i class="ion-android-create"></i></md-button>-->
       <!--<md-button class="md-tools" aria-label="More"><i class="ion-android-more-vertical"></i></md-button>-->
     </div>

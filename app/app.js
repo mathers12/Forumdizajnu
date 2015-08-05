@@ -25,7 +25,7 @@ var app = angular.module('forumDizajnu',
 
   });
 
-app.service('resolveService', function($q,$http,$window,$location) {
+app.service('resolveService', function($q,$http,$window,$location,$scope) {
   return {
     profileResolve: function () {
       var deferred = $q.defer();
@@ -39,7 +39,8 @@ app.service('resolveService', function($q,$http,$window,$location) {
         else
         {
           deferred.reject();
-          $window.location.assign('/#/home');
+          //$window.location.assign('/#/home');
+
         }
       });
       return deferred.promise;
@@ -180,12 +181,11 @@ app.directive("scroll", function ($window) {
       }
     };
 
-    $scope.clickLogin = function(ev) {
+    $scope.clickLogin = function() {
       $mdDialog.show({
         controller: "loginController",
         templateUrl: 'client/login/login.html',
-        parent: angular.element(document.body),
-        targetEvent: ev
+        parent: angular.element(document.body)
       })
     };
 
@@ -200,13 +200,12 @@ app.directive("scroll", function ($window) {
     };
 
 
-    $scope.clickRegister = function(ev)
+    $scope.clickRegister = function()
     {
       $mdDialog.show({
         controller: "registerController",
         templateUrl: 'client/register/register.html',
-        parent: angular.element(document.body),
-        targetEvent: ev
+        parent: angular.element(document.body)
       })
     };
 
