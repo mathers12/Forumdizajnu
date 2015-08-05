@@ -46,6 +46,7 @@
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
+    "express-partials": "^0.3.0",
     "express-session": "^1.11.3",
     "firebase": "^2.2.9",
     "mongoose": "~4.1.0",

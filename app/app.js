@@ -189,6 +189,14 @@ app.directive("scroll", function ($window) {
       })
     };
 
+    $scope.clickLogout = function()
+    {
+      $http.get("/auth/logout")
+        .success(function()
+        {
+          $window.location.assign("/#/home");
+        });
+    };
 
 
     $scope.clickRegister = function(ev)

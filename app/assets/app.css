@@ -24,12 +24,16 @@ md-toolbar
 {
   cursor:pointer;
 }
-#regLoginIcon,#regPersonIcon
+#regPersonIcon
 {
   margin-right: 5px;
   margin-left: 30px;
 }
-
+.regLoginIcon
+{
+  margin-right: 5px;
+  margin-left: 30px;
+}
 
 /*CONTENT*/
 .gridListdemoBasicUsage .gray {

@@ -8,7 +8,8 @@ var nodemailer = require('nodemailer');
 var bcrypt = require("bcrypt");
 var params = require('./params.js');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
+router.use(passport.initialize());
+router.use(passport.session());
 
 /* ---------------------NODEMAILER--------------------------*/
 var smtpTransport = nodemailer.createTransport("SMTP",{

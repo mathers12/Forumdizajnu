@@ -83,7 +83,8 @@ app.controller("loginDialogController", function ($scope, $window, message, succ
   {
     if (success)
     {
-      $location.path("/profile");
+      $mdDialog.cancel();
+      $window.location.assign("/#/profile");
     }
     else
     {

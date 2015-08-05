@@ -11,13 +11,15 @@ var auth = require("./auth/lib/auth");
 var fs = require("fs");
 var methodOverride = require('method-override');
 var expressSession = require("express-session");
-
+var logger = require("morgan");
+var partials = require("express-partials");
 var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(passport.initialize());
-app.use(passport.session());
+
+app.use(logger('dev'));
+
 app.use(expressSession({
 
   secret: process.env.SESSION_SECRET || 'secret',
@@ -32,6 +34,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app')));
 app.use(methodOverride());
+app.use(partials());
+
 
 app.use('/profile', profile);
 app.use('/auth',auth);
@@ -76,6 +80,4 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-
 module.exports = app;

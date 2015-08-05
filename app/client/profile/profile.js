@@ -17,7 +17,7 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
 });
 
 
-app.controller("profileController",function($scope)
+app.controller("profileController",function($scope,isLogged)
 {
-
+  console.log(isLogged);
 });
