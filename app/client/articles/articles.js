@@ -5,7 +5,12 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
   $stateProvider
     .state('articles', {
       url: "/articles",
-      templateUrl: "client/articles/articles.html"
+      views: {
+        "main": {
+          controller: 'articlesController',
+          templateUrl: 'client/articles/articles.html'
+        }
+      }
     });
 
 });

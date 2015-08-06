@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
 var routes = require('./routes/index');
-var profile = require('./routes/profile');
 var passport = require("passport");
 var auth = require("./auth/lib/auth");
 var fs = require("fs");
@@ -37,7 +36,6 @@ app.use(methodOverride());
 app.use(partials());
 
 
-app.use('/profile', profile);
 app.use('/auth',auth);
 
 

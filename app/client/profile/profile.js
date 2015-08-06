@@ -5,10 +5,14 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
   $stateProvider
     .state('profile', {
       url: "/profile",
-      templateUrl: "client/profile/profile.html",
-      controller: "profileController",
+      views: {
+        "main": {
+          controller: 'profileController',
+          templateUrl: 'client/profile/profile.html'
+        }
+      },
       resolve: {
-        isLogged: function(resolveService)
+        loggedIn: function(resolveService)
         {
           return resolveService.profileResolve();
         }
@@ -17,7 +21,7 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
 });
 
 
-app.controller("profileController",function($scope,isLogged)
+app.controller("profileController",['$scope','loggedIn',function($scope,loggedIn)
 {
-  console.log(isLogged);
-});
+  console.log(loggedIn);
+}]);

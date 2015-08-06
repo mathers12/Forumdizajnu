@@ -5,7 +5,12 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
   $stateProvider
     .state('forum', {
       url: "/forum",
-      templateUrl: "client/forum/forum.html"
+      views: {
+        "main": {
+          controller: 'forumController',
+          templateUrl: 'client/forum/forum.html'
+        }
+      }
     });
 
 });

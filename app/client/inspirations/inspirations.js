@@ -5,7 +5,12 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
   $stateProvider
     .state('inspirations', {
       url: "/inspirations",
-      templateUrl: "client/inspirations/inspirations.html"
+      views: {
+        "main": {
+          controller: 'inspirationsController',
+          templateUrl: 'client/inspirations/inspirations.html'
+        }
+      }
     });
 
 });

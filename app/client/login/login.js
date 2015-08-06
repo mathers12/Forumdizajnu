@@ -85,7 +85,7 @@ app.controller("loginDialogController", function ($scope, $window, message, succ
     {
       $mdDialog.cancel();
       $rootScope.isLogged = true;
-      $window.location.assign("/#/profile");
+      $window.location.assign("#/profile");
     }
     else
     {

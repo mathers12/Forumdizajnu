@@ -22,7 +22,6 @@ var app = angular.module('forumDizajnu',
 
     //Budeme mat vzdy /home
     $urlRouterProvider.otherwise('/home');
-
   });
 
 app.service('resolveService', function($q,$http,$window,$location,$scope) {
@@ -39,7 +38,7 @@ app.service('resolveService', function($q,$http,$window,$location,$scope) {
         else
         {
           deferred.reject();
-          //$window.location.assign('/#/home');
+          $window.location.assign('#/products');
 
         }
       });

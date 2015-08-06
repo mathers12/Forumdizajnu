@@ -5,7 +5,12 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
   $stateProvider
     .state('specialists', {
       url: "/specialists",
-      templateUrl: "client/specialists/specialists.html"
+      views: {
+        "main": {
+          controller: 'specialistsController',
+          templateUrl: 'client/specialists/specialists.html'
+        }
+      }
     });
 
 });
