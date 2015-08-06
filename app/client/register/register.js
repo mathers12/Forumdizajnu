@@ -41,7 +41,7 @@ app.controller("registerController",function($scope,$mdDialog,$resource)
 
     }
 
-    $scope.gender = "Muž";
+    $scope.gender = "male";
   };
 
   $scope.hide = function () {

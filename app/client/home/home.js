@@ -4,12 +4,8 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
 
   $stateProvider.state('home', {
     url: "/home",
-    views: {
-      "main": {
-        controller: 'homeController',
-        templateUrl: 'client/home/home.html'
-      }
-    }
+    controller: 'homeController',
+    templateUrl: 'client/home/home.html'
     });
 
   /*$stateProvider.state('home', {

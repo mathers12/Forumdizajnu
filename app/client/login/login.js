@@ -48,7 +48,7 @@ app.controller("loginController",function($scope,$mdDialog,$resource,$http) {
     var Login = $resource('/auth/');
     Login.save(data, function (user) {
       console.log(user);
-      $scope.messageDialog("Prihlásenie prebehlo úspešne.",true,"Vitajte "+user.firstName+" "+user.lastName);
+      $scope.messageDialog("Prihlásenie prebehlo úspešne.",true,"Vitajte "+user.displayName);
       /*Neplatne meno alebo heslo, reload stranky login*/
     }, function (err) {
       if (err.status == 401) {

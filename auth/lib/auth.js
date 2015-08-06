@@ -110,7 +110,7 @@ var saveToDB = function(req,res)
 }
 
 
-var comparePassword = function(password,hash,verifiedEmail,meno,priezvisko,role,email,id,done)
+var comparePassword = function(password,hash,verifiedEmail,meno,priezvisko,role,email,id,gender,done)
 {
   bcrypt.compare(password, hash, function (err, res) {
     /*--Ak heslo suhlasi s hashom--*/
@@ -120,7 +120,7 @@ var comparePassword = function(password,hash,verifiedEmail,meno,priezvisko,role,
       if (verifiedEmail)
       {
         console.log(role);
-        done(null,{email: email, firstName: meno, lastName: priezvisko, role: role, id: id});
+        done(null,{email: email, displayName: meno+" "+priezvisko, role: role, id: id, gender: gender, });
 
       }
       /*--Ak este nepresla verifikacia e-mailu--*/
@@ -207,7 +207,7 @@ passport.use(new passportLocal.Strategy({usernameField: "email", passwordField: 
     if (user.length)
     {
           comparePassword(password, user[0].password, user[0].verifiedEmail, user[0].firstName,
-            user[0].lastName, user[0].roles, email,user[0]._id, done);
+            user[0].lastName, user[0].roles, email,user[0]._id,user[0].gender, done);
     }
 
     else
@@ -225,7 +225,7 @@ passport.use(new passportFacebook.Strategy({
     clientID: "1620974774858693",
     clientSecret: "2a3e08bebfe5a44687044d6d52a30fad",
     callbackURL: "http://www.localhost:3000/auth/facebook",
-    profileFields: ['id', 'displayName','emails',"gender",'profileUrl'],
+    profileFields: ['id', 'displayName','emails',"gender",'picture'],
     enableProof: false
 
   },
@@ -261,7 +261,7 @@ passport.use(new GoogleStrategy({
 //Facebook Request
 
 router.get('/facebook',
-  passport.authenticate('facebook',{scope: ['email','public_profile']}),
+  passport.authenticate('facebook',{scope: ['email','public_profile','user_photos']}),
   function(req, res) {
     res.redirect('/#/profile');
   });

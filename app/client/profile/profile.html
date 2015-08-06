@@ -1,1 +1,52 @@
-<label>IDE TO?</label>
+<md-grid-list class="productDetailGridList"
+                md-cols-sm="1" md-cols-md="1" md-cols-gt-md="6"
+                md-row-height="1:1" md-gutter="2%"
+    >
+    <!-- left IMAGE, RIGHT CONTENT-->
+    <label class="productDetailLabel" >{{name}}</label>
+
+    <md-grid-tile
+      md-rowspan="1" md-colspan="1" md-colspan-sm="1">
+      <div class="container" ng-controller="homeController">
+
+        <img class="imgHome" id="productDetailImg" ng-src="{{profilePhoto}}" />
+
+      </div>
+      <md-grid-tile-footer ng-hide="addPhotoFooter" class="blue" style="cursor:pointer" ng-click="addPhoto()">
+        <div layout="row" layout-align="start center" >
+          &nbsp;
+          &nbsp;
+          <md-icon md-svg-icon="./assets/svg/camera.svg"></md-icon>
+          &nbsp;
+          &nbsp;
+          <label style="cursor: pointer">Pridať fotku</label>
+        </div>
+      </md-grid-tile-footer>
+
+    </md-grid-tile>
+    <md-grid-tile
+      md-rowspan="2" md-colspan="3" md-colspan-sm="1">
+      <md-grid-tile-header style="background-color: white;height: 100%" layout-align="start start">
+        <div class="rightTileProductDetail">
+          <label class="priceLabel">{{(product.price | number:2) + "€"}} s DPH</label>
+          <md-button id="toShopButton" class="md-raised">Do obchodu</md-button>
+          <br>
+          <hr class="separator">
+          <label  class="otherLabel"><b>Farba: </b>{{product.color}}</label>
+          <br><br>
+          <label class="otherLabel"><b>Štýl: </b>{{product.style}}</label>
+          <br><br>
+          <label class="otherLabel"><b>Rozmery: </b>{{product.dimensions}}</label>
+          <hr class="separator">
+          <label class="otherLabel">Informácie o produkte</label>
+          <br><br>
+          <label class="otherLabel"><b>Obchod: </b><a href="http://www.{{product.shop}}">{{product.shop}}</a></label>
+          <br><br>
+          <label class="otherLabel"><b>Kategória: </b><a href="#">{{product.category}}</a></label>
+          <br><br>
+          <label class="otherLabel"><b>Výrobca: </b><a href="#">{{product.producer}}</a></label>
+
+        </div>
+      </md-grid-tile-header>
+    </md-grid-tile>
+</md-grid-list>

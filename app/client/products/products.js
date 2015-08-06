@@ -5,21 +5,14 @@ app.config(function($mdThemingProvider,$locationProvider,$urlRouterProvider,$sta
   $stateProvider
     .state('products', {
       url: "/products",
-      views: {
-        "main": {
-          controller: 'productsController',
-          templateUrl: 'client/products/products.html'
-        }
-      }
+      controller: 'productsController',
+      templateUrl: 'client/products/products.html'
+
     })
     .state('products.detail', {
       url: "/:productId",
-      views: {
-        "main": {
-          controller: 'productsController',
-          templateUrl: 'client/products/products.detail.html'
-        }
-      }
+      controller: 'productDetailController',
+      templateUrl: 'client/products/products.detail.html'
     })
 
 

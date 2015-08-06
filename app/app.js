@@ -38,7 +38,7 @@ app.service('resolveService', function($q,$http,$window,$location,$scope) {
         else
         {
           deferred.reject();
-          $window.location.assign('#/products');
+          $window.location.assign('/#/products');
 
         }
       });
