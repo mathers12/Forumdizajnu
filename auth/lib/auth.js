@@ -110,7 +110,7 @@ var saveToDB = function(req,res)
 }
 
 
-var comparePassword = function(password,hash,verifiedEmail,meno,priezvisko,role,email,id,gender,done)
+var comparePassword = function(password,hash,verifiedEmail,meno,priezvisko,role,email,id,gender,modified,done)
 {
   bcrypt.compare(password, hash, function (err, res) {
     /*--Ak heslo suhlasi s hashom--*/
@@ -120,7 +120,7 @@ var comparePassword = function(password,hash,verifiedEmail,meno,priezvisko,role,
       if (verifiedEmail)
       {
         console.log(role);
-        done(null,{email: email, displayName: meno+" "+priezvisko, role: role, id: id, gender: gender, });
+        done(null,{email: email, displayName: meno+" "+priezvisko, role: role, id: id, gender: gender,modified: modified });
 
       }
       /*--Ak este nepresla verifikacia e-mailu--*/
@@ -207,7 +207,7 @@ passport.use(new passportLocal.Strategy({usernameField: "email", passwordField: 
     if (user.length)
     {
           comparePassword(password, user[0].password, user[0].verifiedEmail, user[0].firstName,
-            user[0].lastName, user[0].roles, email,user[0]._id,user[0].gender, done);
+            user[0].lastName, user[0].roles, email,user[0]._id,user[0].gender,user[0].modified, done);
     }
 
     else
@@ -267,7 +267,7 @@ router.get('/facebook',
   });
 
 router.get('/google',
-  passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/plus.login' }),
+  passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/plus.login'}),
 function(req,res)
 {
   res.redirect('/#/profile');

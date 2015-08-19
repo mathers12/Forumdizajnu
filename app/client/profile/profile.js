@@ -37,16 +37,28 @@ app.controller("profileController",['$scope','loggedIn',function($scope,loggedIn
   var init = function()
   {
 
+    //choosing the correct profile photo by gender
     //./assets/pictures/male_profile.png
-    $scope.profilePhoto = loggedIn.photos[0].value;
+    if (loggedIn.photos !== undefined)
+    {
+      $scope.addPhotoFooter = true;
+      $scope.profilePhoto = loggedIn.photos[0].value;
+    }
+    else
+    {
+      $scope.addPhotoFooter = false;
+      $scope.profilePhoto = (loggedIn.gender == "male") ? "./assets/pictures/male_profile.png" : "./assets/pictures/female_profile.png";
+    }
+
     $scope.name = loggedIn.displayName;
   };
+
   console.log(loggedIn);
 
   $scope.addPhoto = function()
   {
     console.log("ADDED PHOTO");
-  }
+  };
 
   init();
 }]);

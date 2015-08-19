@@ -11,13 +11,19 @@ var clientsSchema = new Schema({
     verifiedEmail: Boolean,
     date_of_birth: Date,
     gender: String,
-    profile: [
+    profile:
+    [
         {
             type: Schema.ObjectId,
             ref: "profiles"
         }
     ],
-    roles: Array
+    roles: Array,
+    modified:
+    {
+      type: Date,
+      default: Date.now
+    }
 },{});
 
 mongoose.model('clients', clientsSchema);
