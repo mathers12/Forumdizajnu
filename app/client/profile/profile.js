@@ -37,6 +37,7 @@ app.controller("profileController",['$scope','loggedIn',function($scope,loggedIn
   var init = function()
   {
 
+    $scope.modifiedDate = (new Date(loggedIn.modified)).toLocaleString();
     //choosing the correct profile photo by gender
     //./assets/pictures/male_profile.png
     if (loggedIn.photos !== undefined)
